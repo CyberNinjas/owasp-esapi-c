@@ -1,0 +1,259 @@
+\hypertarget{utstring_8h}{
+\section{utstring.h File Reference}
+\label{utstring_8h}\index{utstring.h@{utstring.h}}
+}
+
+
+A dynamic string implementation using macros.  
+
+
+{\ttfamily \#include $<$stdlib.h$>$}\par
+{\ttfamily \#include $<$string.h$>$}\par
+{\ttfamily \#include $<$stdarg.h$>$}\par
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct_u_t__string}{UT\_\-string}
+\end{DoxyCompactItemize}
+\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{utstring_8h_a33794de47944825a69f1ac56f057696e}{UTSTRING\_\-VERSION}~1.9.1
+\item 
+\hypertarget{utstring_8h_a1570f75df0b645775e8ddc86cd2f3a7a}{
+\#define {\bfseries \_\-UNUSED\_\-}}
+\label{utstring_8h_a1570f75df0b645775e8ddc86cd2f3a7a}
+
+\item 
+\hypertarget{utstring_8h_ab012ce14774deb45e0f0a576e216f41d}{
+\#define {\bfseries oom}()~exit(-\/1)}
+\label{utstring_8h_ab012ce14774deb45e0f0a576e216f41d}
+
+\item 
+\#define {\bfseries utstring\_\-reserve}(s, amt)
+\item 
+\#define {\bfseries utstring\_\-init}(s)
+\item 
+\#define {\bfseries utstring\_\-done}(s)
+\item 
+\#define {\bfseries utstring\_\-free}(s)
+\item 
+\#define {\bfseries utstring\_\-new}(s)
+\item 
+\#define {\bfseries utstring\_\-clear}(s)
+\item 
+\#define {\bfseries utstring\_\-bincpy}(s, b, l)
+\item 
+\#define {\bfseries utstring\_\-concat}(dst, src)
+\item 
+\hypertarget{utstring_8h_a937ede98ddd1d4c49b49925e7a52be25}{
+\#define {\bfseries utstring\_\-len}(s)~((unsigned)((s)-\/$>$i))}
+\label{utstring_8h_a937ede98ddd1d4c49b49925e7a52be25}
+
+\item 
+\hypertarget{utstring_8h_a78a3d5dad58a3fa1782bbaa4f9e79abb}{
+\#define {\bfseries utstring\_\-body}(s)~((s)-\/$>$d)}
+\label{utstring_8h_a78a3d5dad58a3fa1782bbaa4f9e79abb}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A dynamic string implementation using macros. \begin{DoxySeeAlso}{See also}
+\href{http://uthash.sourceforge.net/utstring}{\tt http://uthash.sourceforge.net/utstring} 
+\end{DoxySeeAlso}
+
+
+Definition in file \hyperlink{utstring_8h_source}{utstring.h}.
+
+
+
+\subsection{Define Documentation}
+\hypertarget{utstring_8h_a83b587c85c57e55fbe0424848f55e9e8}{
+\index{utstring.h@{utstring.h}!utstring\_\-bincpy@{utstring\_\-bincpy}}
+\index{utstring\_\-bincpy@{utstring\_\-bincpy}!utstring.h@{utstring.h}}
+\subsubsection[{utstring\_\-bincpy}]{\setlength{\rightskip}{0pt plus 5cm}\#define utstring\_\-bincpy(
+\begin{DoxyParamCaption}
+\item[{}]{s, }
+\item[{}]{b, }
+\item[{}]{l}
+\end{DoxyParamCaption}
+)}}
+\label{utstring_8h_a83b587c85c57e55fbe0424848f55e9e8}
+{\bfseries Value:}
+\begin{DoxyCode}
+do {                                                       \
+  utstring_reserve(s,(l)+1);                               \
+  if (l) memcpy(&(s)->d[(s)->i], b, l);                    \
+  s->i += l;                                               \
+  s->d[s->i]='\0';                                         \
+} while(0)
+\end{DoxyCode}
+
+
+Definition at line 93 of file utstring.h.
+
+\hypertarget{utstring_8h_ad0479fadb60602cc6b84386b917844dd}{
+\index{utstring.h@{utstring.h}!utstring\_\-clear@{utstring\_\-clear}}
+\index{utstring\_\-clear@{utstring\_\-clear}!utstring.h@{utstring.h}}
+\subsubsection[{utstring\_\-clear}]{\setlength{\rightskip}{0pt plus 5cm}\#define utstring\_\-clear(
+\begin{DoxyParamCaption}
+\item[{}]{s}
+\end{DoxyParamCaption}
+)}}
+\label{utstring_8h_ad0479fadb60602cc6b84386b917844dd}
+{\bfseries Value:}
+\begin{DoxyCode}
+do {                                                       \
+  (s)->i = 0;                                              \
+} while(0)
+\end{DoxyCode}
+
+
+Definition at line 88 of file utstring.h.
+
+\hypertarget{utstring_8h_ade5e5874e6f2c38e76209b0357cccbfb}{
+\index{utstring.h@{utstring.h}!utstring\_\-concat@{utstring\_\-concat}}
+\index{utstring\_\-concat@{utstring\_\-concat}!utstring.h@{utstring.h}}
+\subsubsection[{utstring\_\-concat}]{\setlength{\rightskip}{0pt plus 5cm}\#define utstring\_\-concat(
+\begin{DoxyParamCaption}
+\item[{}]{dst, }
+\item[{}]{src}
+\end{DoxyParamCaption}
+)}}
+\label{utstring_8h_ade5e5874e6f2c38e76209b0357cccbfb}
+{\bfseries Value:}
+\begin{DoxyCode}
+do {                                                       \
+  utstring_reserve(dst,(src->i)+1);                        \
+  if (src->i) memcpy(&(dst)->d[(dst)->i], src->d, src->i); \
+  dst->i += src->i;                                        \
+  dst->d[dst->i]='\0';                                     \
+} while(0)
+\end{DoxyCode}
+
+
+Definition at line 101 of file utstring.h.
+
+\hypertarget{utstring_8h_ac796a2c9f84554f35117760bf689b7eb}{
+\index{utstring.h@{utstring.h}!utstring\_\-done@{utstring\_\-done}}
+\index{utstring\_\-done@{utstring\_\-done}!utstring.h@{utstring.h}}
+\subsubsection[{utstring\_\-done}]{\setlength{\rightskip}{0pt plus 5cm}\#define utstring\_\-done(
+\begin{DoxyParamCaption}
+\item[{}]{s}
+\end{DoxyParamCaption}
+)}}
+\label{utstring_8h_ac796a2c9f84554f35117760bf689b7eb}
+{\bfseries Value:}
+\begin{DoxyCode}
+do {                                                       \
+  if ((s)->d != NULL) free((s)->d);                        \
+  (s)->n = 0;                                              \
+} while(0)
+\end{DoxyCode}
+
+
+Definition at line 69 of file utstring.h.
+
+\hypertarget{utstring_8h_ace95d9ac8dc11995174a3b1749d86e24}{
+\index{utstring.h@{utstring.h}!utstring\_\-free@{utstring\_\-free}}
+\index{utstring\_\-free@{utstring\_\-free}!utstring.h@{utstring.h}}
+\subsubsection[{utstring\_\-free}]{\setlength{\rightskip}{0pt plus 5cm}\#define utstring\_\-free(
+\begin{DoxyParamCaption}
+\item[{}]{s}
+\end{DoxyParamCaption}
+)}}
+\label{utstring_8h_ace95d9ac8dc11995174a3b1749d86e24}
+{\bfseries Value:}
+\begin{DoxyCode}
+do {                                                       \
+  utstring_done(s);                                        \
+  free(s);                                                 \
+} while(0)
+\end{DoxyCode}
+
+
+Definition at line 75 of file utstring.h.
+
+\hypertarget{utstring_8h_a369f0718a91e2fc2875e39a7be899924}{
+\index{utstring.h@{utstring.h}!utstring\_\-init@{utstring\_\-init}}
+\index{utstring\_\-init@{utstring\_\-init}!utstring.h@{utstring.h}}
+\subsubsection[{utstring\_\-init}]{\setlength{\rightskip}{0pt plus 5cm}\#define utstring\_\-init(
+\begin{DoxyParamCaption}
+\item[{}]{s}
+\end{DoxyParamCaption}
+)}}
+\label{utstring_8h_a369f0718a91e2fc2875e39a7be899924}
+{\bfseries Value:}
+\begin{DoxyCode}
+do {                                                       \
+  (s)->n = 0; (s)->i = 0; (s)->d = NULL;                   \
+  utstring_reserve(s,100);                                 \
+} while(0)
+\end{DoxyCode}
+
+
+Definition at line 63 of file utstring.h.
+
+\hypertarget{utstring_8h_ae8289502e4b16c91b216b9b09c26fed9}{
+\index{utstring.h@{utstring.h}!utstring\_\-new@{utstring\_\-new}}
+\index{utstring\_\-new@{utstring\_\-new}!utstring.h@{utstring.h}}
+\subsubsection[{utstring\_\-new}]{\setlength{\rightskip}{0pt plus 5cm}\#define utstring\_\-new(
+\begin{DoxyParamCaption}
+\item[{}]{s}
+\end{DoxyParamCaption}
+)}}
+\label{utstring_8h_ae8289502e4b16c91b216b9b09c26fed9}
+{\bfseries Value:}
+\begin{DoxyCode}
+do {                                                       \
+   s = (UT_string*)calloc(sizeof(UT_string),1);            \
+   if (!s) oom();                                          \
+   utstring_init(s);                                       \
+} while(0)
+\end{DoxyCode}
+
+
+Definition at line 81 of file utstring.h.
+
+\hypertarget{utstring_8h_a5448b6675f3e1eb9d0f8fce6f9b3987c}{
+\index{utstring.h@{utstring.h}!utstring\_\-reserve@{utstring\_\-reserve}}
+\index{utstring\_\-reserve@{utstring\_\-reserve}!utstring.h@{utstring.h}}
+\subsubsection[{utstring\_\-reserve}]{\setlength{\rightskip}{0pt plus 5cm}\#define utstring\_\-reserve(
+\begin{DoxyParamCaption}
+\item[{}]{s, }
+\item[{}]{amt}
+\end{DoxyParamCaption}
+)}}
+\label{utstring_8h_a5448b6675f3e1eb9d0f8fce6f9b3987c}
+{\bfseries Value:}
+\begin{DoxyCode}
+do {                                                       \
+  if (((s)->n - (s)->i) < (size_t)(amt)) {                 \
+     (s)->d = (char*)realloc((s)->d, (s)->n + amt);        \
+     if ((s)->d == NULL) oom();                            \
+     (s)->n += amt;                                        \
+  }                                                        \
+} while(0)
+\end{DoxyCode}
+
+
+Definition at line 54 of file utstring.h.
+
+\hypertarget{utstring_8h_a33794de47944825a69f1ac56f057696e}{
+\index{utstring.h@{utstring.h}!UTSTRING\_\-VERSION@{UTSTRING\_\-VERSION}}
+\index{UTSTRING\_\-VERSION@{UTSTRING\_\-VERSION}!utstring.h@{utstring.h}}
+\subsubsection[{UTSTRING\_\-VERSION}]{\setlength{\rightskip}{0pt plus 5cm}\#define UTSTRING\_\-VERSION~1.9.1}}
+\label{utstring_8h_a33794de47944825a69f1ac56f057696e}
+\hypertarget{utstring_8h_LICENSE}{}\subsection{LICENSE}\label{utstring_8h_LICENSE}
+Copyright (c) 2008-\/2010, Troy D. Hanson \href{http://uthash.sourceforge.net}{\tt http://uthash.sourceforge.net} All rights reserved.
+
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+
+Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \char`\"{}AS
+IS\char`\"{} AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+
+Definition at line 35 of file utstring.h.
+

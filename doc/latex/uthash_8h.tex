@@ -1,0 +1,873 @@
+\hypertarget{uthash_8h}{
+\section{uthash.h File Reference}
+\label{uthash_8h}\index{uthash.h@{uthash.h}}
+}
+
+
+A hashing container implementation using macros.  
+
+
+{\ttfamily \#include $<$string.h$>$}\par
+{\ttfamily \#include $<$stddef.h$>$}\par
+{\ttfamily \#include $<$inttypes.h$>$}\par
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct_u_t__hash__bucket}{UT\_\-hash\_\-bucket}
+\item 
+struct \hyperlink{struct_u_t__hash__table}{UT\_\-hash\_\-table}
+\item 
+struct \hyperlink{struct_u_t__hash__handle}{UT\_\-hash\_\-handle}
+\end{DoxyCompactItemize}
+\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{uthash_8h_a716ba290563c2d955cb0c90d85874073}{DECLTYPE}(x)~(\_\-\_\-typeof(x))
+\item 
+\#define {\bfseries DECLTYPE\_\-ASSIGN}(dst, src)
+\item 
+\hypertarget{uthash_8h_aa56cef9cb86dc1f4b5d27ee3a691077e}{
+\#define {\bfseries UTHASH\_\-VERSION}~1.9.3}
+\label{uthash_8h_aa56cef9cb86dc1f4b5d27ee3a691077e}
+
+\item 
+\hypertarget{uthash_8h_a03b52301b0ed976b6981ef33613320c1}{
+\#define {\bfseries uthash\_\-fatal}(msg)~exit(-\/1)}
+\label{uthash_8h_a03b52301b0ed976b6981ef33613320c1}
+
+\item 
+\hypertarget{uthash_8h_a861013aff36c0448f1888a2b0b5836d8}{
+\#define {\bfseries uthash\_\-malloc}(sz)~malloc(sz)}
+\label{uthash_8h_a861013aff36c0448f1888a2b0b5836d8}
+
+\item 
+\hypertarget{uthash_8h_a56cdf8c254fc700332c8e6a7263b4657}{
+\#define {\bfseries uthash\_\-free}(ptr, sz)~free(ptr)}
+\label{uthash_8h_a56cdf8c254fc700332c8e6a7263b4657}
+
+\item 
+\hypertarget{uthash_8h_a7cc237d8f87de3836b5390856cfc5c86}{
+\#define {\bfseries uthash\_\-noexpand\_\-fyi}(tbl)}
+\label{uthash_8h_a7cc237d8f87de3836b5390856cfc5c86}
+
+\item 
+\hypertarget{uthash_8h_a86ea78714da520989a6f7a764b4d71b4}{
+\#define {\bfseries uthash\_\-expand\_\-fyi}(tbl)}
+\label{uthash_8h_a86ea78714da520989a6f7a764b4d71b4}
+
+\item 
+\hypertarget{uthash_8h_a361cdc5e8d6d8fe5fae6912588ae15d0}{
+\#define {\bfseries HASH\_\-INITIAL\_\-NUM\_\-BUCKETS}~32}
+\label{uthash_8h_a361cdc5e8d6d8fe5fae6912588ae15d0}
+
+\item 
+\hypertarget{uthash_8h_a0b39a5cf1d6c05c43bd8530db2ec908c}{
+\#define {\bfseries HASH\_\-INITIAL\_\-NUM\_\-BUCKETS\_\-LOG2}~5}
+\label{uthash_8h_a0b39a5cf1d6c05c43bd8530db2ec908c}
+
+\item 
+\hypertarget{uthash_8h_a8ae3e6473261f6c4b78c030c94f5d68f}{
+\#define {\bfseries HASH\_\-BKT\_\-CAPACITY\_\-THRESH}~10}
+\label{uthash_8h_a8ae3e6473261f6c4b78c030c94f5d68f}
+
+\item 
+\hypertarget{uthash_8h_a568e95048979b8b3e4ea1567fd91c186}{
+\#define {\bfseries ELMT\_\-FROM\_\-HH}(tbl, hhp)~((void$\ast$)(((char$\ast$)(hhp)) -\/ ((tbl)-\/$>$hho)))}
+\label{uthash_8h_a568e95048979b8b3e4ea1567fd91c186}
+
+\item 
+\#define {\bfseries HASH\_\-FIND}(hh, head, keyptr, keylen, out)
+\item 
+\hypertarget{uthash_8h_a254f427772a1fe7a2480a8302af8f8b8}{
+\#define {\bfseries HASH\_\-BLOOM\_\-MAKE}(tbl)}
+\label{uthash_8h_a254f427772a1fe7a2480a8302af8f8b8}
+
+\item 
+\hypertarget{uthash_8h_ad6847ad938fc26bfd0726d7f159efd0a}{
+\#define {\bfseries HASH\_\-BLOOM\_\-FREE}(tbl)}
+\label{uthash_8h_ad6847ad938fc26bfd0726d7f159efd0a}
+
+\item 
+\hypertarget{uthash_8h_acaad947212056cd8bfe3d660265fb2db}{
+\#define {\bfseries HASH\_\-BLOOM\_\-ADD}(tbl, hashv)}
+\label{uthash_8h_acaad947212056cd8bfe3d660265fb2db}
+
+\item 
+\hypertarget{uthash_8h_a06bfbf880899d54da35487d0d39c1009}{
+\#define {\bfseries HASH\_\-BLOOM\_\-TEST}(tbl, hashv)~(1)}
+\label{uthash_8h_a06bfbf880899d54da35487d0d39c1009}
+
+\item 
+\#define {\bfseries HASH\_\-MAKE\_\-TABLE}(hh, head)
+\item 
+\hypertarget{uthash_8h_aaf01358e257c8d838eb5e4b189f0c399}{
+\#define {\bfseries HASH\_\-ADD}(hh, head, fieldname, keylen\_\-in, add)~HASH\_\-ADD\_\-KEYPTR(hh,head,\&add-\/$>$fieldname,keylen\_\-in,add)}
+\label{uthash_8h_aaf01358e257c8d838eb5e4b189f0c399}
+
+\item 
+\#define {\bfseries HASH\_\-ADD\_\-KEYPTR}(hh, head, keyptr, keylen\_\-in, add)
+\item 
+\#define {\bfseries HASH\_\-TO\_\-BKT}(hashv, num\_\-bkts, bkt)
+\item 
+\hypertarget{uthash_8h_a3f83117e1108d63844a58d2d79c3b980}{
+\#define {\bfseries HASH\_\-DELETE}(hh, head, delptr)}
+\label{uthash_8h_a3f83117e1108d63844a58d2d79c3b980}
+
+\item 
+\hypertarget{uthash_8h_a214529083adfab2fa8cd402d2eeb0a84}{
+\#define {\bfseries HASH\_\-FIND\_\-STR}(head, findstr, out)~HASH\_\-FIND(hh,head,findstr,strlen(findstr),out)}
+\label{uthash_8h_a214529083adfab2fa8cd402d2eeb0a84}
+
+\item 
+\hypertarget{uthash_8h_a9724951736f3985f74df17638c8a7885}{
+\#define {\bfseries HASH\_\-ADD\_\-STR}(head, strfield, add)~HASH\_\-ADD(hh,head,strfield,strlen(add-\/$>$strfield),add)}
+\label{uthash_8h_a9724951736f3985f74df17638c8a7885}
+
+\item 
+\hypertarget{uthash_8h_aadcb19b940348f3141bd51505ede0142}{
+\#define {\bfseries HASH\_\-FIND\_\-INT}(head, findint, out)~HASH\_\-FIND(hh,head,findint,sizeof(int),out)}
+\label{uthash_8h_aadcb19b940348f3141bd51505ede0142}
+
+\item 
+\hypertarget{uthash_8h_acf85835471af894e354efb7e346698f3}{
+\#define {\bfseries HASH\_\-ADD\_\-INT}(head, intfield, add)~HASH\_\-ADD(hh,head,intfield,sizeof(int),add)}
+\label{uthash_8h_acf85835471af894e354efb7e346698f3}
+
+\item 
+\hypertarget{uthash_8h_a26a887f8e31952034becac0cf446f6c3}{
+\#define {\bfseries HASH\_\-FIND\_\-PTR}(head, findptr, out)~HASH\_\-FIND(hh,head,findptr,sizeof(void $\ast$),out)}
+\label{uthash_8h_a26a887f8e31952034becac0cf446f6c3}
+
+\item 
+\hypertarget{uthash_8h_a2ad1f84ef1ba9df99fa2ada38cb61823}{
+\#define {\bfseries HASH\_\-ADD\_\-PTR}(head, ptrfield, add)~HASH\_\-ADD(hh,head,ptrfield,sizeof(void $\ast$),add)}
+\label{uthash_8h_a2ad1f84ef1ba9df99fa2ada38cb61823}
+
+\item 
+\hypertarget{uthash_8h_a48b7ed374602dcb236501aa23a971f05}{
+\#define {\bfseries HASH\_\-DEL}(head, delptr)~HASH\_\-DELETE(hh,head,delptr)}
+\label{uthash_8h_a48b7ed374602dcb236501aa23a971f05}
+
+\item 
+\hypertarget{uthash_8h_a7d882fadb26a4e6c13c134d8be4d0759}{
+\#define {\bfseries HASH\_\-FSCK}(hh, head)}
+\label{uthash_8h_a7d882fadb26a4e6c13c134d8be4d0759}
+
+\item 
+\hypertarget{uthash_8h_a44f9d46e2cc79652492e5dd3e6c40a15}{
+\#define {\bfseries HASH\_\-EMIT\_\-KEY}(hh, head, keyptr, fieldlen)}
+\label{uthash_8h_a44f9d46e2cc79652492e5dd3e6c40a15}
+
+\item 
+\hypertarget{uthash_8h_abd3356419b386c379116393700a751d3}{
+\#define {\bfseries HASH\_\-FCN}~HASH\_\-JEN}
+\label{uthash_8h_abd3356419b386c379116393700a751d3}
+
+\item 
+\#define {\bfseries HASH\_\-BER}(key, keylen, num\_\-bkts, hashv, bkt)
+\item 
+\#define {\bfseries HASH\_\-SAX}(key, keylen, num\_\-bkts, hashv, bkt)
+\item 
+\#define {\bfseries HASH\_\-FNV}(key, keylen, num\_\-bkts, hashv, bkt)
+\item 
+\#define {\bfseries HASH\_\-OAT}(key, keylen, num\_\-bkts, hashv, bkt)
+\item 
+\#define {\bfseries HASH\_\-JEN\_\-MIX}(a, b, c)
+\item 
+\hypertarget{uthash_8h_aa16e3ae6125d7f10d3deb4695e0ee51e}{
+\#define {\bfseries HASH\_\-JEN}(key, keylen, num\_\-bkts, hashv, bkt)}
+\label{uthash_8h_aa16e3ae6125d7f10d3deb4695e0ee51e}
+
+\item 
+\#define {\bfseries get16bits}(d)
+\item 
+\hypertarget{uthash_8h_ab595698a74642684dace0dfa47dab445}{
+\#define {\bfseries HASH\_\-SFH}(key, keylen, num\_\-bkts, hashv, bkt)}
+\label{uthash_8h_ab595698a74642684dace0dfa47dab445}
+
+\item 
+\hypertarget{uthash_8h_a35c9b682ebb7a8cbf284b9f0a9594095}{
+\#define {\bfseries HASH\_\-KEYCMP}(a, b, len)~memcmp(a,b,len)}
+\label{uthash_8h_a35c9b682ebb7a8cbf284b9f0a9594095}
+
+\item 
+\#define {\bfseries HASH\_\-FIND\_\-IN\_\-BKT}(tbl, hh, head, keyptr, keylen\_\-in, out)
+\item 
+\#define {\bfseries HASH\_\-ADD\_\-TO\_\-BKT}(head, addhh)
+\item 
+\#define {\bfseries HASH\_\-DEL\_\-IN\_\-BKT}(hh, head, hh\_\-del)
+\item 
+\hypertarget{uthash_8h_a6439fd6271474e61b1840fbf83132f03}{
+\#define {\bfseries HASH\_\-EXPAND\_\-BUCKETS}(tbl)}
+\label{uthash_8h_a6439fd6271474e61b1840fbf83132f03}
+
+\item 
+\hypertarget{uthash_8h_a88d2ab40956878caacd02c214f7e8f15}{
+\#define {\bfseries HASH\_\-SORT}(head, cmpfcn)~HASH\_\-SRT(hh,head,cmpfcn)}
+\label{uthash_8h_a88d2ab40956878caacd02c214f7e8f15}
+
+\item 
+\hypertarget{uthash_8h_a388b4071dcff005154f431d3d3025fbd}{
+\#define {\bfseries HASH\_\-SRT}(hh, head, cmpfcn)}
+\label{uthash_8h_a388b4071dcff005154f431d3d3025fbd}
+
+\item 
+\hypertarget{uthash_8h_ad190366f7a476ece79bd628240a5fc93}{
+\#define {\bfseries HASH\_\-SELECT}(hh\_\-dst, dst, hh\_\-src, src, cond)}
+\label{uthash_8h_ad190366f7a476ece79bd628240a5fc93}
+
+\item 
+\#define {\bfseries HASH\_\-CLEAR}(hh, head)
+\item 
+\#define {\bfseries HASH\_\-ITER}(hh, head, el, tmp)
+\item 
+\hypertarget{uthash_8h_a7d3edf55a3ee4da1a0e1b477c314342f}{
+\#define {\bfseries HASH\_\-COUNT}(head)~HASH\_\-CNT(hh,head)}
+\label{uthash_8h_a7d3edf55a3ee4da1a0e1b477c314342f}
+
+\item 
+\hypertarget{uthash_8h_a6ea9e661cd8c35eff1fdcd5731127edd}{
+\#define {\bfseries HASH\_\-CNT}(hh, head)~((head)?((head)-\/$>$hh.tbl-\/$>$num\_\-items):0)}
+\label{uthash_8h_a6ea9e661cd8c35eff1fdcd5731127edd}
+
+\item 
+\hypertarget{uthash_8h_a4a7a46b9b92a9c73e4f9321e8e6b6bb2}{
+\#define {\bfseries HASH\_\-SIGNATURE}~0xa0111fe1}
+\label{uthash_8h_a4a7a46b9b92a9c73e4f9321e8e6b6bb2}
+
+\item 
+\hypertarget{uthash_8h_a18a33f4269f05c1e81ce54edbc0ffca6}{
+\#define {\bfseries HASH\_\-BLOOM\_\-SIGNATURE}~0xb12220f2}
+\label{uthash_8h_a18a33f4269f05c1e81ce54edbc0ffca6}
+
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{uthash_8h_a3ba3da0ca59a082c35a0d6b52e803ddf}{
+typedef struct \hyperlink{struct_u_t__hash__bucket}{UT\_\-hash\_\-bucket} {\bfseries UT\_\-hash\_\-bucket}}
+\label{uthash_8h_a3ba3da0ca59a082c35a0d6b52e803ddf}
+
+\item 
+\hypertarget{uthash_8h_a0758074b9942c2ad076610b3e0ce548e}{
+typedef struct \hyperlink{struct_u_t__hash__table}{UT\_\-hash\_\-table} {\bfseries UT\_\-hash\_\-table}}
+\label{uthash_8h_a0758074b9942c2ad076610b3e0ce548e}
+
+\item 
+\hypertarget{uthash_8h_a0e3a99ed9f776349720d0c362f956fb6}{
+typedef struct \hyperlink{struct_u_t__hash__handle}{UT\_\-hash\_\-handle} {\bfseries UT\_\-hash\_\-handle}}
+\label{uthash_8h_a0e3a99ed9f776349720d0c362f956fb6}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A hashing container implementation using macros. \begin{DoxySeeAlso}{See also}
+\href{http://uthash.sourceforge.net/uthash}{\tt http://uthash.sourceforge.net/uthash} 
+\end{DoxySeeAlso}
+
+
+Definition in file \hyperlink{uthash_8h_source}{uthash.h}.
+
+
+
+\subsection{Define Documentation}
+\hypertarget{uthash_8h_a716ba290563c2d955cb0c90d85874073}{
+\index{uthash.h@{uthash.h}!DECLTYPE@{DECLTYPE}}
+\index{DECLTYPE@{DECLTYPE}!uthash.h@{uthash.h}}
+\subsubsection[{DECLTYPE}]{\setlength{\rightskip}{0pt plus 5cm}\#define DECLTYPE(
+\begin{DoxyParamCaption}
+\item[{}]{x}
+\end{DoxyParamCaption}
+)~(\_\-\_\-typeof(x))}}
+\label{uthash_8h_a716ba290563c2d955cb0c90d85874073}
+\hypertarget{utstring_8h_LICENSE}{}\subsection{LICENSE}\label{utstring_8h_LICENSE}
+Copyright (c) 2003-\/2010, Troy D. Hanson \href{http://uthash.sourceforge.net}{\tt http://uthash.sourceforge.net} All rights reserved.
+
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+
+Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \char`\"{}AS
+IS\char`\"{} AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+
+Definition at line 50 of file uthash.h.
+
+\hypertarget{uthash_8h_a3c736f2f2dd643f2987b2bc323e269ba}{
+\index{uthash.h@{uthash.h}!DECLTYPE\_\-ASSIGN@{DECLTYPE\_\-ASSIGN}}
+\index{DECLTYPE\_\-ASSIGN@{DECLTYPE\_\-ASSIGN}!uthash.h@{uthash.h}}
+\subsubsection[{DECLTYPE\_\-ASSIGN}]{\setlength{\rightskip}{0pt plus 5cm}\#define DECLTYPE\_\-ASSIGN(
+\begin{DoxyParamCaption}
+\item[{}]{dst, }
+\item[{}]{src}
+\end{DoxyParamCaption}
+)}}
+\label{uthash_8h_a3c736f2f2dd643f2987b2bc323e269ba}
+{\bfseries Value:}
+\begin{DoxyCode}
+do {                                                                             
+      \
+  (dst) = DECLTYPE(dst)(src);                                                    
+      \
+} while(0)
+\end{DoxyCode}
+
+
+Definition at line 60 of file uthash.h.
+
+\hypertarget{uthash_8h_abc7d71657be8975a51684e41029b7964}{
+\index{uthash.h@{uthash.h}!get16bits@{get16bits}}
+\index{get16bits@{get16bits}!uthash.h@{uthash.h}}
+\subsubsection[{get16bits}]{\setlength{\rightskip}{0pt plus 5cm}\#define get16bits(
+\begin{DoxyParamCaption}
+\item[{}]{d}
+\end{DoxyParamCaption}
+)}}
+\label{uthash_8h_abc7d71657be8975a51684e41029b7964}
+{\bfseries Value:}
+\begin{DoxyCode}
+((((uint32_t)(((const uint8_t *)(d))[1])) << 8)             \
+                       +(uint32_t)(((const uint8_t *)(d))[0]) )
+\end{DoxyCode}
+
+
+Definition at line 444 of file uthash.h.
+
+\hypertarget{uthash_8h_a0b7468360b5c788762cdb2ccf9cd4d26}{
+\index{uthash.h@{uthash.h}!HASH\_\-ADD\_\-KEYPTR@{HASH\_\-ADD\_\-KEYPTR}}
+\index{HASH\_\-ADD\_\-KEYPTR@{HASH\_\-ADD\_\-KEYPTR}!uthash.h@{uthash.h}}
+\subsubsection[{HASH\_\-ADD\_\-KEYPTR}]{\setlength{\rightskip}{0pt plus 5cm}\#define HASH\_\-ADD\_\-KEYPTR(
+\begin{DoxyParamCaption}
+\item[{}]{hh, }
+\item[{}]{head, }
+\item[{}]{keyptr, }
+\item[{}]{keylen\_\-in, }
+\item[{}]{add}
+\end{DoxyParamCaption}
+)}}
+\label{uthash_8h_a0b7468360b5c788762cdb2ccf9cd4d26}
+{\bfseries Value:}
+\begin{DoxyCode}
+do {                                                                             
+      \
+ unsigned _ha_bkt;                                                               
+      \
+ (add)->hh.next = NULL;                                                          
+      \
+ (add)->hh.key = (char*)keyptr;                                                  
+      \
+ (add)->hh.keylen = keylen_in;                                                   
+      \
+ if (!(head)) {                                                                  
+      \
+    head = (add);                                                                
+      \
+    (head)->hh.prev = NULL;                                                      
+      \
+    HASH_MAKE_TABLE(hh,head);                                                    
+      \
+ } else {                                                                        
+      \
+    (head)->hh.tbl->tail->next = (add);                                          
+      \
+    (add)->hh.prev = ELMT_FROM_HH((head)->hh.tbl, (head)->hh.tbl->tail);         
+      \
+    (head)->hh.tbl->tail = &((add)->hh);                                         
+      \
+ }                                                                               
+      \
+ (head)->hh.tbl->num_items++;                                                    
+      \
+ (add)->hh.tbl = (head)->hh.tbl;                                                 
+      \
+ HASH_FCN(keyptr,keylen_in, (head)->hh.tbl->num_buckets,                         
+      \
+         (add)->hh.hashv, _ha_bkt);                                              
+      \
+ HASH_ADD_TO_BKT((head)->hh.tbl->buckets[_ha_bkt],&(add)->hh);                   
+      \
+ HASH_BLOOM_ADD((head)->hh.tbl,(add)->hh.hashv);                                 
+      \
+ HASH_EMIT_KEY(hh,head,keyptr,keylen_in);                                        
+      \
+ HASH_FSCK(hh,head);                                                             
+      \
+} while(0)
+\end{DoxyCode}
+
+
+Definition at line 158 of file uthash.h.
+
+\hypertarget{uthash_8h_a78e11adee321f45c5cb31ff2d6eb0348}{
+\index{uthash.h@{uthash.h}!HASH\_\-ADD\_\-TO\_\-BKT@{HASH\_\-ADD\_\-TO\_\-BKT}}
+\index{HASH\_\-ADD\_\-TO\_\-BKT@{HASH\_\-ADD\_\-TO\_\-BKT}!uthash.h@{uthash.h}}
+\subsubsection[{HASH\_\-ADD\_\-TO\_\-BKT}]{\setlength{\rightskip}{0pt plus 5cm}\#define HASH\_\-ADD\_\-TO\_\-BKT(
+\begin{DoxyParamCaption}
+\item[{}]{head, }
+\item[{}]{addhh}
+\end{DoxyParamCaption}
+)}}
+\label{uthash_8h_a78e11adee321f45c5cb31ff2d6eb0348}
+{\bfseries Value:}
+\begin{DoxyCode}
+do {                                                                             
+      \
+ head.count++;                                                                   
+      \
+ (addhh)->hh_next = head.hh_head;                                                
+      \
+ (addhh)->hh_prev = NULL;                                                        
+      \
+ if (head.hh_head) { (head).hh_head->hh_prev = (addhh); }                        
+      \
+ (head).hh_head=addhh;                                                           
+      \
+ if (head.count >= ((head.expand_mult+1) * HASH_BKT_CAPACITY_THRESH)             
+      \
+     && (addhh)->tbl->noexpand != 1) {                                           
+      \
+       HASH_EXPAND_BUCKETS((addhh)->tbl);                                        
+      \
+ }                                                                               
+      \
+} while(0)
+\end{DoxyCode}
+
+
+Definition at line 658 of file uthash.h.
+
+\hypertarget{uthash_8h_a7271bf51d7fe2cf2c183578aee73601e}{
+\index{uthash.h@{uthash.h}!HASH\_\-BER@{HASH\_\-BER}}
+\index{HASH\_\-BER@{HASH\_\-BER}!uthash.h@{uthash.h}}
+\subsubsection[{HASH\_\-BER}]{\setlength{\rightskip}{0pt plus 5cm}\#define HASH\_\-BER(
+\begin{DoxyParamCaption}
+\item[{}]{key, }
+\item[{}]{keylen, }
+\item[{}]{num\_\-bkts, }
+\item[{}]{hashv, }
+\item[{}]{bkt}
+\end{DoxyParamCaption}
+)}}
+\label{uthash_8h_a7271bf51d7fe2cf2c183578aee73601e}
+{\bfseries Value:}
+\begin{DoxyCode}
+do {                                                                             
+      \
+  unsigned _hb_keylen=keylen;                                                    
+      \
+  char *_hb_key=(char*)(key);                                                    
+      \
+  (hashv) = 0;                                                                   
+      \
+  while (_hb_keylen--)  { (hashv) = ((hashv) * 33) + *_hb_key++; }               
+      \
+  bkt = (hashv) & (num_bkts-1);                                                  
+      \
+} while (0)
+\end{DoxyCode}
+
+
+Definition at line 334 of file uthash.h.
+
+\hypertarget{uthash_8h_a0512b3f7a824275579ec82643ef2cc23}{
+\index{uthash.h@{uthash.h}!HASH\_\-CLEAR@{HASH\_\-CLEAR}}
+\index{HASH\_\-CLEAR@{HASH\_\-CLEAR}!uthash.h@{uthash.h}}
+\subsubsection[{HASH\_\-CLEAR}]{\setlength{\rightskip}{0pt plus 5cm}\#define HASH\_\-CLEAR(
+\begin{DoxyParamCaption}
+\item[{}]{hh, }
+\item[{}]{head}
+\end{DoxyParamCaption}
+)}}
+\label{uthash_8h_a0512b3f7a824275579ec82643ef2cc23}
+{\bfseries Value:}
+\begin{DoxyCode}
+do {                                                                             
+      \
+  if (head) {                                                                    
+      \
+    uthash_free((head)->hh.tbl->buckets,                                         
+      \
+                (head)->hh.tbl->num_buckets*sizeof(struct UT_hash_bucket));      
+      \
+    uthash_free((head)->hh.tbl, sizeof(UT_hash_table));                          
+      \
+    (head)=NULL;                                                                 
+      \
+  }                                                                              
+      \
+} while(0)
+\end{DoxyCode}
+
+
+Definition at line 888 of file uthash.h.
+
+\hypertarget{uthash_8h_a1b2d6f694f98cf6350cdd18225cb3f78}{
+\index{uthash.h@{uthash.h}!HASH\_\-DEL\_\-IN\_\-BKT@{HASH\_\-DEL\_\-IN\_\-BKT}}
+\index{HASH\_\-DEL\_\-IN\_\-BKT@{HASH\_\-DEL\_\-IN\_\-BKT}!uthash.h@{uthash.h}}
+\subsubsection[{HASH\_\-DEL\_\-IN\_\-BKT}]{\setlength{\rightskip}{0pt plus 5cm}\#define HASH\_\-DEL\_\-IN\_\-BKT(
+\begin{DoxyParamCaption}
+\item[{}]{hh, }
+\item[{}]{head, }
+\item[{}]{hh\_\-del}
+\end{DoxyParamCaption}
+)}}
+\label{uthash_8h_a1b2d6f694f98cf6350cdd18225cb3f78}
+{\bfseries Value:}
+\begin{DoxyCode}
+(head).count--;                                                              \
+    if ((head).hh_head == hh_del) {                                              
+      \
+      (head).hh_head = hh_del->hh_next;                                          
+      \
+    }                                                                            
+      \
+    if (hh_del->hh_prev) {                                                       
+      \
+        hh_del->hh_prev->hh_next = hh_del->hh_next;                              
+      \
+    }                                                                            
+      \
+    if (hh_del->hh_next) {                                                       
+      \
+        hh_del->hh_next->hh_prev = hh_del->hh_prev;                              
+      \
+    }
+\end{DoxyCode}
+
+
+Definition at line 672 of file uthash.h.
+
+\hypertarget{uthash_8h_ad4a1cd39c3044936c0e49d3f372c9dbf}{
+\index{uthash.h@{uthash.h}!HASH\_\-FIND@{HASH\_\-FIND}}
+\index{HASH\_\-FIND@{HASH\_\-FIND}!uthash.h@{uthash.h}}
+\subsubsection[{HASH\_\-FIND}]{\setlength{\rightskip}{0pt plus 5cm}\#define HASH\_\-FIND(
+\begin{DoxyParamCaption}
+\item[{}]{hh, }
+\item[{}]{head, }
+\item[{}]{keyptr, }
+\item[{}]{keylen, }
+\item[{}]{out}
+\end{DoxyParamCaption}
+)}}
+\label{uthash_8h_ad4a1cd39c3044936c0e49d3f372c9dbf}
+{\bfseries Value:}
+\begin{DoxyCode}
+do {                                                                             
+      \
+  unsigned _hf_bkt,_hf_hashv;                                                    
+      \
+  out=NULL;                                                                      
+      \
+  if (head) {                                                                    
+      \
+     HASH_FCN(keyptr,keylen, (head)->hh.tbl->num_buckets, _hf_hashv, _hf_bkt);   
+      \
+     if (HASH_BLOOM_TEST((head)->hh.tbl, _hf_hashv)) {                           
+      \
+       HASH_FIND_IN_BKT((head)->hh.tbl, hh, (head)->hh.tbl->buckets[ _hf_bkt ],  
+      \
+                        keyptr,keylen,out);                                      
+      \
+     }                                                                           
+      \
+  }                                                                              
+      \
+} while (0)
+\end{DoxyCode}
+
+
+Definition at line 90 of file uthash.h.
+
+\hypertarget{uthash_8h_a42ae87cc63106a82601808f19329502c}{
+\index{uthash.h@{uthash.h}!HASH\_\-FIND\_\-IN\_\-BKT@{HASH\_\-FIND\_\-IN\_\-BKT}}
+\index{HASH\_\-FIND\_\-IN\_\-BKT@{HASH\_\-FIND\_\-IN\_\-BKT}!uthash.h@{uthash.h}}
+\subsubsection[{HASH\_\-FIND\_\-IN\_\-BKT}]{\setlength{\rightskip}{0pt plus 5cm}\#define HASH\_\-FIND\_\-IN\_\-BKT(
+\begin{DoxyParamCaption}
+\item[{}]{tbl, }
+\item[{}]{hh, }
+\item[{}]{head, }
+\item[{}]{keyptr, }
+\item[{}]{keylen\_\-in, }
+\item[{}]{out}
+\end{DoxyParamCaption}
+)}}
+\label{uthash_8h_a42ae87cc63106a82601808f19329502c}
+{\bfseries Value:}
+\begin{DoxyCode}
+do {                                                                             
+      \
+ if (head.hh_head) DECLTYPE_ASSIGN(out,ELMT_FROM_HH(tbl,head.hh_head));          
+      \
+ else out=NULL;                                                                  
+      \
+ while (out) {                                                                   
+      \
+    if (out->hh.keylen == keylen_in) {                                           
+      \
+        if ((HASH_KEYCMP(out->hh.key,keyptr,keylen_in)) == 0) break;             
+      \
+    }                                                                            
+      \
+    if (out->hh.hh_next) DECLTYPE_ASSIGN(out,ELMT_FROM_HH(tbl,out->hh.hh_next)); 
+      \
+    else out = NULL;                                                             
+      \
+ }                                                                               
+      \
+} while(0)
+\end{DoxyCode}
+
+
+Definition at line 644 of file uthash.h.
+
+\hypertarget{uthash_8h_ac99f9a353421537527a80b392089dd9d}{
+\index{uthash.h@{uthash.h}!HASH\_\-FNV@{HASH\_\-FNV}}
+\index{HASH\_\-FNV@{HASH\_\-FNV}!uthash.h@{uthash.h}}
+\subsubsection[{HASH\_\-FNV}]{\setlength{\rightskip}{0pt plus 5cm}\#define HASH\_\-FNV(
+\begin{DoxyParamCaption}
+\item[{}]{key, }
+\item[{}]{keylen, }
+\item[{}]{num\_\-bkts, }
+\item[{}]{hashv, }
+\item[{}]{bkt}
+\end{DoxyParamCaption}
+)}}
+\label{uthash_8h_ac99f9a353421537527a80b392089dd9d}
+{\bfseries Value:}
+\begin{DoxyCode}
+do {                                                                             
+      \
+  unsigned _fn_i;                                                                
+      \
+  char *_hf_key=(char*)(key);                                                    
+      \
+  hashv = 2166136261UL;                                                          
+      \
+  for(_fn_i=0; _fn_i < keylen; _fn_i++)                                          
+      \
+      hashv = (hashv * 16777619) ^ _hf_key[_fn_i];                               
+      \
+  bkt = hashv & (num_bkts-1);                                                    
+      \
+} while(0);
+\end{DoxyCode}
+
+
+Definition at line 356 of file uthash.h.
+
+\hypertarget{uthash_8h_a4d524042f1fcb976d8bccae9e4cc63d6}{
+\index{uthash.h@{uthash.h}!HASH\_\-ITER@{HASH\_\-ITER}}
+\index{HASH\_\-ITER@{HASH\_\-ITER}!uthash.h@{uthash.h}}
+\subsubsection[{HASH\_\-ITER}]{\setlength{\rightskip}{0pt plus 5cm}\#define HASH\_\-ITER(
+\begin{DoxyParamCaption}
+\item[{}]{hh, }
+\item[{}]{head, }
+\item[{}]{el, }
+\item[{}]{tmp}
+\end{DoxyParamCaption}
+)}}
+\label{uthash_8h_a4d524042f1fcb976d8bccae9e4cc63d6}
+{\bfseries Value:}
+\begin{DoxyCode}
+for((el)=(head),(tmp)=DECLTYPE(el)((head)?(head)->hh.next:NULL);                 
+      \
+  el; (el)=(tmp),(tmp)=DECLTYPE(el)((tmp)?(tmp)->hh.next:NULL))
+\end{DoxyCode}
+
+
+Definition at line 903 of file uthash.h.
+
+\hypertarget{uthash_8h_a6d37144e54d2bd49eb88fbfd04c59dc5}{
+\index{uthash.h@{uthash.h}!HASH\_\-JEN\_\-MIX@{HASH\_\-JEN\_\-MIX}}
+\index{HASH\_\-JEN\_\-MIX@{HASH\_\-JEN\_\-MIX}!uthash.h@{uthash.h}}
+\subsubsection[{HASH\_\-JEN\_\-MIX}]{\setlength{\rightskip}{0pt plus 5cm}\#define HASH\_\-JEN\_\-MIX(
+\begin{DoxyParamCaption}
+\item[{}]{a, }
+\item[{}]{b, }
+\item[{}]{c}
+\end{DoxyParamCaption}
+)}}
+\label{uthash_8h_a6d37144e54d2bd49eb88fbfd04c59dc5}
+{\bfseries Value:}
+\begin{DoxyCode}
+do {                                                                             
+      \
+  a -= b; a -= c; a ^= ( c >> 13 );                                              
+      \
+  b -= c; b -= a; b ^= ( a << 8 );                                               
+      \
+  c -= a; c -= b; c ^= ( b >> 13 );                                              
+      \
+  a -= b; a -= c; a ^= ( c >> 12 );                                              
+      \
+  b -= c; b -= a; b ^= ( a << 16 );                                              
+      \
+  c -= a; c -= b; c ^= ( b >> 5 );                                               
+      \
+  a -= b; a -= c; a ^= ( c >> 3 );                                               
+      \
+  b -= c; b -= a; b ^= ( a << 10 );                                              
+      \
+  c -= a; c -= b; c ^= ( b >> 15 );                                              
+      \
+} while (0)
+\end{DoxyCode}
+
+
+Definition at line 382 of file uthash.h.
+
+\hypertarget{uthash_8h_aeba971430f623b6334f565d9c7ec9de5}{
+\index{uthash.h@{uthash.h}!HASH\_\-MAKE\_\-TABLE@{HASH\_\-MAKE\_\-TABLE}}
+\index{HASH\_\-MAKE\_\-TABLE@{HASH\_\-MAKE\_\-TABLE}!uthash.h@{uthash.h}}
+\subsubsection[{HASH\_\-MAKE\_\-TABLE}]{\setlength{\rightskip}{0pt plus 5cm}\#define HASH\_\-MAKE\_\-TABLE(
+\begin{DoxyParamCaption}
+\item[{}]{hh, }
+\item[{}]{head}
+\end{DoxyParamCaption}
+)}}
+\label{uthash_8h_aeba971430f623b6334f565d9c7ec9de5}
+{\bfseries Value:}
+\begin{DoxyCode}
+do {                                                                             
+      \
+  (head)->hh.tbl = (UT_hash_table*)uthash_malloc(                                
+      \
+                  sizeof(UT_hash_table));                                        
+      \
+  if (!((head)->hh.tbl))  { uthash_fatal( "out of memory"); }                    
+      \
+  memset((head)->hh.tbl, 0, sizeof(UT_hash_table));                              
+      \
+  (head)->hh.tbl->tail = &((head)->hh);                                          
+      \
+  (head)->hh.tbl->num_buckets = HASH_INITIAL_NUM_BUCKETS;                        
+      \
+  (head)->hh.tbl->log2_num_buckets = HASH_INITIAL_NUM_BUCKETS_LOG2;              
+      \
+  (head)->hh.tbl->hho = (char*)(&(head)->hh) - (char*)(head);                    
+      \
+  (head)->hh.tbl->buckets = (UT_hash_bucket*)uthash_malloc(                      
+      \
+          HASH_INITIAL_NUM_BUCKETS*sizeof(struct UT_hash_bucket));               
+      \
+  if (! (head)->hh.tbl->buckets) { uthash_fatal( "out of memory"); }             
+      \
+  memset((head)->hh.tbl->buckets, 0,                                             
+      \
+          HASH_INITIAL_NUM_BUCKETS*sizeof(struct UT_hash_bucket));               
+      \
+  HASH_BLOOM_MAKE((head)->hh.tbl);                                               
+      \
+  (head)->hh.tbl->signature = HASH_SIGNATURE;                                    
+      \
+} while(0)
+\end{DoxyCode}
+
+
+Definition at line 136 of file uthash.h.
+
+\hypertarget{uthash_8h_abc7040b698211c1993441fb4165fa0b4}{
+\index{uthash.h@{uthash.h}!HASH\_\-OAT@{HASH\_\-OAT}}
+\index{HASH\_\-OAT@{HASH\_\-OAT}!uthash.h@{uthash.h}}
+\subsubsection[{HASH\_\-OAT}]{\setlength{\rightskip}{0pt plus 5cm}\#define HASH\_\-OAT(
+\begin{DoxyParamCaption}
+\item[{}]{key, }
+\item[{}]{keylen, }
+\item[{}]{num\_\-bkts, }
+\item[{}]{hashv, }
+\item[{}]{bkt}
+\end{DoxyParamCaption}
+)}}
+\label{uthash_8h_abc7040b698211c1993441fb4165fa0b4}
+{\bfseries Value:}
+\begin{DoxyCode}
+do {                                                                             
+      \
+  unsigned _ho_i;                                                                
+      \
+  char *_ho_key=(char*)(key);                                                    
+      \
+  hashv = 0;                                                                     
+      \
+  for(_ho_i=0; _ho_i < keylen; _ho_i++) {                                        
+      \
+      hashv += _ho_key[_ho_i];                                                   
+      \
+      hashv += (hashv << 10);                                                    
+      \
+      hashv ^= (hashv >> 6);                                                     
+      \
+  }                                                                              
+      \
+  hashv += (hashv << 3);                                                         
+      \
+  hashv ^= (hashv >> 11);                                                        
+      \
+  hashv += (hashv << 15);                                                        
+      \
+  bkt = hashv & (num_bkts-1);                                                    
+      \
+} while(0)
+\end{DoxyCode}
+
+
+Definition at line 366 of file uthash.h.
+
+\hypertarget{uthash_8h_aa4cb140b45415e7bf57237525388af79}{
+\index{uthash.h@{uthash.h}!HASH\_\-SAX@{HASH\_\-SAX}}
+\index{HASH\_\-SAX@{HASH\_\-SAX}!uthash.h@{uthash.h}}
+\subsubsection[{HASH\_\-SAX}]{\setlength{\rightskip}{0pt plus 5cm}\#define HASH\_\-SAX(
+\begin{DoxyParamCaption}
+\item[{}]{key, }
+\item[{}]{keylen, }
+\item[{}]{num\_\-bkts, }
+\item[{}]{hashv, }
+\item[{}]{bkt}
+\end{DoxyParamCaption}
+)}}
+\label{uthash_8h_aa4cb140b45415e7bf57237525388af79}
+{\bfseries Value:}
+\begin{DoxyCode}
+do {                                                                             
+      \
+  unsigned _sx_i;                                                                
+      \
+  char *_hs_key=(char*)(key);                                                    
+      \
+  hashv = 0;                                                                     
+      \
+  for(_sx_i=0; _sx_i < keylen; _sx_i++)                                          
+      \
+      hashv ^= (hashv << 5) + (hashv >> 2) + _hs_key[_sx_i];                     
+      \
+  bkt = hashv & (num_bkts-1);                                                    
+      \
+} while (0)
+\end{DoxyCode}
+
+
+Definition at line 346 of file uthash.h.
+
+\hypertarget{uthash_8h_a4d7691544128a6ef265f3e4fa5ed3113}{
+\index{uthash.h@{uthash.h}!HASH\_\-TO\_\-BKT@{HASH\_\-TO\_\-BKT}}
+\index{HASH\_\-TO\_\-BKT@{HASH\_\-TO\_\-BKT}!uthash.h@{uthash.h}}
+\subsubsection[{HASH\_\-TO\_\-BKT}]{\setlength{\rightskip}{0pt plus 5cm}\#define HASH\_\-TO\_\-BKT(
+\begin{DoxyParamCaption}
+\item[{}]{hashv, }
+\item[{}]{num\_\-bkts, }
+\item[{}]{bkt}
+\end{DoxyParamCaption}
+)}}
+\label{uthash_8h_a4d7691544128a6ef265f3e4fa5ed3113}
+{\bfseries Value:}
+\begin{DoxyCode}
+do {                                                                             
+      \
+  bkt = ((hashv) & ((num_bkts) - 1));                                            
+      \
+} while(0)
+\end{DoxyCode}
+
+
+Definition at line 183 of file uthash.h.
+

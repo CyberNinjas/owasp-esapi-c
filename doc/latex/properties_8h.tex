@@ -1,0 +1,229 @@
+\hypertarget{properties_8h}{
+\section{properties.h File Reference}
+\label{properties_8h}\index{properties.h@{properties.h}}
+}
+
+
+Encrypted Properties module header.  
+
+
+{\ttfamily \#include \char`\"{}uthash.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}esapi.h\char`\"{}}\par
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct_map__t}{Map\_\-t}
+\begin{DoxyCompactList}\small\item\em A hashable key-\/value pair for an access reference map. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{properties_8h_a7187f600f02ca0e4459aa179b14497bd}{MAX\_\-PROPERTY\_\-LINE\_\-LENGTH}~4096
+\begin{DoxyCompactList}\small\item\em The EncryptedProperties module represents a properties file where all the data is encrypted before it is added, and decrypted when it retrieved. \item\end{DoxyCompactList}\item 
+\hypertarget{properties_8h_a32a183eeadf922d255d06a4e4f2aca66}{
+\#define \hyperlink{properties_8h_a32a183eeadf922d255d06a4e4f2aca66}{KEY\_\-LEN}~64}
+\label{properties_8h_a32a183eeadf922d255d06a4e4f2aca66}
+
+\begin{DoxyCompactList}\small\item\em The maximum allowed size for a property key. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{properties_8h_ad3b65c8c1fd4f3c0d0fe8167c4f1d20e}{
+typedef struct \hyperlink{struct_map__t}{Map\_\-t} \hyperlink{properties_8h_ad3b65c8c1fd4f3c0d0fe8167c4f1d20e}{map\_\-t}}
+\label{properties_8h_ad3b65c8c1fd4f3c0d0fe8167c4f1d20e}
+
+\begin{DoxyCompactList}\small\item\em A hashable key-\/value pair. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+char $\ast$ \hyperlink{properties_8h_a8e43c1c34fed476037718409e086781d}{get\_\-property} (\hyperlink{struct_map__t}{map\_\-t} $\ast$, struct \hyperlink{structesapi__ctx}{esapi\_\-ctx} $\ast$, const char $\ast$)
+\begin{DoxyCompactList}\small\item\em Get the plaintext property value for the given key from the given encrypted properties map. \item\end{DoxyCompactList}\item 
+char $\ast$ \hyperlink{properties_8h_ad03b220df8766ed322c55c7ca4a3cb9b}{get\_\-property\_\-or\_\-default} (\hyperlink{struct_map__t}{map\_\-t} $\ast$, struct \hyperlink{structesapi__ctx}{esapi\_\-ctx} $\ast$, const char $\ast$, const char $\ast$)
+\begin{DoxyCompactList}\small\item\em Get the plaintext property value for the given key from the given encrypted properties map. \item\end{DoxyCompactList}\item 
+char $\ast$ \hyperlink{properties_8h_a5dfcde20fcc2276506a7c99f6a323ba8}{set\_\-property} (\hyperlink{struct_map__t}{map\_\-t} $\ast$$\ast$, struct \hyperlink{structesapi__ctx}{esapi\_\-ctx} $\ast$, const char $\ast$, const char $\ast$)
+\begin{DoxyCompactList}\small\item\em Set the given property key-\/value pair in the given encrypted properties map. \item\end{DoxyCompactList}\item 
+char $\ast$$\ast$ \hyperlink{properties_8h_a102c0a2264a8fe4c84d8b56ffd7a741e}{keys} (\hyperlink{struct_map__t}{map\_\-t} $\ast$)
+\begin{DoxyCompactList}\small\item\em Get a list of all keys in the given encrypted properties map. \item\end{DoxyCompactList}\item 
+\hyperlink{struct_map__t}{map\_\-t} $\ast$ \hyperlink{properties_8h_a46f3113de5787541e40a2e7302cfb4d6}{load\_\-properties} (const char $\ast$)
+\begin{DoxyCompactList}\small\item\em Read encrypted properties from the given file. \item\end{DoxyCompactList}\item 
+\hypertarget{properties_8h_a753b51eee55d50d8e3692c4cb22ec210}{
+void \hyperlink{properties_8h_a753b51eee55d50d8e3692c4cb22ec210}{store\_\-properties} (\hyperlink{struct_map__t}{map\_\-t} $\ast$, const char $\ast$)}
+\label{properties_8h_a753b51eee55d50d8e3692c4cb22ec210}
+
+\begin{DoxyCompactList}\small\item\em Write encrypted properties to the given file. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Encrypted Properties module header. 
+
+Definition in file \hyperlink{properties_8h_source}{properties.h}.
+
+
+
+\subsection{Define Documentation}
+\hypertarget{properties_8h_a7187f600f02ca0e4459aa179b14497bd}{
+\index{properties.h@{properties.h}!MAX\_\-PROPERTY\_\-LINE\_\-LENGTH@{MAX\_\-PROPERTY\_\-LINE\_\-LENGTH}}
+\index{MAX\_\-PROPERTY\_\-LINE\_\-LENGTH@{MAX\_\-PROPERTY\_\-LINE\_\-LENGTH}!properties.h@{properties.h}}
+\subsubsection[{MAX\_\-PROPERTY\_\-LINE\_\-LENGTH}]{\setlength{\rightskip}{0pt plus 5cm}\#define MAX\_\-PROPERTY\_\-LINE\_\-LENGTH~4096}}
+\label{properties_8h_a7187f600f02ca0e4459aa179b14497bd}
+
+
+The EncryptedProperties module represents a properties file where all the data is encrypted before it is added, and decrypted when it retrieved. 
+
+This interface can be implemented in a number of ways, the simplest being wrapping some hashing container library and overloading the behavior of the getProperty() and setProperty() functions. In all cases, the master encryption key is given by the Encryptor.MasterKey property in {\bfseries ESAPI.properties} file.
+
+\begin{DoxySince}{Since}
+January 30, 2011 
+\end{DoxySince}
+
+
+Definition at line 23 of file properties.h.
+
+
+
+Referenced by load\_\-properties(), and store\_\-properties().
+
+
+
+\subsection{Function Documentation}
+\hypertarget{properties_8h_a8e43c1c34fed476037718409e086781d}{
+\index{properties.h@{properties.h}!get\_\-property@{get\_\-property}}
+\index{get\_\-property@{get\_\-property}!properties.h@{properties.h}}
+\subsubsection[{get\_\-property}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ get\_\-property (
+\begin{DoxyParamCaption}
+\item[{{\bf map\_\-t} $\ast$}]{, }
+\item[{struct {\bf esapi\_\-ctx} $\ast$}]{, }
+\item[{const char $\ast$}]{}
+\end{DoxyParamCaption}
+)}}
+\label{properties_8h_a8e43c1c34fed476037718409e086781d}
+
+
+Get the plaintext property value for the given key from the given encrypted properties map. 
+
+The property value is Base64 decoded and decrypted for the caller.
+
+\begin{DoxyReturn}{Returns}
+A character array containing a plaintext property value, or NULL if the property was not found. 
+\end{DoxyReturn}
+
+
+Definition at line 38 of file properties.c.
+
+
+
+References esapi\_\-decrypt(), and esapi\_\-log\_\-error().
+
+
+
+Referenced by get\_\-property\_\-or\_\-default().
+
+\hypertarget{properties_8h_ad03b220df8766ed322c55c7ca4a3cb9b}{
+\index{properties.h@{properties.h}!get\_\-property\_\-or\_\-default@{get\_\-property\_\-or\_\-default}}
+\index{get\_\-property\_\-or\_\-default@{get\_\-property\_\-or\_\-default}!properties.h@{properties.h}}
+\subsubsection[{get\_\-property\_\-or\_\-default}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ get\_\-property\_\-or\_\-default (
+\begin{DoxyParamCaption}
+\item[{{\bf map\_\-t} $\ast$}]{, }
+\item[{struct {\bf esapi\_\-ctx} $\ast$}]{, }
+\item[{const char $\ast$}]{, }
+\item[{const char $\ast$}]{}
+\end{DoxyParamCaption}
+)}}
+\label{properties_8h_ad03b220df8766ed322c55c7ca4a3cb9b}
+
+
+Get the plaintext property value for the given key from the given encrypted properties map. 
+
+If the property is not found, return the given default value.
+
+\begin{DoxyReturn}{Returns}
+A character array containing a plaintext property value. 
+\end{DoxyReturn}
+
+
+Definition at line 58 of file properties.c.
+
+
+
+References get\_\-property().
+
+\hypertarget{properties_8h_a102c0a2264a8fe4c84d8b56ffd7a741e}{
+\index{properties.h@{properties.h}!keys@{keys}}
+\index{keys@{keys}!properties.h@{properties.h}}
+\subsubsection[{keys}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$$\ast$ keys (
+\begin{DoxyParamCaption}
+\item[{{\bf map\_\-t} $\ast$}]{}
+\end{DoxyParamCaption}
+)}}
+\label{properties_8h_a102c0a2264a8fe4c84d8b56ffd7a741e}
+
+
+Get a list of all keys in the given encrypted properties map. 
+
+\begin{DoxyReturn}{Returns}
+An array of character arrays each containing a property key. 
+\end{DoxyReturn}
+
+
+Definition at line 105 of file properties.c.
+
+
+
+References keys().
+
+
+
+Referenced by keys().
+
+\hypertarget{properties_8h_a46f3113de5787541e40a2e7302cfb4d6}{
+\index{properties.h@{properties.h}!load\_\-properties@{load\_\-properties}}
+\index{load\_\-properties@{load\_\-properties}!properties.h@{properties.h}}
+\subsubsection[{load\_\-properties}]{\setlength{\rightskip}{0pt plus 5cm}{\bf map\_\-t}$\ast$ load\_\-properties (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{}
+\end{DoxyParamCaption}
+)}}
+\label{properties_8h_a46f3113de5787541e40a2e7302cfb4d6}
+
+
+Read encrypted properties from the given file. 
+
+\begin{DoxyReturn}{Returns}
+A head map\_\-t structure pointer for the loaded properties. 
+\end{DoxyReturn}
+
+
+Definition at line 134 of file properties.c.
+
+
+
+References MAX\_\-PROPERTY\_\-LINE\_\-LENGTH.
+
+\hypertarget{properties_8h_a5dfcde20fcc2276506a7c99f6a323ba8}{
+\index{properties.h@{properties.h}!set\_\-property@{set\_\-property}}
+\index{set\_\-property@{set\_\-property}!properties.h@{properties.h}}
+\subsubsection[{set\_\-property}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ set\_\-property (
+\begin{DoxyParamCaption}
+\item[{{\bf map\_\-t} $\ast$$\ast$}]{, }
+\item[{struct {\bf esapi\_\-ctx} $\ast$}]{, }
+\item[{const char $\ast$}]{, }
+\item[{const char $\ast$}]{}
+\end{DoxyParamCaption}
+)}}
+\label{properties_8h_a5dfcde20fcc2276506a7c99f6a323ba8}
+
+
+Set the given property key-\/value pair in the given encrypted properties map. 
+
+The value is encrypted and Base64 encoded before it is added to the map.
+
+\begin{DoxyReturn}{Returns}
+A character array containing the plaintext property value that was set, or NULL on a failure. 
+\end{DoxyReturn}
+
+
+Definition at line 69 of file properties.c.
+
+
+
+References esapi\_\-encrypt(), and esapi\_\-log\_\-error().
+

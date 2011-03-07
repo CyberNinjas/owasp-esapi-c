@@ -1,0 +1,50 @@
+\hypertarget{canonicalize_8h}{
+\section{canonicalize.h File Reference}
+\label{canonicalize_8h}\index{canonicalize.h@{canonicalize.h}}
+}
+
+
+Canonicalization module header.  
+
+
+{\ttfamily \#include $<$stdlib.h$>$}\par
+{\ttfamily \#include $<$stdbool.h$>$}\par
+{\ttfamily \#include \char`\"{}codec.h\char`\"{}}\par
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+char $\ast$ \hyperlink{canonicalize_8h_a9a2c048aa56f1071077aaf2b7cea6871}{esapi\_\-canonicalize} (const char $\ast$, \hyperlink{structcodec}{codec} $\ast$, int, bool)
+\begin{DoxyCompactList}\small\item\em Fully decode the given character array with the given codecs. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Canonicalization module header. \begin{DoxySince}{Since}
+January 30, 2011 
+\end{DoxySince}
+
+
+Definition in file \hyperlink{canonicalize_8h_source}{canonicalize.h}.
+
+
+
+\subsection{Function Documentation}
+\hypertarget{canonicalize_8h_a9a2c048aa56f1071077aaf2b7cea6871}{
+\index{canonicalize.h@{canonicalize.h}!esapi\_\-canonicalize@{esapi\_\-canonicalize}}
+\index{esapi\_\-canonicalize@{esapi\_\-canonicalize}!canonicalize.h@{canonicalize.h}}
+\subsubsection[{esapi\_\-canonicalize}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ esapi\_\-canonicalize (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{, }
+\item[{{\bf codec} $\ast$}]{, }
+\item[{int}]{, }
+\item[{bool}]{}
+\end{DoxyParamCaption}
+)}}
+\label{canonicalize_8h_a9a2c048aa56f1071077aaf2b7cea6871}
+
+
+Fully decode the given character array with the given codecs. 
+
+This function will successfully decode strings that have been encoded with multiple codecs as well as multiple times with any one codec. 
+
+Definition at line 120 of file canonicalize.c.
+

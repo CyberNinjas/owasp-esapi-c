@@ -1,0 +1,74 @@
+\hypertarget{base64_8h}{
+\section{base64.h File Reference}
+\label{base64_8h}\index{base64.h@{base64.h}}
+}
+
+
+Base64 Encoding module header Encodes binary data using printable characters.  
+
+
+{\ttfamily \#include $<$stddef.h$>$}\par
+{\ttfamily \#include $<$stdbool.h$>$}\par
+\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{base64_8h_af465364bf51a922340f739220c666b80}{BASE64\_\-LENGTH}(inlen)~((((inlen) + 2) / 3) $\ast$ 4)
+\begin{DoxyCompactList}\small\item\em Calculates the length of the Base64 encoded value for the given data size (in characters). \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{base64_8h_a2201d7841d9cd66d51b4019c2ba6f11e}{
+bool \hyperlink{base64_8h_a2201d7841d9cd66d51b4019c2ba6f11e}{isbase64} (char ch)}
+\label{base64_8h_a2201d7841d9cd66d51b4019c2ba6f11e}
+
+\begin{DoxyCompactList}\small\item\em Determines if the given character is within the Base64 encoding character set. \item\end{DoxyCompactList}\item 
+\hypertarget{base64_8h_a258473836035ea4de7d743dddb272d91}{
+void \hyperlink{base64_8h_a258473836035ea4de7d743dddb272d91}{base64\_\-encode} (const char $\ast$, size\_\-t, char $\ast$, size\_\-t)}
+\label{base64_8h_a258473836035ea4de7d743dddb272d91}
+
+\begin{DoxyCompactList}\small\item\em Base64 encodes the given input character array to the given output buffer. \item\end{DoxyCompactList}\item 
+\hypertarget{base64_8h_a345ba968ed5de0daadaefb1a38311086}{
+size\_\-t {\bfseries base64\_\-encode\_\-alloc} (const char $\ast$, size\_\-t, char $\ast$$\ast$)}
+\label{base64_8h_a345ba968ed5de0daadaefb1a38311086}
+
+\item 
+\hypertarget{base64_8h_a29544396ecee809a01b7f674bb77a430}{
+bool \hyperlink{base64_8h_a29544396ecee809a01b7f674bb77a430}{base64\_\-decode} (const char $\ast$, size\_\-t, char $\ast$, size\_\-t $\ast$)}
+\label{base64_8h_a29544396ecee809a01b7f674bb77a430}
+
+\begin{DoxyCompactList}\small\item\em Base64 decodes the given input character array to the given output buffer. \item\end{DoxyCompactList}\item 
+\hypertarget{base64_8h_a2c9848d022d2a00784feb44b505761cd}{
+bool {\bfseries base64\_\-decode\_\-alloc} (const char $\ast$, size\_\-t, char $\ast$$\ast$, size\_\-t $\ast$)}
+\label{base64_8h_a2c9848d022d2a00784feb44b505761cd}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Base64 Encoding module header Encodes binary data using printable characters. \begin{DoxySince}{Since}
+January 30, 2011 
+\end{DoxySince}
+
+
+Definition in file \hyperlink{base64_8h_source}{base64.h}.
+
+
+
+\subsection{Define Documentation}
+\hypertarget{base64_8h_af465364bf51a922340f739220c666b80}{
+\index{base64.h@{base64.h}!BASE64\_\-LENGTH@{BASE64\_\-LENGTH}}
+\index{BASE64\_\-LENGTH@{BASE64\_\-LENGTH}!base64.h@{base64.h}}
+\subsubsection[{BASE64\_\-LENGTH}]{\setlength{\rightskip}{0pt plus 5cm}\#define BASE64\_\-LENGTH(
+\begin{DoxyParamCaption}
+\item[{}]{inlen}
+\end{DoxyParamCaption}
+)~((((inlen) + 2) / 3) $\ast$ 4)}}
+\label{base64_8h_af465364bf51a922340f739220c666b80}
+
+
+Calculates the length of the Base64 encoded value for the given data size (in characters). 
+
+This uses that the expression (n+(k-\/1))/k means the smallest integer $>$= n/k, i.e., the ceiling of n/k. 
+
+Definition at line 43 of file base64.h.
+

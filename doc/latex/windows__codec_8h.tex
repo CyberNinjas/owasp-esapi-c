@@ -1,0 +1,61 @@
+\hypertarget{windows__codec_8h}{
+\section{windows\_\-codec.h File Reference}
+\label{windows__codec_8h}\index{windows\_\-codec.h@{windows\_\-codec.h}}
+}
+
+
+Windows Command Shell Codec module header.  
+
+
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+char $\ast$ \hyperlink{windows__codec_8h_a31beb112592c94f352e4b423262c9ba0}{encode\_\-windows\_\-char} (char $\ast$, char)
+\begin{DoxyCompactList}\small\item\em Returns a Windows shell encoded character. \item\end{DoxyCompactList}\item 
+\hypertarget{windows__codec_8h_a52df6c0d76abfed023799a486f487c15}{
+char {\bfseries decode\_\-windows\_\-char} (const char $\ast$, int $\ast$, char $\ast$)}
+\label{windows__codec_8h_a52df6c0d76abfed023799a486f487c15}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Windows Command Shell Codec module header. \begin{DoxySince}{Since}
+January 30, 2011 
+\end{DoxySince}
+
+
+Definition in file \hyperlink{windows__codec_8h_source}{windows\_\-codec.h}.
+
+
+
+\subsection{Function Documentation}
+\hypertarget{windows__codec_8h_a31beb112592c94f352e4b423262c9ba0}{
+\index{windows\_\-codec.h@{windows\_\-codec.h}!encode\_\-windows\_\-char@{encode\_\-windows\_\-char}}
+\index{encode\_\-windows\_\-char@{encode\_\-windows\_\-char}!windows_codec.h@{windows\_\-codec.h}}
+\subsubsection[{encode\_\-windows\_\-char}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ encode\_\-windows\_\-char (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{tokenbuff, }
+\item[{char}]{ch}
+\end{DoxyParamCaption}
+)}}
+\label{windows__codec_8h_a31beb112592c94f352e4b423262c9ba0}
+
+
+Returns a Windows shell encoded character. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tokenbuff} & A character array to hold the encoded character \\
+\hline
+{\em ch} & The character to encode \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 22 of file windows\_\-codec.c.
+
+
+
+References nonatohex().
+

@@ -1,0 +1,123 @@
+\hypertarget{sec__context_8c}{
+\section{sec\_\-context.c File Reference}
+\label{sec__context_8c}\index{sec\_\-context.c@{sec\_\-context.c}}
+}
+
+
+An ESAPI Configuration module implementation.  
+
+
+{\ttfamily \#include $<$stdlib.h$>$}\par
+{\ttfamily \#include $<$stdio.h$>$}\par
+{\ttfamily \#include $<$gcrypt.h$>$}\par
+{\ttfamily \#include $<$string.h$>$}\par
+{\ttfamily \#include \char`\"{}base64.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}esapi.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}log.h\char`\"{}}\par
+\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{sec__context_8c_a45db13d622cb21897aa934e5ad411c83}{
+\#define {\bfseries LINE\_\-LEN}~1024}
+\label{sec__context_8c_a45db13d622cb21897aa934e5ad411c83}
+
+\item 
+\hypertarget{sec__context_8c_aa406271a1d930a6d2e85629f14ae2dd2}{
+\#define {\bfseries PARSE\_\-ERROR}~0}
+\label{sec__context_8c_aa406271a1d930a6d2e85629f14ae2dd2}
+
+\item 
+\hypertarget{sec__context_8c_abcde3a4e302861db03acdfe7fb0b1dad}{
+\#define {\bfseries PARSE\_\-SUCCESS}~1}
+\label{sec__context_8c_abcde3a4e302861db03acdfe7fb0b1dad}
+
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{sec__context_8c_a0562b2ac95fc505e0bd632bffcec1acf}{
+char $\ast$$\ast$ {\bfseries \_\-parse\_\-csv} (char $\ast$value)}
+\label{sec__context_8c_a0562b2ac95fc505e0bd632bffcec1acf}
+
+\item 
+\hypertarget{sec__context_8c_a51f46947d29b9343fc6f0b145a1b57ff}{
+int {\bfseries \_\-parse\_\-csv\_\-for\_\-length} (char $\ast$value)}
+\label{sec__context_8c_a51f46947d29b9343fc6f0b145a1b57ff}
+
+\item 
+\hypertarget{sec__context_8c_a565fabbd40797309c45309fa5863d1da}{
+int {\bfseries \_\-parse\_\-boolean} (char $\ast$value)}
+\label{sec__context_8c_a565fabbd40797309c45309fa5863d1da}
+
+\item 
+\hypertarget{sec__context_8c_a8f2acc911262787b6c676a0016e545c8}{
+int {\bfseries \_\-parse\_\-asymmetric\_\-algo} (const char $\ast$alg)}
+\label{sec__context_8c_a8f2acc911262787b6c676a0016e545c8}
+
+\item 
+\hypertarget{sec__context_8c_a80771593ba3561855e01b159f4863c51}{
+int {\bfseries \_\-parse\_\-symmetric\_\-algo} (const char $\ast$alg)}
+\label{sec__context_8c_a80771593ba3561855e01b159f4863c51}
+
+\item 
+\hypertarget{sec__context_8c_a363c81c0c7e2dd90250755bb7eabfaa9}{
+int {\bfseries \_\-parse\_\-symmetric\_\-algo\_\-mode} (const char $\ast$value)}
+\label{sec__context_8c_a363c81c0c7e2dd90250755bb7eabfaa9}
+
+\item 
+\hypertarget{sec__context_8c_a159897632110aabdde56174ac2045ba1}{
+int {\bfseries \_\-parse\_\-hash\_\-algo} (const char $\ast$alg)}
+\label{sec__context_8c_a159897632110aabdde56174ac2045ba1}
+
+\item 
+\hypertarget{sec__context_8c_a4e304b7a4f3bedf303a5de41b97bf729}{
+int {\bfseries \_\-parse\_\-config\_\-entry} (char $\ast$l, char $\ast$n, char $\ast$v)}
+\label{sec__context_8c_a4e304b7a4f3bedf303a5de41b97bf729}
+
+\item 
+struct \hyperlink{structesapi__ctx}{esapi\_\-ctx} $\ast$ \hyperlink{sec__context_8c_aa84c0a8f11407533c4ef22255de270e7}{load\_\-security\_\-context} (const char $\ast$infile)
+\begin{DoxyCompactList}\small\item\em Load the ESAPI configuration. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{sec__context_8c_a42ec9e214d43464484ca5fd613ecc6e8}{
+char $\ast$ {\bfseries value\_\-delimiters} = \char`\"{}, \char`\"{}}
+\label{sec__context_8c_a42ec9e214d43464484ca5fd613ecc6e8}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+An ESAPI Configuration module implementation. \begin{DoxySince}{Since}
+January 30, 2011 
+\end{DoxySince}
+
+
+Definition in file \hyperlink{sec__context_8c_source}{sec\_\-context.c}.
+
+
+
+\subsection{Function Documentation}
+\hypertarget{sec__context_8c_aa84c0a8f11407533c4ef22255de270e7}{
+\index{sec\_\-context.c@{sec\_\-context.c}!load\_\-security\_\-context@{load\_\-security\_\-context}}
+\index{load\_\-security\_\-context@{load\_\-security\_\-context}!sec_context.c@{sec\_\-context.c}}
+\subsubsection[{load\_\-security\_\-context}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf esapi\_\-ctx}$\ast$ load\_\-security\_\-context (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}read\mbox{]}}}}
+\label{sec__context_8c_aa84c0a8f11407533c4ef22255de270e7}
+
+
+Load the ESAPI configuration. 
+
+Never prints properties. 
+
+This is the function that returns a properly initialized \hyperlink{structesapi__ctx}{esapi\_\-ctx} struct, which some ESAPI functions take as a parameter. 
+
+Definition at line 173 of file sec\_\-context.c.
+
+
+
+References esapi\_\-log\_\-error(), and esapi\_\-log\_\-warn().
+

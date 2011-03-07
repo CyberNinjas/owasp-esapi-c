@@ -1,0 +1,11 @@
+/**
+ * @mainpage ESAPI-C User Guide
+ *
+ * <a href="http://www.owasp.org/index.php/Category:OWASP_Enterprise_Security_API">Learn about the OWASP ESAPI Project</a>
+ *
+ * @section intro Introduction
+ * @verbinclude README
+ *
+ * @section notes Installation Help
+ * @verbinclude INSTALL
+ */

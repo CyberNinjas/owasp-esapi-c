@@ -1,0 +1,105 @@
+\hypertarget{authenticator_8c}{
+\section{authenticator.c File Reference}
+\label{authenticator_8c}\index{authenticator.c@{authenticator.c}}
+}
+{\ttfamily \#include $<$stdio.h$>$}\par
+{\ttfamily \#include $<$stdlib.h$>$}\par
+{\ttfamily \#include $<$ctype.h$>$}\par
+{\ttfamily \#include $<$gcrypt.h$>$}\par
+{\ttfamily \#include \char`\"{}authenticator.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}base64.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}esapi.h\char`\"{}}\par
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+char $\ast$ \hyperlink{authenticator_8c_a28ab6753ae07de4b94c20e705fbfce71}{esapi\_\-hash\_\-password} (struct \hyperlink{structesapi__ctx}{esapi\_\-ctx} $\ast$es\_\-ctx, const char $\ast$real\_\-pw)
+\item 
+int \hyperlink{authenticator_8c_a5dbbf4a20c33886048d1083cefeaf761}{esapi\_\-login} (const char $\ast$user\_\-name, const char $\ast$pw)
+\item 
+int \hyperlink{authenticator_8c_ab43e6c479f697340bb7c7e10258d5f29}{esapi\_\-verify\_\-password\_\-strength} (char $\ast$pw, int min, int max, int char\_\-set\_\-cnt)
+\item 
+int \hyperlink{authenticator_8c_a2c929397ec6a31e3b2a96f8a7cff7a8d}{esapi\_\-add\_\-user} (\hyperlink{struct_user__t}{user} $\ast$u)
+\item 
+int \hyperlink{authenticator_8c_a6ff1cd7f9b41cb2a5c023149eee00907}{esapi\_\-remove\_\-user} (\hyperlink{struct_user__t}{user} $\ast$u)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{authenticator_8c_a2c929397ec6a31e3b2a96f8a7cff7a8d}{
+\index{authenticator.c@{authenticator.c}!esapi\_\-add\_\-user@{esapi\_\-add\_\-user}}
+\index{esapi\_\-add\_\-user@{esapi\_\-add\_\-user}!authenticator.c@{authenticator.c}}
+\subsubsection[{esapi\_\-add\_\-user}]{\setlength{\rightskip}{0pt plus 5cm}int esapi\_\-add\_\-user (
+\begin{DoxyParamCaption}
+\item[{{\bf user} $\ast$}]{u}
+\end{DoxyParamCaption}
+)}}
+\label{authenticator_8c_a2c929397ec6a31e3b2a96f8a7cff7a8d}
+
+
+Definition at line 106 of file authenticator.c.
+
+\hypertarget{authenticator_8c_a28ab6753ae07de4b94c20e705fbfce71}{
+\index{authenticator.c@{authenticator.c}!esapi\_\-hash\_\-password@{esapi\_\-hash\_\-password}}
+\index{esapi\_\-hash\_\-password@{esapi\_\-hash\_\-password}!authenticator.c@{authenticator.c}}
+\subsubsection[{esapi\_\-hash\_\-password}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ esapi\_\-hash\_\-password (
+\begin{DoxyParamCaption}
+\item[{struct {\bf esapi\_\-ctx} $\ast$}]{es\_\-ctx, }
+\item[{const char $\ast$}]{real\_\-pw}
+\end{DoxyParamCaption}
+)}}
+\label{authenticator_8c_a28ab6753ae07de4b94c20e705fbfce71}
+
+
+Definition at line 13 of file authenticator.c.
+
+
+
+References base64\_\-encode\_\-alloc(), esapi\_\-ctx::hash\_\-algo, and esapi\_\-ctx::master\_\-salt.
+
+\hypertarget{authenticator_8c_a5dbbf4a20c33886048d1083cefeaf761}{
+\index{authenticator.c@{authenticator.c}!esapi\_\-login@{esapi\_\-login}}
+\index{esapi\_\-login@{esapi\_\-login}!authenticator.c@{authenticator.c}}
+\subsubsection[{esapi\_\-login}]{\setlength{\rightskip}{0pt plus 5cm}int esapi\_\-login (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{user\_\-name, }
+\item[{const char $\ast$}]{pw}
+\end{DoxyParamCaption}
+)}}
+\label{authenticator_8c_a5dbbf4a20c33886048d1083cefeaf761}
+
+
+Definition at line 57 of file authenticator.c.
+
+\hypertarget{authenticator_8c_a6ff1cd7f9b41cb2a5c023149eee00907}{
+\index{authenticator.c@{authenticator.c}!esapi\_\-remove\_\-user@{esapi\_\-remove\_\-user}}
+\index{esapi\_\-remove\_\-user@{esapi\_\-remove\_\-user}!authenticator.c@{authenticator.c}}
+\subsubsection[{esapi\_\-remove\_\-user}]{\setlength{\rightskip}{0pt plus 5cm}int esapi\_\-remove\_\-user (
+\begin{DoxyParamCaption}
+\item[{{\bf user} $\ast$}]{u}
+\end{DoxyParamCaption}
+)}}
+\label{authenticator_8c_a6ff1cd7f9b41cb2a5c023149eee00907}
+
+
+Definition at line 114 of file authenticator.c.
+
+\hypertarget{authenticator_8c_ab43e6c479f697340bb7c7e10258d5f29}{
+\index{authenticator.c@{authenticator.c}!esapi\_\-verify\_\-password\_\-strength@{esapi\_\-verify\_\-password\_\-strength}}
+\index{esapi\_\-verify\_\-password\_\-strength@{esapi\_\-verify\_\-password\_\-strength}!authenticator.c@{authenticator.c}}
+\subsubsection[{esapi\_\-verify\_\-password\_\-strength}]{\setlength{\rightskip}{0pt plus 5cm}int esapi\_\-verify\_\-password\_\-strength (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{pw, }
+\item[{int}]{min, }
+\item[{int}]{max, }
+\item[{int}]{char\_\-set\_\-cnt}
+\end{DoxyParamCaption}
+)}}
+\label{authenticator_8c_ab43e6c479f697340bb7c7e10258d5f29}
+
+
+Definition at line 68 of file authenticator.c.
+
+
+
+References ES\_\-PW\_\-NOT\_\-ENOUGH\_\-CHAR\_\-CLS, ES\_\-PW\_\-TOO\_\-LONG, and ES\_\-PW\_\-TOO\_\-SHORT.
+

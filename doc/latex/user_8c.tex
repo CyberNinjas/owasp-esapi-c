@@ -1,0 +1,81 @@
+\hypertarget{user_8c}{
+\section{user.c File Reference}
+\label{user_8c}\index{user.c@{user.c}}
+}
+
+
+A User module implementation.  
+
+
+{\ttfamily \#include $<$string.h$>$}\par
+{\ttfamily \#include \char`\"{}user.h\char`\"{}}\par
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{user_8c_a830a80e298171cdf00cb18a1f58d2cde}{
+void {\bfseries add\_\-role} (\hyperlink{struct_user__t}{user} $\ast$u, char $\ast$role)}
+\label{user_8c_a830a80e298171cdf00cb18a1f58d2cde}
+
+\item 
+\hypertarget{user_8c_ad15cb708c5510f7349e89f3cfbe94091}{
+void {\bfseries add\_\-roles} (\hyperlink{struct_user__t}{user} $\ast$u, char $\ast$$\ast$roles)}
+\label{user_8c_ad15cb708c5510f7349e89f3cfbe94091}
+
+\item 
+\hypertarget{user_8c_a022021430c3037f82cec66bb79e51adb}{
+void {\bfseries remove\_\-role} (\hyperlink{struct_user__t}{user} $\ast$u, char $\ast$role)}
+\label{user_8c_a022021430c3037f82cec66bb79e51adb}
+
+\item 
+\hypertarget{user_8c_a4ec6fcff81937a632e3886b057b0755f}{
+int {\bfseries is\_\-user\_\-in\_\-role} (\hyperlink{struct_user__t}{user} $\ast$u, char $\ast$role)}
+\label{user_8c_a4ec6fcff81937a632e3886b057b0755f}
+
+\item 
+\hypertarget{user_8c_ad5dc4de589b9857835431951ca80c175}{
+int {\bfseries change\_\-user\_\-password} (\hyperlink{struct_user__t}{user} $\ast$u, char $\ast$new\_\-passwd1, char $\ast$new\_\-passwd2)}
+\label{user_8c_ad5dc4de589b9857835431951ca80c175}
+
+\item 
+\hypertarget{user_8c_a9e7fb47cac0c7711f9d7f110fd29686c}{
+char $\ast$ {\bfseries reset\_\-password} (\hyperlink{struct_user__t}{user} $\ast$u)}
+\label{user_8c_a9e7fb47cac0c7711f9d7f110fd29686c}
+
+\item 
+int \hyperlink{user_8c_a4999d03259c00528a53fbaf02602af92}{lock\_\-user} (\hyperlink{struct_user__t}{user} $\ast$u)
+\begin{DoxyCompactList}\small\item\em Get the user id for the given user. \item\end{DoxyCompactList}\item 
+\hypertarget{user_8c_a6a066f55b9573296384909c7e70bc6fb}{
+int \hyperlink{user_8c_a6a066f55b9573296384909c7e70bc6fb}{unlock\_\-user} (\hyperlink{struct_user__t}{user} $\ast$u)}
+\label{user_8c_a6a066f55b9573296384909c7e70bc6fb}
+
+\begin{DoxyCompactList}\small\item\em Unlocks the user. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A User module implementation. 
+
+Definition in file \hyperlink{user_8c_source}{user.c}.
+
+
+
+\subsection{Function Documentation}
+\hypertarget{user_8c_a4999d03259c00528a53fbaf02602af92}{
+\index{user.c@{user.c}!lock\_\-user@{lock\_\-user}}
+\index{lock\_\-user@{lock\_\-user}!user.c@{user.c}}
+\subsubsection[{lock\_\-user}]{\setlength{\rightskip}{0pt plus 5cm}int lock\_\-user (
+\begin{DoxyParamCaption}
+\item[{{\bf user} $\ast$}]{u}
+\end{DoxyParamCaption}
+)}}
+\label{user_8c_a4999d03259c00528a53fbaf02602af92}
+
+
+Get the user id for the given user. 
+
+\begin{DoxyReturn}{Returns}
+A long integer representing a unique identifier for the given user, or -\/1 if the user is NULL. Set the current user of this application to the given user. Clears the given user. Locks the user. 
+\end{DoxyReturn}
+
+
+Definition at line 98 of file user.c.
+

@@ -1,0 +1,362 @@
+\hypertarget{crypto_8c}{
+\section{crypto.c File Reference}
+\label{crypto_8c}\index{crypto.c@{crypto.c}}
+}
+
+
+A Cryptographic module implementation.  
+
+
+{\ttfamily \#include $<$gcrypt.h$>$}\par
+{\ttfamily \#include $<$stdio.h$>$}\par
+{\ttfamily \#include $<$stdbool.h$>$}\par
+{\ttfamily \#include \char`\"{}crypto.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}base64.h\char`\"{}}\par
+\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{crypto_8c_a6821bafc3c88dfb2e433a095df9940c6}{
+\#define {\bfseries BUF\_\-SIZE}~1024}
+\label{crypto_8c_a6821bafc3c88dfb2e433a095df9940c6}
+
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+char $\ast$ \hyperlink{crypto_8c_a21797ace74c1aa06ef9a7f51266e4631}{esapi\_\-encrypt} (struct \hyperlink{structesapi__ctx}{esapi\_\-ctx} $\ast$ctx, const char $\ast$s)
+\begin{DoxyCompactList}\small\item\em Encrypts the provided plaintext characters using the cipher transformation specified by the property {\ttfamily Encryptor.CipherTransformation} and the {\itshape master encryption key\/} as specified by the property Encryptor.MasterKey as defined in the ESAPI.properties file. \item\end{DoxyCompactList}\item 
+char $\ast$ \hyperlink{crypto_8c_ada54967a9dd699dcd376359d0a9ba04c}{esapi\_\-decrypt} (struct \hyperlink{structesapi__ctx}{esapi\_\-ctx} $\ast$ctx, const char $\ast$s)
+\begin{DoxyCompactList}\small\item\em Decrypts the provided cyphertext string using the {\itshape master encryption key\/} as specified by the property Encryptor.MasterKey as defined in the ESAPI.properties file. \item\end{DoxyCompactList}\item 
+void \hyperlink{crypto_8c_a13a560460f81c31d184f0613945587d5}{esapi\_\-crypto\_\-init} (struct \hyperlink{structesapi__ctx}{esapi\_\-ctx} $\ast$ctx)
+\begin{DoxyCompactList}\small\item\em Initializes the cryptographic engine. \item\end{DoxyCompactList}\item 
+char $\ast$ \hyperlink{crypto_8c_ae8a0c5208e532dffaf28956be1e47158}{esapi\_\-hash} (struct \hyperlink{structesapi__ctx}{esapi\_\-ctx} $\ast$ctx, const char $\ast$s)
+\begin{DoxyCompactList}\small\item\em Returns a string representation of the hash of the provided plaintext and salt. \item\end{DoxyCompactList}\item 
+void \hyperlink{crypto_8c_a15a9b2759f44a5b6d4b90d2b3b4902c7}{esapi\_\-fill\_\-crypto\_\-key} (struct \hyperlink{structesapi__ctx}{esapi\_\-ctx} $\ast$ctx, char $\ast$buff, int len)
+\begin{DoxyCompactList}\small\item\em Generate a random secret key using a cryptographic algorithm and entropy source appropriate for the generation of long term cryptographic keys. \item\end{DoxyCompactList}\item 
+void \hyperlink{crypto_8c_ac5f468de6f8d67ebb7c6cb85f74f9654}{esapi\_\-fill\_\-random\_\-token} (struct \hyperlink{structesapi__ctx}{esapi\_\-ctx} $\ast$ctx, char $\ast$buff, int len)
+\begin{DoxyCompactList}\small\item\em Generate a random secret key using a cryptographic algorithm and entropy source appropriate for the generation of short term unique keys. \item\end{DoxyCompactList}\item 
+gcry\_\-sexp\_\-t $\ast$ \hyperlink{crypto_8c_a9e7e19d2d6ede98159531147cb91c0a9}{esapi\_\-sign} (struct \hyperlink{structesapi__ctx}{esapi\_\-ctx} $\ast$ctx, void $\ast$msg, int len)
+\begin{DoxyCompactList}\small\item\em Returns a signature of the given message. \item\end{DoxyCompactList}\item 
+\hypertarget{crypto_8c_af9dc909ef560dd45eedcbafa11d34107}{
+gcry\_\-sexp\_\-t {\bfseries convert\_\-to\_\-asymmetric\_\-key} (void $\ast$buff, int key\_\-len)}
+\label{crypto_8c_af9dc909ef560dd45eedcbafa11d34107}
+
+\item 
+int \hyperlink{crypto_8c_a86f5a0d680c1174d90f8612c6ab93264}{esapi\_\-verify\_\-signature} (struct \hyperlink{structesapi__ctx}{esapi\_\-ctx} $\ast$ctx, void $\ast$msg, int m\_\-len, gcry\_\-sexp\_\-t $\ast$sig)
+\begin{DoxyCompactList}\small\item\em Incomplete function implementation. \item\end{DoxyCompactList}\item 
+char $\ast$ \hyperlink{crypto_8c_ad06f6e3f52cf7134df20ea3eabb8dc6d}{encrypt\_\-and\_\-sign} (struct \hyperlink{structesapi__ctx}{esapi\_\-ctx} $\ast$ctx, void $\ast$msg, int len)
+\begin{DoxyCompactList}\small\item\em Incomplete function implementation. \item\end{DoxyCompactList}\item 
+char $\ast$ \hyperlink{crypto_8c_a53d8171b09003a778a85ab3b80af27c1}{decrypt\_\-and\_\-verify} (struct \hyperlink{structesapi__ctx}{esapi\_\-ctx} $\ast$ctx, void $\ast$msg, int len)
+\begin{DoxyCompactList}\small\item\em Incomplete function implementation. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{crypto_8c_a0110d4273433c4659796c4e224e1d286}{
+char {\bfseries esapi\_\-alphabet} \mbox{[}$\,$\mbox{]} = \char`\"{}ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789\char`\"{}}
+\label{crypto_8c_a0110d4273433c4659796c4e224e1d286}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A Cryptographic module implementation. This implementation wraps the GnuPG project's libgrypt library, which is available for many platforms. This library is designed to meet FIPS 140-\/2 requirements, and a version distributed for Redhat Linux is certified by NIST to be FIPS 1402 compliant at level 1.
+
+\begin{DoxyNote}{Note}
+If you need to handle long term cryptographic keys that protect highly sensitive information, consider enabling Secure Memory in ESAPI properties to minimize the likelihood of key exposure on the host computer.
+\end{DoxyNote}
+\begin{DoxySeeAlso}{See also}
+\href{http://www.gnupg.org/download/}{\tt http://www.gnupg.org/download/} 
+
+\href{http://csrc.nist.gov/groups/STM/cmvp/documents/140-1/1401val2010.htm#1305}{\tt http://csrc.nist.gov/groups/STM/cmvp/documents/140-\/1/1401val2010.htm\#1305}
+\end{DoxySeeAlso}
+\begin{DoxySince}{Since}
+January 30, 2011 
+\end{DoxySince}
+
+
+Definition in file \hyperlink{crypto_8c_source}{crypto.c}.
+
+
+
+\subsection{Function Documentation}
+\hypertarget{crypto_8c_a53d8171b09003a778a85ab3b80af27c1}{
+\index{crypto.c@{crypto.c}!decrypt\_\-and\_\-verify@{decrypt\_\-and\_\-verify}}
+\index{decrypt\_\-and\_\-verify@{decrypt\_\-and\_\-verify}!crypto.c@{crypto.c}}
+\subsubsection[{decrypt\_\-and\_\-verify}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ decrypt\_\-and\_\-verify (
+\begin{DoxyParamCaption}
+\item[{struct {\bf esapi\_\-ctx} $\ast$}]{ctx, }
+\item[{void $\ast$}]{msg, }
+\item[{int}]{len}
+\end{DoxyParamCaption}
+)}}
+\label{crypto_8c_a53d8171b09003a778a85ab3b80af27c1}
+
+
+Incomplete function implementation. 
+
+\begin{Desc}
+\item[\hyperlink{todo__todo000008}{Todo}]Implement. \end{Desc}
+
+
+Definition at line 378 of file crypto.c.
+
+\hypertarget{crypto_8c_ad06f6e3f52cf7134df20ea3eabb8dc6d}{
+\index{crypto.c@{crypto.c}!encrypt\_\-and\_\-sign@{encrypt\_\-and\_\-sign}}
+\index{encrypt\_\-and\_\-sign@{encrypt\_\-and\_\-sign}!crypto.c@{crypto.c}}
+\subsubsection[{encrypt\_\-and\_\-sign}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ encrypt\_\-and\_\-sign (
+\begin{DoxyParamCaption}
+\item[{struct {\bf esapi\_\-ctx} $\ast$}]{ctx, }
+\item[{void $\ast$}]{msg, }
+\item[{int}]{len}
+\end{DoxyParamCaption}
+)}}
+\label{crypto_8c_ad06f6e3f52cf7134df20ea3eabb8dc6d}
+
+
+Incomplete function implementation. 
+
+\begin{Desc}
+\item[\hyperlink{todo__todo000007}{Todo}]Implement. \end{Desc}
+
+
+Definition at line 369 of file crypto.c.
+
+\hypertarget{crypto_8c_a13a560460f81c31d184f0613945587d5}{
+\index{crypto.c@{crypto.c}!esapi\_\-crypto\_\-init@{esapi\_\-crypto\_\-init}}
+\index{esapi\_\-crypto\_\-init@{esapi\_\-crypto\_\-init}!crypto.c@{crypto.c}}
+\subsubsection[{esapi\_\-crypto\_\-init}]{\setlength{\rightskip}{0pt plus 5cm}void esapi\_\-crypto\_\-init (
+\begin{DoxyParamCaption}
+\item[{struct {\bf esapi\_\-ctx} $\ast$}]{}
+\end{DoxyParamCaption}
+)}}
+\label{crypto_8c_a13a560460f81c31d184f0613945587d5}
+
+
+Initializes the cryptographic engine. 
+
+This function must be called before calling any of the other functions in this module. 
+\begin{DoxyParams}{Parameters}
+{\em ctx} & A properly initialized ESAPI context structure returned by 
+\begin{DoxyCode}
+                load_security_context() 
+\end{DoxyCode}
+ \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 200 of file crypto.c.
+
+\hypertarget{crypto_8c_ada54967a9dd699dcd376359d0a9ba04c}{
+\index{crypto.c@{crypto.c}!esapi\_\-decrypt@{esapi\_\-decrypt}}
+\index{esapi\_\-decrypt@{esapi\_\-decrypt}!crypto.c@{crypto.c}}
+\subsubsection[{esapi\_\-decrypt}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ esapi\_\-decrypt (
+\begin{DoxyParamCaption}
+\item[{struct {\bf esapi\_\-ctx} $\ast$}]{, }
+\item[{const char $\ast$}]{}
+\end{DoxyParamCaption}
+)}}
+\label{crypto_8c_ada54967a9dd699dcd376359d0a9ba04c}
+
+
+Decrypts the provided cyphertext string using the {\itshape master encryption key\/} as specified by the property Encryptor.MasterKey as defined in the ESAPI.properties file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ciphertext} & A Base64 encoded cyphertext character array to be decrypted. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A character array containing the plaintext resulting from decrypting the specified ciphertext, or NULL on any failure to encrypt. 
+\end{DoxyReturn}
+
+
+Definition at line 117 of file crypto.c.
+
+
+
+Referenced by get\_\-property().
+
+\hypertarget{crypto_8c_a21797ace74c1aa06ef9a7f51266e4631}{
+\index{crypto.c@{crypto.c}!esapi\_\-encrypt@{esapi\_\-encrypt}}
+\index{esapi\_\-encrypt@{esapi\_\-encrypt}!crypto.c@{crypto.c}}
+\subsubsection[{esapi\_\-encrypt}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ esapi\_\-encrypt (
+\begin{DoxyParamCaption}
+\item[{struct {\bf esapi\_\-ctx} $\ast$}]{, }
+\item[{const char $\ast$}]{}
+\end{DoxyParamCaption}
+)}}
+\label{crypto_8c_a21797ace74c1aa06ef9a7f51266e4631}
+
+
+Encrypts the provided plaintext characters using the cipher transformation specified by the property {\ttfamily Encryptor.CipherTransformation} and the {\itshape master encryption key\/} as specified by the property Encryptor.MasterKey as defined in the ESAPI.properties file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em plaintext} & A character array containing the plaintext to be encrypted. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A character array containing the resulting Base64 encoded cyphertext, or NULL on any failure to encrypt. 
+\end{DoxyReturn}
+
+
+Definition at line 33 of file crypto.c.
+
+
+
+Referenced by set\_\-property().
+
+\hypertarget{crypto_8c_a15a9b2759f44a5b6d4b90d2b3b4902c7}{
+\index{crypto.c@{crypto.c}!esapi\_\-fill\_\-crypto\_\-key@{esapi\_\-fill\_\-crypto\_\-key}}
+\index{esapi\_\-fill\_\-crypto\_\-key@{esapi\_\-fill\_\-crypto\_\-key}!crypto.c@{crypto.c}}
+\subsubsection[{esapi\_\-fill\_\-crypto\_\-key}]{\setlength{\rightskip}{0pt plus 5cm}void esapi\_\-fill\_\-crypto\_\-key (
+\begin{DoxyParamCaption}
+\item[{struct {\bf esapi\_\-ctx} $\ast$}]{, }
+\item[{char $\ast$}]{, }
+\item[{int}]{}
+\end{DoxyParamCaption}
+)}}
+\label{crypto_8c_a15a9b2759f44a5b6d4b90d2b3b4902c7}
+
+
+Generate a random secret key using a cryptographic algorithm and entropy source appropriate for the generation of long term cryptographic keys. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ctx} & A properly initialized ESAPI context structure returned by 
+\begin{DoxyCode}
+                load_security_context() 
+\end{DoxyCode}
+ \\
+\hline
+{\em buff} & A character array to hold the resulting key \\
+\hline
+{\em len} & The requested length of the key \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 285 of file crypto.c.
+
+\hypertarget{crypto_8c_ac5f468de6f8d67ebb7c6cb85f74f9654}{
+\index{crypto.c@{crypto.c}!esapi\_\-fill\_\-random\_\-token@{esapi\_\-fill\_\-random\_\-token}}
+\index{esapi\_\-fill\_\-random\_\-token@{esapi\_\-fill\_\-random\_\-token}!crypto.c@{crypto.c}}
+\subsubsection[{esapi\_\-fill\_\-random\_\-token}]{\setlength{\rightskip}{0pt plus 5cm}void esapi\_\-fill\_\-random\_\-token (
+\begin{DoxyParamCaption}
+\item[{struct {\bf esapi\_\-ctx} $\ast$}]{, }
+\item[{char $\ast$}]{, }
+\item[{int}]{}
+\end{DoxyParamCaption}
+)}}
+\label{crypto_8c_ac5f468de6f8d67ebb7c6cb85f74f9654}
+
+
+Generate a random secret key using a cryptographic algorithm and entropy source appropriate for the generation of short term unique keys. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ctx} & A properly initialized ESAPI context structure returned by 
+\begin{DoxyCode}
+                load_security_context() 
+\end{DoxyCode}
+ \\
+\hline
+{\em buff} & A character array to hold the resulting key \\
+\hline
+{\em len} & The requested length of the key \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 296 of file crypto.c.
+
+
+
+Referenced by esapi\_\-get\_\-unique\_\-reference().
+
+\hypertarget{crypto_8c_ae8a0c5208e532dffaf28956be1e47158}{
+\index{crypto.c@{crypto.c}!esapi\_\-hash@{esapi\_\-hash}}
+\index{esapi\_\-hash@{esapi\_\-hash}!crypto.c@{crypto.c}}
+\subsubsection[{esapi\_\-hash}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ esapi\_\-hash (
+\begin{DoxyParamCaption}
+\item[{struct {\bf esapi\_\-ctx} $\ast$}]{, }
+\item[{const char $\ast$}]{}
+\end{DoxyParamCaption}
+)}}
+\label{crypto_8c_ae8a0c5208e532dffaf28956be1e47158}
+
+
+Returns a string representation of the hash of the provided plaintext and salt. 
+
+The salt helps to protect against a rainbow table attack by mixing in some extra data with the plaintext. Some good choices for a salt might be an account name or some other string that is known to the application but not to an attacker. See \href{http://www.matasano.com/log/958/enough-with-the-rainbow-tables-what-you-need-to-know-about-secure-password-schemes/}{\tt this article} for more information about hashing as it pertains to password schemes.
+
+
+\begin{DoxyParams}{Parameters}
+{\em ctx} & A valid \hyperlink{structesapi__ctx}{esapi\_\-ctx} from which properly initialized cryptographic engine settings may be retrieved. \\
+\hline
+{\em plaintext} & the plaintext String to encrypt \\
+\hline
+{\em salt} & the salt to add to the plaintext String before hashing\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A character array containing the Base64 encoded encrypted hash of the given plaintext, or NULL on any failure. 
+\end{DoxyReturn}
+
+
+Definition at line 255 of file crypto.c.
+
+\hypertarget{crypto_8c_a9e7e19d2d6ede98159531147cb91c0a9}{
+\index{crypto.c@{crypto.c}!esapi\_\-sign@{esapi\_\-sign}}
+\index{esapi\_\-sign@{esapi\_\-sign}!crypto.c@{crypto.c}}
+\subsubsection[{esapi\_\-sign}]{\setlength{\rightskip}{0pt plus 5cm}gcry\_\-sexp\_\-t$\ast$ esapi\_\-sign (
+\begin{DoxyParamCaption}
+\item[{struct {\bf esapi\_\-ctx} $\ast$}]{, }
+\item[{void $\ast$}]{, }
+\item[{int}]{}
+\end{DoxyParamCaption}
+)}}
+\label{crypto_8c_a9e7e19d2d6ede98159531147cb91c0a9}
+
+
+Returns a signature of the given message. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ctx} & A valid \hyperlink{structesapi__ctx}{esapi\_\-ctx} from which properly initialized cryptographic engine settings may be retrieved. \\
+\hline
+{\em msg} & A character array containing the message \\
+\hline
+{\em len} & The length of the message \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to a gcry\_\-sexp\_\-t containing the signature 
+\end{DoxyReturn}
+
+
+Definition at line 310 of file crypto.c.
+
+\hypertarget{crypto_8c_a86f5a0d680c1174d90f8612c6ab93264}{
+\index{crypto.c@{crypto.c}!esapi\_\-verify\_\-signature@{esapi\_\-verify\_\-signature}}
+\index{esapi\_\-verify\_\-signature@{esapi\_\-verify\_\-signature}!crypto.c@{crypto.c}}
+\subsubsection[{esapi\_\-verify\_\-signature}]{\setlength{\rightskip}{0pt plus 5cm}int esapi\_\-verify\_\-signature (
+\begin{DoxyParamCaption}
+\item[{struct {\bf esapi\_\-ctx} $\ast$}]{ctx, }
+\item[{void $\ast$}]{msg, }
+\item[{int}]{m\_\-len, }
+\item[{gcry\_\-sexp\_\-t $\ast$}]{sig}
+\end{DoxyParamCaption}
+)}}
+\label{crypto_8c_a86f5a0d680c1174d90f8612c6ab93264}
+
+
+Incomplete function implementation. 
+
+\begin{Desc}
+\item[\hyperlink{todo__todo000006}{Todo}]Fix to pass valid gcry\_\-sexp\_\-t parameters. \end{Desc}
+
+
+Definition at line 354 of file crypto.c.
+

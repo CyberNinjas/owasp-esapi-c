@@ -1,0 +1,103 @@
+\hypertarget{minunit_8h}{
+\section{test/include/minunit.h File Reference}
+\label{minunit_8h}\index{test/include/minunit.h@{test/include/minunit.h}}
+}
+{\ttfamily \#include $<$stdio.h$>$}\par
+{\ttfamily \#include $<$string.h$>$}\par
+\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{minunit_8h_aad83ba6b11df552879dd0f0a4ce43407}{mu\_\-assert}(message, test)~do \{ if (!(test)) return message; \} while (0)
+\item 
+\#define \hyperlink{minunit_8h_a9c8e76cc15deeca6f9afa206f6caca76}{mu\_\-run\_\-test}(test)
+\item 
+\#define \hyperlink{minunit_8h_a9188f56f210678a76a67a4f618009b30}{TEST}(test)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{minunit_8h_a561a5450b127e97c5ca67d0b349747a8}{passed} = 0
+\item 
+int \hyperlink{minunit_8h_ad4ec5aab9b62fbbe9b8fc2d8ac0a5989}{failed} = 0
+\end{DoxyCompactItemize}
+
+
+\subsection{Define Documentation}
+\hypertarget{minunit_8h_aad83ba6b11df552879dd0f0a4ce43407}{
+\index{minunit.h@{minunit.h}!mu\_\-assert@{mu\_\-assert}}
+\index{mu\_\-assert@{mu\_\-assert}!minunit.h@{minunit.h}}
+\subsubsection[{mu\_\-assert}]{\setlength{\rightskip}{0pt plus 5cm}\#define mu\_\-assert(
+\begin{DoxyParamCaption}
+\item[{}]{message, }
+\item[{}]{test}
+\end{DoxyParamCaption}
+)~do \{ if (!(test)) return message; \} while (0)}}
+\label{minunit_8h_aad83ba6b11df552879dd0f0a4ce43407}
+
+
+Definition at line 8 of file minunit.h.
+
+\hypertarget{minunit_8h_a9c8e76cc15deeca6f9afa206f6caca76}{
+\index{minunit.h@{minunit.h}!mu\_\-run\_\-test@{mu\_\-run\_\-test}}
+\index{mu\_\-run\_\-test@{mu\_\-run\_\-test}!minunit.h@{minunit.h}}
+\subsubsection[{mu\_\-run\_\-test}]{\setlength{\rightskip}{0pt plus 5cm}\#define mu\_\-run\_\-test(
+\begin{DoxyParamCaption}
+\item[{}]{test}
+\end{DoxyParamCaption}
+)}}
+\label{minunit_8h_a9c8e76cc15deeca6f9afa206f6caca76}
+{\bfseries Value:}
+\begin{DoxyCode}
+do { char *message = test(); tests_run++; \
+                                if (message) return message; } while (0)
+\end{DoxyCode}
+
+
+Definition at line 9 of file minunit.h.
+
+\hypertarget{minunit_8h_a9188f56f210678a76a67a4f618009b30}{
+\index{minunit.h@{minunit.h}!TEST@{TEST}}
+\index{TEST@{TEST}!minunit.h@{minunit.h}}
+\subsubsection[{TEST}]{\setlength{\rightskip}{0pt plus 5cm}\#define TEST(
+\begin{DoxyParamCaption}
+\item[{}]{test}
+\end{DoxyParamCaption}
+)}}
+\label{minunit_8h_a9188f56f210678a76a67a4f618009b30}
+{\bfseries Value:}
+\begin{DoxyCode}
+if (test) {  \
+       ++passed;       \
+       (void) fprintf(stdout, \
+         " PASS: test %.d at line %.d\n", (passed + failed), __LINE__); \
+   } else {      \
+       ++failed; \
+       (void) fprintf(stdout, \
+         " FAIL: test %.d at line %.d\n", (passed + failed), __LINE__); \
+   }
+\end{DoxyCode}
+
+
+Definition at line 12 of file minunit.h.
+
+
+
+\subsection{Variable Documentation}
+\hypertarget{minunit_8h_ad4ec5aab9b62fbbe9b8fc2d8ac0a5989}{
+\index{minunit.h@{minunit.h}!failed@{failed}}
+\index{failed@{failed}!minunit.h@{minunit.h}}
+\subsubsection[{failed}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf failed} = 0}}
+\label{minunit_8h_ad4ec5aab9b62fbbe9b8fc2d8ac0a5989}
+
+
+Definition at line 6 of file minunit.h.
+
+\hypertarget{minunit_8h_a561a5450b127e97c5ca67d0b349747a8}{
+\index{minunit.h@{minunit.h}!passed@{passed}}
+\index{passed@{passed}!minunit.h@{minunit.h}}
+\subsubsection[{passed}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf passed} = 0}}
+\label{minunit_8h_a561a5450b127e97c5ca67d0b349747a8}
+
+
+Definition at line 6 of file minunit.h.
+

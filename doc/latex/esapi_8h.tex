@@ -1,0 +1,60 @@
+\hypertarget{esapi_8h}{
+\section{esapi.h File Reference}
+\label{esapi_8h}\index{esapi.h@{esapi.h}}
+}
+
+
+ESAPI Configuration module header.  
+
+
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structesapi__ctx}{esapi\_\-ctx}
+\begin{DoxyCompactList}\small\item\em All of the persistable settings used by the ESAPI. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structesapi__ctx}{esapi\_\-ctx} $\ast$ \hyperlink{esapi_8h_a805f5fe0fe253907ff3e34c96196d44a}{load\_\-security\_\-context} (const char $\ast$)
+\begin{DoxyCompactList}\small\item\em Load the ESAPI configuration. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+ESAPI Configuration module header. The configuration data is persisted in an ESAPI.properties file. You can edit the ESAPI.properties to set things like master keys and passwords, logging locations, error thresholds, and allowed file extensions. 
+
+\begin{DoxyWarning}{Warning}
+Do not forget to update ESAPI.properties to change the master key and other security critical settings.
+\end{DoxyWarning}
+\begin{DoxySince}{Since}
+January 30, 2011 
+\end{DoxySince}
+
+
+Definition in file \hyperlink{esapi_8h_source}{esapi.h}.
+
+
+
+\subsection{Function Documentation}
+\hypertarget{esapi_8h_a805f5fe0fe253907ff3e34c96196d44a}{
+\index{esapi.h@{esapi.h}!load\_\-security\_\-context@{load\_\-security\_\-context}}
+\index{load\_\-security\_\-context@{load\_\-security\_\-context}!esapi.h@{esapi.h}}
+\subsubsection[{load\_\-security\_\-context}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf esapi\_\-ctx}$\ast$ load\_\-security\_\-context (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}read\mbox{]}}}}
+\label{esapi_8h_a805f5fe0fe253907ff3e34c96196d44a}
+
+
+Load the ESAPI configuration. 
+
+Never prints properties. 
+
+This is the function that returns a properly initialized \hyperlink{structesapi__ctx}{esapi\_\-ctx} struct, which some ESAPI functions take as a parameter. 
+
+Definition at line 173 of file sec\_\-context.c.
+
+
+
+References esapi\_\-log\_\-error(), and esapi\_\-log\_\-warn().
+

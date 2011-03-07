@@ -1,0 +1,29 @@
+Dependencies
+===============
+
+The following dependences are assumed to be installed at compile time
+and runtime for the Enterprise Security API (ESAPI):
+
+* log4c 
+* uthash
+* libgcrypt
+
+Note: If you need a FIPS 140-2 validated crypto module, you must use
+the libcrypt version 1.4.4 included in Red Hat 5.4.
+
+Installation
+===============
+
+Installation of the ESAPI library is fairly straightforward:
+
+  1. `cd' to the directory containing the package's source code and type
+     `make' to build the source. All the dependencies are assumed to be
+     installed.
+
+  2. Optionally type `make runtests' to run all the unit tests that ship
+     with the source.
+
+  3. Type `make install' to install the library.
+
+  4. To clean up any object files and artifacts left hanging around from
+     the build process, type `make clean'.

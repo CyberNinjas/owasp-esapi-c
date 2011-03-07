@@ -1,0 +1,150 @@
+\hypertarget{log_8h}{
+\section{log.h File Reference}
+\label{log_8h}\index{log.h@{log.h}}
+}
+
+
+Logging module header.  
+
+
+{\ttfamily \#include $<$stdlib.h$>$}\par
+{\ttfamily \#include \char`\"{}log4c.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}user.h\char`\"{}}\par
+\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{log_8h_afc1987e4c0cbafbdb7d54201f2ea68d8}{
+\#define {\bfseries DEFAULT\_\-LOG\_\-CATEGORY\_\-NAME}~\char`\"{}root\char`\"{}}
+\label{log_8h_afc1987e4c0cbafbdb7d54201f2ea68d8}
+
+\item 
+\hypertarget{log_8h_a8e99e379f43426fb9e1ffcc2574b6b84}{
+\#define {\bfseries SECURITY\_\-LOG\_\-PREFIX}~\char`\"{}SECURITY:\char`\"{}}
+\label{log_8h_a8e99e379f43426fb9e1ffcc2574b6b84}
+
+\item 
+\hypertarget{log_8h_aa3fbd1b7db5563bc97af47943afa34a4}{
+\#define {\bfseries MAX\_\-MESSAGE\_\-LEN}~256}
+\label{log_8h_aa3fbd1b7db5563bc97af47943afa34a4}
+
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum {\bfseries EVENT\_\-TYPE} \{ {\bfseries SECURITY\_\-SUCCESS}, 
+{\bfseries SECURITY\_\-FAILURE}, 
+{\bfseries EVENT\_\-SUCCESS}, 
+{\bfseries EVENT\_\-FAILURE}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{log_8h_ab975df1c95e9ffb147adb3c00709f00a}{
+int \hyperlink{log_8h_ab975df1c95e9ffb147adb3c00709f00a}{esapi\_\-open\_\-log} ()}
+\label{log_8h_ab975df1c95e9ffb147adb3c00709f00a}
+
+\begin{DoxyCompactList}\small\item\em Enables logging for this process. \item\end{DoxyCompactList}\item 
+\hypertarget{log_8h_abdc3d2900ce4e7a28fa4e66239ed17ec}{
+int \hyperlink{log_8h_abdc3d2900ce4e7a28fa4e66239ed17ec}{esapi\_\-close\_\-log} ()}
+\label{log_8h_abdc3d2900ce4e7a28fa4e66239ed17ec}
+
+\begin{DoxyCompactList}\small\item\em Disables logging for this process. \item\end{DoxyCompactList}\item 
+\hypertarget{log_8h_a8fc8937a3e90a3c4cc4e66d28c5e01f2}{
+void \hyperlink{log_8h_a8fc8937a3e90a3c4cc4e66d28c5e01f2}{esapi\_\-log\_\-trace} (const \hyperlink{struct_user__t}{user} $\ast$, int, const char $\ast$,...)}
+\label{log_8h_a8fc8937a3e90a3c4cc4e66d28c5e01f2}
+
+\begin{DoxyCompactList}\small\item\em Log a TRACE level message. \item\end{DoxyCompactList}\item 
+\hypertarget{log_8h_a070444dad3a0bcdd42e46a83fd7949e7}{
+void \hyperlink{log_8h_a070444dad3a0bcdd42e46a83fd7949e7}{esapi\_\-log\_\-debug} (const \hyperlink{struct_user__t}{user} $\ast$, int, const char $\ast$,...)}
+\label{log_8h_a070444dad3a0bcdd42e46a83fd7949e7}
+
+\begin{DoxyCompactList}\small\item\em Log a DEBUG level message. \item\end{DoxyCompactList}\item 
+\hypertarget{log_8h_ad3159e99a7a4a556152f47aa453475a0}{
+void \hyperlink{log_8h_ad3159e99a7a4a556152f47aa453475a0}{esapi\_\-log\_\-info} (const \hyperlink{struct_user__t}{user} $\ast$, int, const char $\ast$,...)}
+\label{log_8h_ad3159e99a7a4a556152f47aa453475a0}
+
+\begin{DoxyCompactList}\small\item\em Log an INFO level message. \item\end{DoxyCompactList}\item 
+\hypertarget{log_8h_ad02207e5ecb478ebdfc08d068a648b2d}{
+void \hyperlink{log_8h_ad02207e5ecb478ebdfc08d068a648b2d}{esapi\_\-log\_\-warn} (const \hyperlink{struct_user__t}{user} $\ast$, int, const char $\ast$,...)}
+\label{log_8h_ad02207e5ecb478ebdfc08d068a648b2d}
+
+\begin{DoxyCompactList}\small\item\em Log a WARN level message. \item\end{DoxyCompactList}\item 
+\hypertarget{log_8h_a4ab42f3f2f13b137d345c9ff01d83bb4}{
+void \hyperlink{log_8h_a4ab42f3f2f13b137d345c9ff01d83bb4}{esapi\_\-log\_\-error} (const \hyperlink{struct_user__t}{user} $\ast$, int, const char $\ast$,...)}
+\label{log_8h_a4ab42f3f2f13b137d345c9ff01d83bb4}
+
+\begin{DoxyCompactList}\small\item\em Log an ERROR level message. \item\end{DoxyCompactList}\item 
+\hypertarget{log_8h_a6142aea17df875c3abad3db233b1462b}{
+void \hyperlink{log_8h_a6142aea17df875c3abad3db233b1462b}{esapi\_\-log\_\-critical} (const \hyperlink{struct_user__t}{user} $\ast$, int, const char $\ast$,...)}
+\label{log_8h_a6142aea17df875c3abad3db233b1462b}
+
+\begin{DoxyCompactList}\small\item\em Log a CRITICAL level message. \item\end{DoxyCompactList}\item 
+\hypertarget{log_8h_a5ec45f1aebef752ed0e55691056956ad}{
+void \hyperlink{log_8h_a5ec45f1aebef752ed0e55691056956ad}{esapi\_\-log\_\-fatal} (const \hyperlink{struct_user__t}{user} $\ast$, int, const char $\ast$,...)}
+\label{log_8h_a5ec45f1aebef752ed0e55691056956ad}
+
+\begin{DoxyCompactList}\small\item\em Log a FATAL level message. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{log_8h_ae564bc2e377cef47f3f59effdf411c90}{
+char $\ast$ {\bfseries eventTypeNames} \mbox{[}$\,$\mbox{]}}
+\label{log_8h_ae564bc2e377cef47f3f59effdf411c90}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Logging module header. The Logging module defines a set of functions that can be used to log security events. It supports a hierarchy of logging levels which can be configured to determine the severity of events that are logged, and those below the threshold that are discarded. Implementors should use a well established logging library as it is quite difficult to create a high-\/performance logger.
+
+The logging levels defined by this interface (in descending order) are: 
+\begin{DoxyItemize}
+\item fatal (highest value) 
+\item error 
+\item warning 
+\item info 
+\item debug 
+\item trace (lowest value) 
+\end{DoxyItemize}
+
+ESAPI also allows for the definition of the type of log event that is being generated. The Logging module predefines 4 types of Log events: SECURITY\_\-SUCCESS, SECURITY\_\-FAILURE, EVENT\_\-SUCCESS, EVENT\_\-FAILURE. Your implementation can extend or change this list if desired.
+
+This Logger allows callers to to submit events at different severity levels.\par
+ \par
+Implementors of this interface should:
+
+
+\begin{DoxyEnumerate}
+\item provide a mechanism for setting the logging level threshold that is currently enabled. This usually works by logging all events at and above that severity level, and discarding all events below that level. This is usually done via configuration, but can also be made accessible programmatically. 
+\item ensure that dangerous HTML characters are encoded before they are logged to defend against malicious injection into logs that might be viewed in an HTML based log viewer. 
+\item encode any CRLF characters included in log data in order to prevent log injection attacks. 
+\item avoid logging the user's session ID. Rather, they should log something equivalent like a generated logging session ID, or a hashed value of the session ID so they can track session specific events without risking the exposure of a live session's ID. 
+\item record the following information with each event: 
+\begin{DoxyEnumerate}
+\item identity of the user that caused the event, 
+\item a description of the event (supplied by the caller), 
+\item whether the event succeeded or failed (indicated by the caller), 
+\item severity level of the event (indicated by the caller), 
+\item that this is a security relevant event (indicated by the caller), 
+\item hostname or IP where the event occurred (and ideally the user's source IP as well), 
+\item a time stamp 
+\end{DoxyEnumerate}
+\end{DoxyEnumerate}
+
+Custom logger implementations might also: 
+\begin{DoxyEnumerate}
+\item filter out any sensitive data specific to the current application or organization, such as credit cards, social security numbers, etc. 
+\end{DoxyEnumerate}
+
+A Log4c based logger is the default implementation. This implementations implements requirements \#1 thru \#5 above.\par
+ \par
+ Customization: It is expected that most organizations will implement their own custom Logging module in order to integrate ESAPI logging with their logging infrastructure. The ESAPI Reference Implementation is intended to provide a simple functional example of an implementation.
+
+\begin{DoxySince}{Since}
+January 30, 2011 
+\end{DoxySince}
+
+
+Definition in file \hyperlink{log_8h_source}{log.h}.
+

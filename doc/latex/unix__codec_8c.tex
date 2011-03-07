@@ -1,0 +1,71 @@
+\hypertarget{unix__codec_8c}{
+\section{unix\_\-codec.c File Reference}
+\label{unix__codec_8c}\index{unix\_\-codec.c@{unix\_\-codec.c}}
+}
+
+
+A UNIX Command Shell Codec module implementation.  
+
+
+{\ttfamily \#include $<$stdio.h$>$}\par
+{\ttfamily \#include $<$stdlib.h$>$}\par
+{\ttfamily \#include $<$string.h$>$}\par
+{\ttfamily \#include $<$stdbool.h$>$}\par
+{\ttfamily \#include \char`\"{}codec.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}unix\_\-codec.h\char`\"{}}\par
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{unix__codec_8c_a4a3fcc3e1d7d7fef2dbf4be75f7c99b6}{
+char $\ast$ {\bfseries encode\_\-unix\_\-char} (char $\ast$tokenbuff, char ch)}
+\label{unix__codec_8c_a4a3fcc3e1d7d7fef2dbf4be75f7c99b6}
+
+\item 
+\hypertarget{unix__codec_8c_a503a4f9bc7276abdb53dc76f3bf591b0}{
+char {\bfseries decode\_\-unix\_\-char} (const char $\ast$input, int $\ast$index, char $\ast$pushback)}
+\label{unix__codec_8c_a503a4f9bc7276abdb53dc76f3bf591b0}
+
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{unix__codec_8c_a746be7a1f1409717d95814f19bf0a586}{
+char $\ast$ {\bfseries unix\_\-codec\_\-name} = \char`\"{}Unix\char`\"{}}
+\label{unix__codec_8c_a746be7a1f1409717d95814f19bf0a586}
+
+\item 
+const char \hyperlink{unix__codec_8c_a8e75c617ed06bf9fb780d0086705a890}{digits} \mbox{[}$\,$\mbox{]}
+\begin{DoxyCompactList}\small\item\em All possible chars for representing a number as a String. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A UNIX Command Shell Codec module implementation. \begin{DoxySince}{Since}
+January 30, 2011 
+\end{DoxySince}
+
+
+Definition in file \hyperlink{unix__codec_8c_source}{unix\_\-codec.c}.
+
+
+
+\subsection{Variable Documentation}
+\hypertarget{unix__codec_8c_a8e75c617ed06bf9fb780d0086705a890}{
+\index{unix\_\-codec.c@{unix\_\-codec.c}!digits@{digits}}
+\index{digits@{digits}!unix_codec.c@{unix\_\-codec.c}}
+\subsubsection[{digits}]{\setlength{\rightskip}{0pt plus 5cm}const char {\bf digits}\mbox{[}$\,$\mbox{]}}}
+\label{unix__codec_8c_a8e75c617ed06bf9fb780d0086705a890}
+{\bfseries Initial value:}
+\begin{DoxyCode}
+ { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a',
+                'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 
+      'o',
+                'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' }
+\end{DoxyCode}
+
+
+All possible chars for representing a number as a String. 
+
+
+
+Definition at line 21 of file unix\_\-codec.c.
+

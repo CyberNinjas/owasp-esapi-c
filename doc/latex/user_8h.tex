@@ -1,0 +1,78 @@
+\hypertarget{user_8h}{
+\section{user.h File Reference}
+\label{user_8h}\index{user.h@{user.h}}
+}
+
+
+User module header.  
+
+
+{\ttfamily \#include $<$stdlib.h$>$}\par
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct_user__t}{User\_\-t}
+\begin{DoxyCompactList}\small\item\em An application user account, including information required to enforce security on users properly. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{user_8h_ac64541bdd81c961304b9babef1402640}{
+\#define {\bfseries NAME\_\-MAX}~64}
+\label{user_8h_ac64541bdd81c961304b9babef1402640}
+
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{user_8h_ac5c3dcc5cef9a0e4dc16aefbf73fdcb1}{
+typedef struct \hyperlink{struct_user__t}{User\_\-t} {\bfseries user}}
+\label{user_8h_ac5c3dcc5cef9a0e4dc16aefbf73fdcb1}
+
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{user_8h_a4999d03259c00528a53fbaf02602af92}{lock\_\-user} (\hyperlink{struct_user__t}{user} $\ast$u)
+\begin{DoxyCompactList}\small\item\em Get the user id for the given user. \item\end{DoxyCompactList}\item 
+\hypertarget{user_8h_a6a066f55b9573296384909c7e70bc6fb}{
+int \hyperlink{user_8h_a6a066f55b9573296384909c7e70bc6fb}{unlock\_\-user} (\hyperlink{struct_user__t}{user} $\ast$u)}
+\label{user_8h_a6a066f55b9573296384909c7e70bc6fb}
+
+\begin{DoxyCompactList}\small\item\em Unlocks the user. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+User module header. Represents an application user or user account. There is quite a lot of information that an application must store for each user in order to enforce security properly. There are also many rules that govern authentication and identity management. 
+
+A user account can be in one of several states. When first created, a User should be disabled, not expired, and unlocked. To start using the account, an administrator should enable the account. The account can be locked for a number of reasons, most commonly because they have failed login for too many times. Finally, the account can expire after the expiration date has been reached. The User must be enabled, not expired, and unlocked in order to pass authentication.
+
+\begin{DoxySince}{Since}
+January 30, 2011 
+\end{DoxySince}
+
+
+Definition in file \hyperlink{user_8h_source}{user.h}.
+
+
+
+\subsection{Function Documentation}
+\hypertarget{user_8h_a4999d03259c00528a53fbaf02602af92}{
+\index{user.h@{user.h}!lock\_\-user@{lock\_\-user}}
+\index{lock\_\-user@{lock\_\-user}!user.h@{user.h}}
+\subsubsection[{lock\_\-user}]{\setlength{\rightskip}{0pt plus 5cm}int lock\_\-user (
+\begin{DoxyParamCaption}
+\item[{{\bf user} $\ast$}]{u}
+\end{DoxyParamCaption}
+)}}
+\label{user_8h_a4999d03259c00528a53fbaf02602af92}
+
+
+Get the user id for the given user. 
+
+\begin{DoxyReturn}{Returns}
+A long integer representing a unique identifier for the given user, or -\/1 if the user is NULL. Set the current user of this application to the given user. Clears the given user. Locks the user. 
+\end{DoxyReturn}
+
+
+Definition at line 97 of file user.c.
+

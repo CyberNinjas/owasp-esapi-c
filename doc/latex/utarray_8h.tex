@@ -1,0 +1,526 @@
+\hypertarget{utarray_8h}{
+\section{utarray.h File Reference}
+\label{utarray_8h}\index{utarray.h@{utarray.h}}
+}
+
+
+A dynamic array implementation using macros.  
+
+
+{\ttfamily \#include $<$stddef.h$>$}\par
+{\ttfamily \#include $<$string.h$>$}\par
+{\ttfamily \#include $<$stdlib.h$>$}\par
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct_u_t__icd}{UT\_\-icd}
+\item 
+struct \hyperlink{struct_u_t__array}{UT\_\-array}
+\end{DoxyCompactItemize}
+\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{utarray_8h_a7442b085b33c91368adc20b36602bfc5}{UTARRAY\_\-VERSION}~1.9.1
+\item 
+\hypertarget{utarray_8h_a0c4e94850f4ea1ddadd189fb30d43763}{
+\#define {\bfseries \_\-UNUSED\_\-}~ \{sizeof(int),NULL,NULL,NULL\}}
+\label{utarray_8h_a0c4e94850f4ea1ddadd189fb30d43763}
+
+\item 
+\hypertarget{utarray_8h_ab012ce14774deb45e0f0a576e216f41d}{
+\#define {\bfseries oom}()~exit(-\/1)}
+\label{utarray_8h_ab012ce14774deb45e0f0a576e216f41d}
+
+\item 
+\#define {\bfseries utarray\_\-init}(a, \_\-icd)
+\item 
+\#define {\bfseries utarray\_\-done}(a)
+\item 
+\#define {\bfseries utarray\_\-new}(a, \_\-icd)
+\item 
+\#define {\bfseries utarray\_\-free}(a)
+\item 
+\#define {\bfseries utarray\_\-reserve}(a, by)
+\item 
+\#define {\bfseries utarray\_\-push\_\-back}(a, p)
+\item 
+\#define {\bfseries utarray\_\-pop\_\-back}(a)
+\item 
+\#define {\bfseries utarray\_\-extend\_\-back}(a)
+\item 
+\hypertarget{utarray_8h_a6835764436d25a0010366f77134184df}{
+\#define {\bfseries utarray\_\-len}(a)~((a)-\/$>$i)}
+\label{utarray_8h_a6835764436d25a0010366f77134184df}
+
+\item 
+\hypertarget{utarray_8h_a407f1fb4f0a12596e30b5f3003bed5d0}{
+\#define {\bfseries utarray\_\-eltptr}(a, j)~(((j) $<$ (a)-\/$>$i) ? \_\-utarray\_\-eltptr(a,j) : NULL)}
+\label{utarray_8h_a407f1fb4f0a12596e30b5f3003bed5d0}
+
+\item 
+\hypertarget{utarray_8h_ab51376440f7face8aa2640db39347da8}{
+\#define {\bfseries \_\-utarray\_\-eltptr}(a, j)~((char$\ast$)((a)-\/$>$d + ((a)-\/$>$icd-\/$>$sz$\ast$(j) )))}
+\label{utarray_8h_ab51376440f7face8aa2640db39347da8}
+
+\item 
+\#define {\bfseries utarray\_\-insert}(a, p, j)
+\item 
+\#define {\bfseries utarray\_\-inserta}(a, w, j)
+\item 
+\#define {\bfseries utarray\_\-resize}(dst, num)
+\item 
+\#define {\bfseries utarray\_\-concat}(dst, src)
+\item 
+\#define {\bfseries utarray\_\-erase}(a, pos, len)
+\item 
+\#define {\bfseries utarray\_\-clear}(a)
+\item 
+\#define {\bfseries utarray\_\-sort}(a, cmp)
+\item 
+\hypertarget{utarray_8h_af37fa0110f7e6af3a903d13273a09f4c}{
+\#define {\bfseries utarray\_\-front}(a)~(((a)-\/$>$i) ? (\_\-utarray\_\-eltptr(a,0)) : NULL)}
+\label{utarray_8h_af37fa0110f7e6af3a903d13273a09f4c}
+
+\item 
+\hypertarget{utarray_8h_a0868b1bd40410cfc6964e2912325e64e}{
+\#define {\bfseries utarray\_\-next}(a, e)~(((e)==NULL) ? utarray\_\-front(a) : ((((a)-\/$>$i) $>$ (utarray\_\-eltidx(a,e)+1)) ? \_\-utarray\_\-eltptr(a,utarray\_\-eltidx(a,e)+1) : NULL))}
+\label{utarray_8h_a0868b1bd40410cfc6964e2912325e64e}
+
+\item 
+\hypertarget{utarray_8h_a3e39b1ab884d8275f1446a00935bc2e5}{
+\#define {\bfseries utarray\_\-back}(a)~(((a)-\/$>$i) ? (\_\-utarray\_\-eltptr(a,(a)-\/$>$i-\/1)) : NULL)}
+\label{utarray_8h_a3e39b1ab884d8275f1446a00935bc2e5}
+
+\item 
+\hypertarget{utarray_8h_af29c01aad687e8674c0f3ca93fa74bff}{
+\#define {\bfseries utarray\_\-eltidx}(a, e)~(((char$\ast$)(e) $>$= (char$\ast$)((a)-\/$>$d)) ? (((char$\ast$)(e) -\/ (char$\ast$)((a)-\/$>$d))/(a)-\/$>$icd-\/$>$sz) : -\/1)}
+\label{utarray_8h_af29c01aad687e8674c0f3ca93fa74bff}
+
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{utarray_8h_ae502dd560d0547bf2a5bbc604b87fe3a}{
+typedef void( {\bfseries ctor\_\-f} )(void $\ast$dst, const void $\ast$src)}
+\label{utarray_8h_ae502dd560d0547bf2a5bbc604b87fe3a}
+
+\item 
+\hypertarget{utarray_8h_aad039425dc207761ff17af367dd6043e}{
+typedef void( {\bfseries dtor\_\-f} )(void $\ast$elt)}
+\label{utarray_8h_aad039425dc207761ff17af367dd6043e}
+
+\item 
+\hypertarget{utarray_8h_a060d940fd19cf1ca9b7e291cc20ebfa6}{
+typedef void( {\bfseries init\_\-f} )(void $\ast$elt)}
+\label{utarray_8h_a060d940fd19cf1ca9b7e291cc20ebfa6}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A dynamic array implementation using macros. \begin{DoxySeeAlso}{See also}
+\href{http://uthash.sourceforge.net/utarray}{\tt http://uthash.sourceforge.net/utarray} 
+\end{DoxySeeAlso}
+
+
+Definition in file \hyperlink{utarray_8h_source}{utarray.h}.
+
+
+
+\subsection{Define Documentation}
+\hypertarget{utarray_8h_acdd108cb975da5f59839b98f9a26d417}{
+\index{utarray.h@{utarray.h}!utarray\_\-clear@{utarray\_\-clear}}
+\index{utarray\_\-clear@{utarray\_\-clear}!utarray.h@{utarray.h}}
+\subsubsection[{utarray\_\-clear}]{\setlength{\rightskip}{0pt plus 5cm}\#define utarray\_\-clear(
+\begin{DoxyParamCaption}
+\item[{}]{a}
+\end{DoxyParamCaption}
+)}}
+\label{utarray_8h_acdd108cb975da5f59839b98f9a26d417}
+{\bfseries Value:}
+\begin{DoxyCode}
+do {                                                 \
+  if ((a)->i > 0) {                                                           \
+    if ((a)->icd->dtor) {                                                     \
+      size_t _ut_i;                                                           \
+      for(_ut_i=0; _ut_i < (a)->i; _ut_i++) {                                 \
+        (a)->icd->dtor(utarray_eltptr(a,_ut_i));                              \
+      }                                                                       \
+    }                                                                         \
+    (a)->i = 0;                                                               \
+  }                                                                           \
+} while(0)
+\end{DoxyCode}
+
+
+Definition at line 195 of file utarray.h.
+
+\hypertarget{utarray_8h_af7c2e07fcf8b550deb67c4b052700576}{
+\index{utarray.h@{utarray.h}!utarray\_\-concat@{utarray\_\-concat}}
+\index{utarray\_\-concat@{utarray\_\-concat}!utarray.h@{utarray.h}}
+\subsubsection[{utarray\_\-concat}]{\setlength{\rightskip}{0pt plus 5cm}\#define utarray\_\-concat(
+\begin{DoxyParamCaption}
+\item[{}]{dst, }
+\item[{}]{src}
+\end{DoxyParamCaption}
+)}}
+\label{utarray_8h_af7c2e07fcf8b550deb67c4b052700576}
+{\bfseries Value:}
+\begin{DoxyCode}
+do {                                          \
+  utarray_inserta(dst,src,utarray_len(dst));                                  \
+} while(0)
+\end{DoxyCode}
+
+
+Definition at line 177 of file utarray.h.
+
+\hypertarget{utarray_8h_aebaf1379bb55304646512b6204e36d2f}{
+\index{utarray.h@{utarray.h}!utarray\_\-done@{utarray\_\-done}}
+\index{utarray\_\-done@{utarray\_\-done}!utarray.h@{utarray.h}}
+\subsubsection[{utarray\_\-done}]{\setlength{\rightskip}{0pt plus 5cm}\#define utarray\_\-done(
+\begin{DoxyParamCaption}
+\item[{}]{a}
+\end{DoxyParamCaption}
+)}}
+\label{utarray_8h_aebaf1379bb55304646512b6204e36d2f}
+{\bfseries Value:}
+\begin{DoxyCode}
+do {                                                  \
+  if ((a)->n) {                                                               \
+    if ((a)->icd->dtor) {                                                     \
+      size_t _ut_i;                                                           \
+      for(_ut_i=0; _ut_i < (a)->i; _ut_i++) {                                 \
+        (a)->icd->dtor(utarray_eltptr(a,_ut_i));                              \
+      }                                                                       \
+    }                                                                         \
+    free((a)->d);                                                             \
+  }                                                                           \
+  (a)->n=0;                                                                   \
+} while(0)
+\end{DoxyCode}
+
+
+Definition at line 70 of file utarray.h.
+
+\hypertarget{utarray_8h_a68330a98218d6e59a0907fe69191d247}{
+\index{utarray.h@{utarray.h}!utarray\_\-erase@{utarray\_\-erase}}
+\index{utarray\_\-erase@{utarray\_\-erase}!utarray.h@{utarray.h}}
+\subsubsection[{utarray\_\-erase}]{\setlength{\rightskip}{0pt plus 5cm}\#define utarray\_\-erase(
+\begin{DoxyParamCaption}
+\item[{}]{a, }
+\item[{}]{pos, }
+\item[{}]{len}
+\end{DoxyParamCaption}
+)}}
+\label{utarray_8h_a68330a98218d6e59a0907fe69191d247}
+{\bfseries Value:}
+\begin{DoxyCode}
+do {                                         \
+  if ((a)->icd->dtor) {                                                       \
+    size_t _ut_i;                                                             \
+    for(_ut_i=0; _ut_i < len; _ut_i++) {                                      \
+      (a)->icd->dtor(utarray_eltptr(a,pos+_ut_i));                            \
+    }                                                                         \
+  }                                                                           \
+  if ((a)->i > (pos+len)) {                                                   \
+    memmove( _utarray_eltptr(a,pos), _utarray_eltptr(a,pos+len),              \
+            ((a->i)-(pos+len))*((a)->icd->sz));                               \
+  }                                                                           \
+  (a)->i -= (len);                                                            \
+} while(0)
+\end{DoxyCode}
+
+
+Definition at line 181 of file utarray.h.
+
+\hypertarget{utarray_8h_a72878f0a60f8c4f8c124eefa0f22f9e0}{
+\index{utarray.h@{utarray.h}!utarray\_\-extend\_\-back@{utarray\_\-extend\_\-back}}
+\index{utarray\_\-extend\_\-back@{utarray\_\-extend\_\-back}!utarray.h@{utarray.h}}
+\subsubsection[{utarray\_\-extend\_\-back}]{\setlength{\rightskip}{0pt plus 5cm}\#define utarray\_\-extend\_\-back(
+\begin{DoxyParamCaption}
+\item[{}]{a}
+\end{DoxyParamCaption}
+)}}
+\label{utarray_8h_a72878f0a60f8c4f8c124eefa0f22f9e0}
+{\bfseries Value:}
+\begin{DoxyCode}
+do {                                           \
+  utarray_reserve(a,1);                                                       \
+  if ((a)->icd->init) { (a)->icd->init(_utarray_eltptr(a,(a)->i)); }          \
+  else { memset(_utarray_eltptr(a,(a)->i),0,(a)->icd->sz); }                  \
+  (a)->i++;                                                                   \
+} while(0)
+\end{DoxyCode}
+
+
+Definition at line 111 of file utarray.h.
+
+\hypertarget{utarray_8h_a7e164b0f422d10addff80ea79005366a}{
+\index{utarray.h@{utarray.h}!utarray\_\-free@{utarray\_\-free}}
+\index{utarray\_\-free@{utarray\_\-free}!utarray.h@{utarray.h}}
+\subsubsection[{utarray\_\-free}]{\setlength{\rightskip}{0pt plus 5cm}\#define utarray\_\-free(
+\begin{DoxyParamCaption}
+\item[{}]{a}
+\end{DoxyParamCaption}
+)}}
+\label{utarray_8h_a7e164b0f422d10addff80ea79005366a}
+{\bfseries Value:}
+\begin{DoxyCode}
+do {                                                  \
+  utarray_done(a);                                                            \
+  free(a);                                                                    \
+} while(0)
+\end{DoxyCode}
+
+
+Definition at line 88 of file utarray.h.
+
+\hypertarget{utarray_8h_a876a07aa86d42369209660089779b3f1}{
+\index{utarray.h@{utarray.h}!utarray\_\-init@{utarray\_\-init}}
+\index{utarray\_\-init@{utarray\_\-init}!utarray.h@{utarray.h}}
+\subsubsection[{utarray\_\-init}]{\setlength{\rightskip}{0pt plus 5cm}\#define utarray\_\-init(
+\begin{DoxyParamCaption}
+\item[{}]{a, }
+\item[{}]{\_\-icd}
+\end{DoxyParamCaption}
+)}}
+\label{utarray_8h_a876a07aa86d42369209660089779b3f1}
+{\bfseries Value:}
+\begin{DoxyCode}
+do {                                             \
+  memset(a,0,sizeof(UT_array));                                               \
+  (a)->icd=_icd;                                                              \
+} while(0)
+\end{DoxyCode}
+
+
+Definition at line 65 of file utarray.h.
+
+\hypertarget{utarray_8h_a8a52307523696a4902069e96af18a307}{
+\index{utarray.h@{utarray.h}!utarray\_\-insert@{utarray\_\-insert}}
+\index{utarray\_\-insert@{utarray\_\-insert}!utarray.h@{utarray.h}}
+\subsubsection[{utarray\_\-insert}]{\setlength{\rightskip}{0pt plus 5cm}\#define utarray\_\-insert(
+\begin{DoxyParamCaption}
+\item[{}]{a, }
+\item[{}]{p, }
+\item[{}]{j}
+\end{DoxyParamCaption}
+)}}
+\label{utarray_8h_a8a52307523696a4902069e96af18a307}
+{\bfseries Value:}
+\begin{DoxyCode}
+do {                                            \
+  utarray_reserve(a,1);                                                       \
+  if (j > (a)->i) break;                                                      \
+  if ((j) < (a)->i) {                                                         \
+    memmove( _utarray_eltptr(a,(j)+1), _utarray_eltptr(a,j),                  \
+             ((a)->i - (j))*((a)->icd->sz));                                  \
+  }                                                                           \
+  if ((a)->icd->copy) { (a)->icd->copy( _utarray_eltptr(a,j), p); }           \
+  else { memcpy(_utarray_eltptr(a,j), p, (a)->icd->sz); };                    \
+  (a)->i++;                                                                   \
+} while(0)
+\end{DoxyCode}
+
+
+Definition at line 123 of file utarray.h.
+
+\hypertarget{utarray_8h_a0e9a9ff0b74876bae1f156fe105b9d40}{
+\index{utarray.h@{utarray.h}!utarray\_\-inserta@{utarray\_\-inserta}}
+\index{utarray\_\-inserta@{utarray\_\-inserta}!utarray.h@{utarray.h}}
+\subsubsection[{utarray\_\-inserta}]{\setlength{\rightskip}{0pt plus 5cm}\#define utarray\_\-inserta(
+\begin{DoxyParamCaption}
+\item[{}]{a, }
+\item[{}]{w, }
+\item[{}]{j}
+\end{DoxyParamCaption}
+)}}
+\label{utarray_8h_a0e9a9ff0b74876bae1f156fe105b9d40}
+{\bfseries Value:}
+\begin{DoxyCode}
+do {                                           \
+  if (utarray_len(w) == 0) break;                                             \
+  if (j > (a)->i) break;                                                      \
+  utarray_reserve(a,utarray_len(w));                                          \
+  if ((j) < (a)->i) {                                                         \
+    memmove(_utarray_eltptr(a,(j)+utarray_len(w)),                            \
+            _utarray_eltptr(a,j),                                             \
+            ((a)->i - (j))*((a)->icd->sz));                                   \
+  }                                                                           \
+  if (a->icd->copy) {                                                         \
+    size_t _ut_i;                                                             \
+    for(_ut_i=0;_ut_i<(w)->i;_ut_i++) {                                       \
+      (a)->icd->copy(_utarray_eltptr(a,j+_ut_i), _utarray_eltptr(w,_ut_i));   \
+    }                                                                         \
+  } else {                                                                    \
+    memcpy(_utarray_eltptr(a,j), _utarray_eltptr(w,0),                        \
+           utarray_len(w)*((a)->icd->sz));                                    \
+  }                                                                           \
+  (a)->i += utarray_len(w);                                                   \
+} while(0)
+\end{DoxyCode}
+
+
+Definition at line 135 of file utarray.h.
+
+\hypertarget{utarray_8h_ae77eaae3983dd3489a48c3f64d8629e1}{
+\index{utarray.h@{utarray.h}!utarray\_\-new@{utarray\_\-new}}
+\index{utarray\_\-new@{utarray\_\-new}!utarray.h@{utarray.h}}
+\subsubsection[{utarray\_\-new}]{\setlength{\rightskip}{0pt plus 5cm}\#define utarray\_\-new(
+\begin{DoxyParamCaption}
+\item[{}]{a, }
+\item[{}]{\_\-icd}
+\end{DoxyParamCaption}
+)}}
+\label{utarray_8h_ae77eaae3983dd3489a48c3f64d8629e1}
+{\bfseries Value:}
+\begin{DoxyCode}
+do {                                              \
+  a=(UT_array*)malloc(sizeof(UT_array));                                      \
+  utarray_init(a,_icd);                                                       \
+} while(0)
+\end{DoxyCode}
+
+
+Definition at line 83 of file utarray.h.
+
+\hypertarget{utarray_8h_ac78b30e680847649ecae5a35fa88ec0a}{
+\index{utarray.h@{utarray.h}!utarray\_\-pop\_\-back@{utarray\_\-pop\_\-back}}
+\index{utarray\_\-pop\_\-back@{utarray\_\-pop\_\-back}!utarray.h@{utarray.h}}
+\subsubsection[{utarray\_\-pop\_\-back}]{\setlength{\rightskip}{0pt plus 5cm}\#define utarray\_\-pop\_\-back(
+\begin{DoxyParamCaption}
+\item[{}]{a}
+\end{DoxyParamCaption}
+)}}
+\label{utarray_8h_ac78b30e680847649ecae5a35fa88ec0a}
+{\bfseries Value:}
+\begin{DoxyCode}
+do {                                              \
+  if ((a)->icd->dtor) { (a)->icd->dtor( _utarray_eltptr(a,--((a)->i))); }     \
+  else { (a)->i--; }                                                          \
+} while(0)
+\end{DoxyCode}
+
+
+Definition at line 106 of file utarray.h.
+
+\hypertarget{utarray_8h_a1caf314c033f7bf7947144b97a8ce644}{
+\index{utarray.h@{utarray.h}!utarray\_\-push\_\-back@{utarray\_\-push\_\-back}}
+\index{utarray\_\-push\_\-back@{utarray\_\-push\_\-back}!utarray.h@{utarray.h}}
+\subsubsection[{utarray\_\-push\_\-back}]{\setlength{\rightskip}{0pt plus 5cm}\#define utarray\_\-push\_\-back(
+\begin{DoxyParamCaption}
+\item[{}]{a, }
+\item[{}]{p}
+\end{DoxyParamCaption}
+)}}
+\label{utarray_8h_a1caf314c033f7bf7947144b97a8ce644}
+{\bfseries Value:}
+\begin{DoxyCode}
+do {                                           \
+  utarray_reserve(a,1);                                                       \
+  if ((a)->icd->copy) { (a)->icd->copy( _utarray_eltptr(a,(a)->i++), p); }    \
+  else { memcpy(_utarray_eltptr(a,(a)->i++), p, (a)->icd->sz); };             \
+} while(0)
+\end{DoxyCode}
+
+
+Definition at line 100 of file utarray.h.
+
+\hypertarget{utarray_8h_af768b94d8ef77ffec7c7ad008203198c}{
+\index{utarray.h@{utarray.h}!utarray\_\-reserve@{utarray\_\-reserve}}
+\index{utarray\_\-reserve@{utarray\_\-reserve}!utarray.h@{utarray.h}}
+\subsubsection[{utarray\_\-reserve}]{\setlength{\rightskip}{0pt plus 5cm}\#define utarray\_\-reserve(
+\begin{DoxyParamCaption}
+\item[{}]{a, }
+\item[{}]{by}
+\end{DoxyParamCaption}
+)}}
+\label{utarray_8h_af768b94d8ef77ffec7c7ad008203198c}
+{\bfseries Value:}
+\begin{DoxyCode}
+do {                                            \
+  if (((a)->i+by) > ((a)->n)) {                                               \
+    while(((a)->i+by) > ((a)->n)) { (a)->n = ((a)->n ? (2*(a)->n) : 8); }     \
+    if ( ((a)->d=(char*)realloc((a)->d, (a)->n*(a)->icd->sz)) == NULL) oom(); \
+  }                                                                           \
+} while(0)
+\end{DoxyCode}
+
+
+Definition at line 93 of file utarray.h.
+
+\hypertarget{utarray_8h_a99dc9103176f98abd0216bfe3034a77f}{
+\index{utarray.h@{utarray.h}!utarray\_\-resize@{utarray\_\-resize}}
+\index{utarray\_\-resize@{utarray\_\-resize}!utarray.h@{utarray.h}}
+\subsubsection[{utarray\_\-resize}]{\setlength{\rightskip}{0pt plus 5cm}\#define utarray\_\-resize(
+\begin{DoxyParamCaption}
+\item[{}]{dst, }
+\item[{}]{num}
+\end{DoxyParamCaption}
+)}}
+\label{utarray_8h_a99dc9103176f98abd0216bfe3034a77f}
+{\bfseries Value:}
+\begin{DoxyCode}
+do {                                          \
+  size_t _ut_i;                                                               \
+  if (dst->i > (size_t)(num)) {                                               \
+    if ((dst)->icd->dtor) {                                                   \
+      for(_ut_i=num; _ut_i < dst->i; _ut_i++) {                               \
+        (dst)->icd->dtor(utarray_eltptr(dst,_ut_i));                          \
+      }                                                                       \
+    }                                                                         \
+  } else if (dst->i < (size_t)(num)) {                                        \
+    utarray_reserve(dst,num-dst->i);                                          \
+    if ((dst)->icd->init) {                                                   \
+      for(_ut_i=dst->i; _ut_i < num; _ut_i++) {                               \
+        (dst)->icd->init(utarray_eltptr(dst,_ut_i));                          \
+      }                                                                       \
+    } else {                                                                  \
+      memset(_utarray_eltptr(dst,dst->i),0,(dst)->icd->sz*(num-dst->i));      \
+    }                                                                         \
+  }                                                                           \
+  dst->i = num;                                                               \
+} while(0)
+\end{DoxyCode}
+
+
+Definition at line 156 of file utarray.h.
+
+\hypertarget{utarray_8h_abc68be76f03d375a20e883f343b510d7}{
+\index{utarray.h@{utarray.h}!utarray\_\-sort@{utarray\_\-sort}}
+\index{utarray\_\-sort@{utarray\_\-sort}!utarray.h@{utarray.h}}
+\subsubsection[{utarray\_\-sort}]{\setlength{\rightskip}{0pt plus 5cm}\#define utarray\_\-sort(
+\begin{DoxyParamCaption}
+\item[{}]{a, }
+\item[{}]{cmp}
+\end{DoxyParamCaption}
+)}}
+\label{utarray_8h_abc68be76f03d375a20e883f343b510d7}
+{\bfseries Value:}
+\begin{DoxyCode}
+do {                                              \
+  qsort((a)->d, (a)->i, (a)->icd->sz, cmp);                                   \
+} while(0)
+\end{DoxyCode}
+
+
+Definition at line 207 of file utarray.h.
+
+\hypertarget{utarray_8h_a7442b085b33c91368adc20b36602bfc5}{
+\index{utarray.h@{utarray.h}!UTARRAY\_\-VERSION@{UTARRAY\_\-VERSION}}
+\index{UTARRAY\_\-VERSION@{UTARRAY\_\-VERSION}!utarray.h@{utarray.h}}
+\subsubsection[{UTARRAY\_\-VERSION}]{\setlength{\rightskip}{0pt plus 5cm}\#define UTARRAY\_\-VERSION~1.9.1}}
+\label{utarray_8h_a7442b085b33c91368adc20b36602bfc5}
+\hypertarget{utstring_8h_LICENSE}{}\subsection{LICENSE}\label{utstring_8h_LICENSE}
+Copyright (c) 2008-\/2010, Troy D. Hanson \href{http://uthash.sourceforge.net}{\tt http://uthash.sourceforge.net} All rights reserved.
+
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+
+Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \char`\"{}AS
+IS\char`\"{} AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+
+Definition at line 35 of file utarray.h.
+

@@ -1,0 +1,81 @@
+\hypertarget{executor_8h}{
+\section{executor.h File Reference}
+\label{executor_8h}\index{executor.h@{executor.h}}
+}
+
+
+Command Shell Executor module header.  
+
+
+{\ttfamily \#include $<$stdio.h$>$}\par
+{\ttfamily \#include $<$stdbool.h$>$}\par
+{\ttfamily \#include \char`\"{}codec.h\char`\"{}}\par
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+char $\ast$ \hyperlink{executor_8h_a3f7b0fed7fd557786a1659acb618b62e}{esapi\_\-execute} (char $\ast$executable, char $\ast$$\ast$params, int paramcount, char $\ast$workdir, \hyperlink{structcodec}{codec} $\ast$c, bool logParams)
+\begin{DoxyCompactList}\small\item\em Spawns a new process to execute the given command. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Command Shell Executor module header. The Executor module is used to run an OS command with reduced security risk.
+
+Implementations should do as much as possible to minimize the risk of injection into either the command or parameters. In addition, implementations should timeout after a specified time period in order to help prevent denial of service attacks.
+
+The functions should perform logging and error handling as well. Finally, an implementation should handle errors and generate an log with all the necessary information.
+
+This reference implementation does all of the above except for the timeout.
+
+\begin{DoxySince}{Since}
+June 1, 2007 
+\end{DoxySince}
+
+
+Definition in file \hyperlink{executor_8h_source}{executor.h}.
+
+
+
+\subsection{Function Documentation}
+\hypertarget{executor_8h_a3f7b0fed7fd557786a1659acb618b62e}{
+\index{executor.h@{executor.h}!esapi\_\-execute@{esapi\_\-execute}}
+\index{esapi\_\-execute@{esapi\_\-execute}!executor.h@{executor.h}}
+\subsubsection[{esapi\_\-execute}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ esapi\_\-execute (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{executable, }
+\item[{char $\ast$$\ast$}]{params, }
+\item[{int}]{paramcount, }
+\item[{char $\ast$}]{workdir, }
+\item[{{\bf codec} $\ast$}]{c, }
+\item[{bool}]{logParams}
+\end{DoxyParamCaption}
+)}}
+\label{executor_8h_a3f7b0fed7fd557786a1659acb618b62e}
+
+
+Spawns a new process to execute the given command. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em executable} & The executable filename to be executed. \\
+\hline
+{\em params} & An array of command-\/line parameters \\
+\hline
+{\em paramcount} & The number of parameters \\
+\hline
+{\em workdir} & The working directory for the new process \\
+\hline
+{\em c} & A codec to be used to encode the command string before passing it to the command shell interpreter. \\
+\hline
+{\em logParams} & 1 if the parameter values are to be logged, 0 if not.\\
+\hline
+\end{DoxyParams}
+Spawns a new process to execute the given command.
+
+The exact, absolute, canonical path of each executable must be listed as an approved executable in the ESAPI properties. The executable must also exist on the disk. All failures will be logged, along with parameters if specified. Set the logParams to false if you are going to invoke this interface with confidential information. 
+
+Definition at line 50 of file executor.c.
+
+
+
+References esapi\_\-log\_\-warn(), is\_\-allowed(), and is\_\-canonical().
+

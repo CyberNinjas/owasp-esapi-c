@@ -1,0 +1,76 @@
+\hypertarget{executor_8c}{
+\section{executor.c File Reference}
+\label{executor_8c}\index{executor.c@{executor.c}}
+}
+
+
+A Command Shell Executor module implementation.  
+
+
+{\ttfamily \#include $<$string.h$>$}\par
+{\ttfamily \#include \char`\"{}executor.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}log.h\char`\"{}}\par
+\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{executor_8c_a1b4e8b64e90d32501ab6b2beda370160}{
+\#define {\bfseries EXTRA\_\-COMMANDS}~7}
+\label{executor_8c_a1b4e8b64e90d32501ab6b2beda370160}
+
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{executor_8c_ac5c7a221e287cd668d7258266e1b4204}{
+int \hyperlink{executor_8c_ac5c7a221e287cd668d7258266e1b4204}{is\_\-canonical} (char $\ast$path)}
+\label{executor_8c_ac5c7a221e287cd668d7258266e1b4204}
+
+\begin{DoxyCompactList}\small\item\em Determine whether the given path is canonicalized on this platform, using a POSIX method. \item\end{DoxyCompactList}\item 
+\hypertarget{executor_8c_a184eb96ded7ceb29609cdfa4f4f2e67e}{
+int \hyperlink{executor_8c_a184eb96ded7ceb29609cdfa4f4f2e67e}{is\_\-allowed} (char $\ast$path)}
+\label{executor_8c_a184eb96ded7ceb29609cdfa4f4f2e67e}
+
+\begin{DoxyCompactList}\small\item\em Determine whether the given path is allowed by the configured security policy. \item\end{DoxyCompactList}\item 
+char $\ast$ \hyperlink{executor_8c_a3f7b0fed7fd557786a1659acb618b62e}{esapi\_\-execute} (char $\ast$executable, char $\ast$$\ast$params, int paramcount, char $\ast$workdir, \hyperlink{structcodec}{codec} $\ast$c, bool logParams)
+\begin{DoxyCompactList}\small\item\em The reference implementation sets the work directory, escapes the parameters as per the Codec in use, and then executes the command without using concatenation. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A Command Shell Executor module implementation. \begin{DoxySince}{Since}
+January 30, 2011 
+\end{DoxySince}
+
+
+Definition in file \hyperlink{executor_8c_source}{executor.c}.
+
+
+
+\subsection{Function Documentation}
+\hypertarget{executor_8c_a3f7b0fed7fd557786a1659acb618b62e}{
+\index{executor.c@{executor.c}!esapi\_\-execute@{esapi\_\-execute}}
+\index{esapi\_\-execute@{esapi\_\-execute}!executor.c@{executor.c}}
+\subsubsection[{esapi\_\-execute}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ esapi\_\-execute (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{executable, }
+\item[{char $\ast$$\ast$}]{params, }
+\item[{int}]{paramcount, }
+\item[{char $\ast$}]{workdir, }
+\item[{{\bf codec} $\ast$}]{c, }
+\item[{bool}]{logParams}
+\end{DoxyParamCaption}
+)}}
+\label{executor_8c_a3f7b0fed7fd557786a1659acb618b62e}
+
+
+The reference implementation sets the work directory, escapes the parameters as per the Codec in use, and then executes the command without using concatenation. 
+
+Spawns a new process to execute the given command.
+
+The exact, absolute, canonical path of each executable must be listed as an approved executable in the ESAPI properties. The executable must also exist on the disk. All failures will be logged, along with parameters if specified. Set the logParams to false if you are going to invoke this interface with confidential information. 
+
+Definition at line 50 of file executor.c.
+
+
+
+References esapi\_\-log\_\-warn(), is\_\-allowed(), and is\_\-canonical().
+

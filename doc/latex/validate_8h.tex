@@ -1,0 +1,92 @@
+\hypertarget{validate_8h}{
+\section{validate.h File Reference}
+\label{validate_8h}\index{validate.h@{validate.h}}
+}
+
+
+Validation module header.  
+
+
+{\ttfamily \#include $<$stdlib.h$>$}\par
+{\ttfamily \#include \char`\"{}utlist.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}codec.h\char`\"{}}\par
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{validate_8h_a6ceb12dab20821637537dfaf9c914f01}{is\_\-valid} (char $\ast$, char $\ast$, int)
+\begin{DoxyCompactList}\small\item\em Returns true if the given regular expression matches the given data. \item\end{DoxyCompactList}\item 
+char $\ast$ \hyperlink{validate_8h_a1709fa95d451e057e7c1578e3345094d}{strip\_\-chars} (char $\ast$, char $\ast$)
+\begin{DoxyCompactList}\small\item\em Remove all characters from the given input character array that are also found in the given valid characters array. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Validation module header. The Validation module defines a set of functions for canonicalizing and validating untrusted input. Implementors should feel free to extend this interface to accommodate their own data formats.
+
+Implementations must adopt a \char`\"{}whitelist\char`\"{} approach to validation where a specific pattern or character set is matched. \char`\"{}Blacklist\char`\"{} approaches that attempt to identify the invalid or disallowed characters are much more likely to allow a bypass with encoding or other tricks.
+
+\begin{DoxySince}{Since}
+January 30, 2011 
+\end{DoxySince}
+
+
+Definition in file \hyperlink{validate_8h_source}{validate.h}.
+
+
+
+\subsection{Function Documentation}
+\hypertarget{validate_8h_a6ceb12dab20821637537dfaf9c914f01}{
+\index{validate.h@{validate.h}!is\_\-valid@{is\_\-valid}}
+\index{is\_\-valid@{is\_\-valid}!validate.h@{validate.h}}
+\subsubsection[{is\_\-valid}]{\setlength{\rightskip}{0pt plus 5cm}int is\_\-valid (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{, }
+\item[{char $\ast$}]{, }
+\item[{int}]{}
+\end{DoxyParamCaption}
+)}}
+\label{validate_8h_a6ceb12dab20821637537dfaf9c914f01}
+
+
+Returns true if the given regular expression matches the given data. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input} & A character array containing the user input data to validate. \\
+\hline
+{\em type} & The regular expression name that maps to the actual regular expression from \char`\"{}ESAPI.properties\char`\"{}. \\
+\hline
+{\em flags} & May be the bitwise-\/or of one or more of the following: REG\_\-EXTENDED, REG\_\-ICASE, REG\_\-NOSUB, REG\_\-NEWLINE. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on successful completion, or nonzero to indicate an error. 
+\end{DoxyReturn}
+
+
+Definition at line 60 of file validate.c.
+
+\hypertarget{validate_8h_a1709fa95d451e057e7c1578e3345094d}{
+\index{validate.h@{validate.h}!strip\_\-chars@{strip\_\-chars}}
+\index{strip\_\-chars@{strip\_\-chars}!validate.h@{validate.h}}
+\subsubsection[{strip\_\-chars}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ strip\_\-chars (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{, }
+\item[{char $\ast$}]{}
+\end{DoxyParamCaption}
+)}}
+\label{validate_8h_a1709fa95d451e057e7c1578e3345094d}
+
+
+Remove all characters from the given input character array that are also found in the given valid characters array. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input} & A character array containing the user input data to validate. \\
+\hline
+{\em valid\_\-chars} & A character array containing the characters to strip. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 38 of file validate.c.
+

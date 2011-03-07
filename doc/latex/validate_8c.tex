@@ -1,0 +1,121 @@
+\hypertarget{validate_8c}{
+\section{validate.c File Reference}
+\label{validate_8c}\index{validate.c@{validate.c}}
+}
+
+
+A Validation module implementation.  
+
+
+{\ttfamily \#include $<$stdio.h$>$}\par
+{\ttfamily \#include $<$stdlib.h$>$}\par
+{\ttfamily \#include $<$string.h$>$}\par
+{\ttfamily \#include $<$regex.h$>$}\par
+{\ttfamily \#include \char`\"{}validate.h\char`\"{}}\par
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structelement}{element}
+\begin{DoxyCompactList}\small\item\em A precompiled regex cache entry. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{validate_8c_aac687df386c3a390580b9fbc6fec9133}{
+typedef struct \hyperlink{structelement}{element} \hyperlink{validate_8c_aac687df386c3a390580b9fbc6fec9133}{element}}
+\label{validate_8c_aac687df386c3a390580b9fbc6fec9133}
+
+\begin{DoxyCompactList}\small\item\em A precompiled regex cache entry. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{validate_8c_a397e85d9e86a5aaedbfdaab580b48413}{
+int {\bfseries \_\-cmp\_\-ele} (\hyperlink{structelement}{element} $\ast$a, \hyperlink{structelement}{element} $\ast$b)}
+\label{validate_8c_a397e85d9e86a5aaedbfdaab580b48413}
+
+\item 
+\hypertarget{validate_8c_aabea0511cd8ba645474823a2d1f68edc}{
+int {\bfseries contains\_\-char} (char $\ast$s, char c)}
+\label{validate_8c_aabea0511cd8ba645474823a2d1f68edc}
+
+\item 
+char $\ast$ \hyperlink{validate_8c_a987017498608ffcf2fff41bcacebf9a1}{strip\_\-chars} (char $\ast$s, char $\ast$valid\_\-chars)
+\begin{DoxyCompactList}\small\item\em Remove all characters from the given input character array that are also found in the given valid characters array. \item\end{DoxyCompactList}\item 
+int \hyperlink{validate_8c_aaa77ec5fa9d4763d0a17f3b09d3a4f22}{is\_\-valid} (char $\ast$input, char $\ast$regex, int flags)
+\begin{DoxyCompactList}\small\item\em Returns true if the given regular expression matches the given data. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{validate_8c_a26693560ab72b442970b150073a2bb4a}{
+\hyperlink{structelement}{element} $\ast$ \hyperlink{validate_8c_a26693560ab72b442970b150073a2bb4a}{pattern\_\-list} = NULL}
+\label{validate_8c_a26693560ab72b442970b150073a2bb4a}
+
+\begin{DoxyCompactList}\small\item\em A cache of pre-\/compiled regex's stored as doubly-\/linked list. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A Validation module implementation. \begin{DoxySince}{Since}
+January 30, 2011 
+\end{DoxySince}
+
+
+Definition in file \hyperlink{validate_8c_source}{validate.c}.
+
+
+
+\subsection{Function Documentation}
+\hypertarget{validate_8c_aaa77ec5fa9d4763d0a17f3b09d3a4f22}{
+\index{validate.c@{validate.c}!is\_\-valid@{is\_\-valid}}
+\index{is\_\-valid@{is\_\-valid}!validate.c@{validate.c}}
+\subsubsection[{is\_\-valid}]{\setlength{\rightskip}{0pt plus 5cm}int is\_\-valid (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{, }
+\item[{char $\ast$}]{, }
+\item[{int}]{}
+\end{DoxyParamCaption}
+)}}
+\label{validate_8c_aaa77ec5fa9d4763d0a17f3b09d3a4f22}
+
+
+Returns true if the given regular expression matches the given data. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input} & A character array containing the user input data to validate. \\
+\hline
+{\em type} & The regular expression name that maps to the actual regular expression from \char`\"{}ESAPI.properties\char`\"{}. \\
+\hline
+{\em flags} & May be the bitwise-\/or of one or more of the following: REG\_\-EXTENDED, REG\_\-ICASE, REG\_\-NOSUB, REG\_\-NEWLINE. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on successful completion, or nonzero to indicate an error. 
+\end{DoxyReturn}
+
+
+Definition at line 60 of file validate.c.
+
+\hypertarget{validate_8c_a987017498608ffcf2fff41bcacebf9a1}{
+\index{validate.c@{validate.c}!strip\_\-chars@{strip\_\-chars}}
+\index{strip\_\-chars@{strip\_\-chars}!validate.c@{validate.c}}
+\subsubsection[{strip\_\-chars}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ strip\_\-chars (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{, }
+\item[{char $\ast$}]{}
+\end{DoxyParamCaption}
+)}}
+\label{validate_8c_a987017498608ffcf2fff41bcacebf9a1}
+
+
+Remove all characters from the given input character array that are also found in the given valid characters array. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input} & A character array containing the user input data to validate. \\
+\hline
+{\em valid\_\-chars} & A character array containing the characters to strip. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 38 of file validate.c.
+

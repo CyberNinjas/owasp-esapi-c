@@ -1,0 +1,100 @@
+\hypertarget{log_8c}{
+\section{log.c File Reference}
+\label{log_8c}\index{log.c@{log.c}}
+}
+
+
+A Logging module implementation.  
+
+
+{\ttfamily \#include $<$stdlib.h$>$}\par
+{\ttfamily \#include $<$string.h$>$}\par
+{\ttfamily \#include \char`\"{}log.h\char`\"{}}\par
+\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{log_8c_afc1987e4c0cbafbdb7d54201f2ea68d8}{
+\#define {\bfseries DEFAULT\_\-LOG\_\-CATEGORY\_\-NAME}~\char`\"{}log4c.category.default\char`\"{}}
+\label{log_8c_afc1987e4c0cbafbdb7d54201f2ea68d8}
+
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{log_8c_ab975df1c95e9ffb147adb3c00709f00a}{
+int \hyperlink{log_8c_ab975df1c95e9ffb147adb3c00709f00a}{esapi\_\-open\_\-log} ()}
+\label{log_8c_ab975df1c95e9ffb147adb3c00709f00a}
+
+\begin{DoxyCompactList}\small\item\em Enables logging for this process. \item\end{DoxyCompactList}\item 
+\hypertarget{log_8c_abdc3d2900ce4e7a28fa4e66239ed17ec}{
+int \hyperlink{log_8c_abdc3d2900ce4e7a28fa4e66239ed17ec}{esapi\_\-close\_\-log} ()}
+\label{log_8c_abdc3d2900ce4e7a28fa4e66239ed17ec}
+
+\begin{DoxyCompactList}\small\item\em Disables logging for this process. \item\end{DoxyCompactList}\item 
+\hypertarget{log_8c_a5613839e7a006296f7c5ee1a883a18c1}{
+void {\bfseries \_\-log} (int priority, const \hyperlink{struct_user__t}{user} $\ast$u, int type, const char $\ast$fmt,...)}
+\label{log_8c_a5613839e7a006296f7c5ee1a883a18c1}
+
+\item 
+\hypertarget{log_8c_a3395950b0fbf5f7e554abed9f9ea34b3}{
+void \hyperlink{log_8c_a3395950b0fbf5f7e554abed9f9ea34b3}{esapi\_\-log\_\-trace} (const \hyperlink{struct_user__t}{user} $\ast$u, int type, const char $\ast$fmt,...)}
+\label{log_8c_a3395950b0fbf5f7e554abed9f9ea34b3}
+
+\begin{DoxyCompactList}\small\item\em Log a TRACE level message. \item\end{DoxyCompactList}\item 
+\hypertarget{log_8c_a64e4fead7f5b15a1212426554a216988}{
+void \hyperlink{log_8c_a64e4fead7f5b15a1212426554a216988}{esapi\_\-log\_\-debug} (const \hyperlink{struct_user__t}{user} $\ast$u, int type, const char $\ast$fmt,...)}
+\label{log_8c_a64e4fead7f5b15a1212426554a216988}
+
+\begin{DoxyCompactList}\small\item\em Log a DEBUG level message. \item\end{DoxyCompactList}\item 
+\hypertarget{log_8c_a1fce2f8a720b464fbae6e26d7aef1106}{
+void \hyperlink{log_8c_a1fce2f8a720b464fbae6e26d7aef1106}{esapi\_\-log\_\-info} (const \hyperlink{struct_user__t}{user} $\ast$u, int type, const char $\ast$fmt,...)}
+\label{log_8c_a1fce2f8a720b464fbae6e26d7aef1106}
+
+\begin{DoxyCompactList}\small\item\em Log an INFO level message. \item\end{DoxyCompactList}\item 
+\hypertarget{log_8c_a5efccf5b8af57403047bfd4972ebed7e}{
+void \hyperlink{log_8c_a5efccf5b8af57403047bfd4972ebed7e}{esapi\_\-log\_\-warn} (const \hyperlink{struct_user__t}{user} $\ast$u, int type, const char $\ast$fmt,...)}
+\label{log_8c_a5efccf5b8af57403047bfd4972ebed7e}
+
+\begin{DoxyCompactList}\small\item\em Log a WARN level message. \item\end{DoxyCompactList}\item 
+\hypertarget{log_8c_a050bd990c3d3a5bc65ea0e706d852d47}{
+void \hyperlink{log_8c_a050bd990c3d3a5bc65ea0e706d852d47}{esapi\_\-log\_\-error} (const \hyperlink{struct_user__t}{user} $\ast$u, int type, const char $\ast$fmt,...)}
+\label{log_8c_a050bd990c3d3a5bc65ea0e706d852d47}
+
+\begin{DoxyCompactList}\small\item\em Log an ERROR level message. \item\end{DoxyCompactList}\item 
+\hypertarget{log_8c_a6d3279b03b2519c82f311f22bad9f02a}{
+void \hyperlink{log_8c_a6d3279b03b2519c82f311f22bad9f02a}{esapi\_\-log\_\-fatal} (const \hyperlink{struct_user__t}{user} $\ast$u, int type, const char $\ast$fmt,...)}
+\label{log_8c_a6d3279b03b2519c82f311f22bad9f02a}
+
+\begin{DoxyCompactList}\small\item\em Log a FATAL level message. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+char $\ast$ {\bfseries eventTypeNames} \mbox{[}$\,$\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A Logging module implementation. \begin{DoxySince}{Since}
+January 30, 2011 
+\end{DoxySince}
+
+
+Definition in file \hyperlink{log_8c_source}{log.c}.
+
+
+
+\subsection{Variable Documentation}
+\hypertarget{log_8c_ae564bc2e377cef47f3f59effdf411c90}{
+\index{log.c@{log.c}!eventTypeNames@{eventTypeNames}}
+\index{eventTypeNames@{eventTypeNames}!log.c@{log.c}}
+\subsubsection[{eventTypeNames}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ eventTypeNames\mbox{[}$\,$\mbox{]}}}
+\label{log_8c_ae564bc2e377cef47f3f59effdf411c90}
+{\bfseries Initial value:}
+\begin{DoxyCode}
+ { "SECURITY_SUCCESS", "SECURITY_FAILURE",
+                "EVENT_SUCCESS", "EVENT_FAILURE" }
+\end{DoxyCode}
+
+
+Definition at line 15 of file log.c.
+

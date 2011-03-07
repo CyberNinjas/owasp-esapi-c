@@ -1,0 +1,47 @@
+\label{todo__todo000001}
+\hypertarget{todo__todo000001}{}
+ 
+\begin{DoxyDescription}
+\item[File \hyperlink{access__ref_8c}{access\_\-ref.c} ]To support more than one reference map per process, remove the global map\_\-t variables and change all functions to take a parameter that is an array of two map\_\-t handles.
+
+The put function should be replaced by an add function that take only a value param (plus the map).
+
+\hyperlink{crypto_8c_ac5f468de6f8d67ebb7c6cb85f74f9654}{esapi\_\-fill\_\-random\_\-token()} does not really need an ESAPI context parameter, but its signature asks for one.
+\end{DoxyDescription}
+
+\label{todo__todo000004}
+\hypertarget{todo__todo000004}{}
+ 
+\begin{DoxyDescription}
+\item[File \hyperlink{canonicalize_8c}{canonicalize.c} ]This module is unfinished. When it is fixed, OS command shell encoding can be performed by \hyperlink{executor_8c_a3f7b0fed7fd557786a1659acb618b62e}{esapi\_\-execute()}.
+
+If it is feasible, the Base64 encoding module could be refactored into a Base64 codec.
+\end{DoxyDescription}
+
+\label{todo__todo000008}
+\hypertarget{todo__todo000008}{}
+ 
+\begin{DoxyDescription}
+\item[Global \hyperlink{crypto_8c_a53d8171b09003a778a85ab3b80af27c1}{decrypt\_\-and\_\-verify}(struct \hyperlink{structesapi__ctx}{esapi\_\-ctx} $\ast$ctx, void $\ast$msg, int len) ]Implement. 
+\end{DoxyDescription}
+
+\label{todo__todo000007}
+\hypertarget{todo__todo000007}{}
+ 
+\begin{DoxyDescription}
+\item[Global \hyperlink{crypto_8c_ad06f6e3f52cf7134df20ea3eabb8dc6d}{encrypt\_\-and\_\-sign}(struct \hyperlink{structesapi__ctx}{esapi\_\-ctx} $\ast$ctx, void $\ast$msg, int len) ]Implement. 
+\end{DoxyDescription}
+
+\label{todo__todo000006}
+\hypertarget{todo__todo000006}{}
+ 
+\begin{DoxyDescription}
+\item[Global \hyperlink{crypto_8h_a1e94cd3ef8231c36612a5c995ccd107a}{esapi\_\-verify\_\-signature}(struct \hyperlink{structesapi__ctx}{esapi\_\-ctx} $\ast$, void $\ast$, int, gcry\_\-sexp\_\-t $\ast$) ]Fix to pass valid gcry\_\-sexp\_\-t parameters. 
+\end{DoxyDescription}
+
+\label{todo__todo000009}
+\hypertarget{todo__todo000009}{}
+ 
+\begin{DoxyDescription}
+\item[Global \hyperlink{access__ref_8h_a86369bddee02e95701be9bcca71cc1cf}{VAL\_\-LEN} ]Change to support dynamically sized values. 
+\end{DoxyDescription}

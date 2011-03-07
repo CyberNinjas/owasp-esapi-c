@@ -1,0 +1,89 @@
+\hypertarget{canonicalize_8c}{
+\section{canonicalize.c File Reference}
+\label{canonicalize_8c}\index{canonicalize.c@{canonicalize.c}}
+}
+
+
+A Canonicalization module implementation.  
+
+
+{\ttfamily \#include $<$stdio.h$>$}\par
+{\ttfamily \#include $<$stdlib.h$>$}\par
+{\ttfamily \#include $<$string.h$>$}\par
+{\ttfamily \#include $<$stdbool.h$>$}\par
+{\ttfamily \#include \char`\"{}codec.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}canonicalize.h\char`\"{}}\par
+\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{canonicalize_8c_aefd35ae60b480be155e4c3c305ba0e53}{
+\#define {\bfseries GROW\_\-LEN}~32}
+\label{canonicalize_8c_aefd35ae60b480be155e4c3c305ba0e53}
+
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{canonicalize_8c_a38f1e0a577f0cf38c0a144020cde3f97}{
+char $\ast$ {\bfseries straight\_\-port\_\-decode} (\hyperlink{structcodec}{codec} $\ast$c, char $\ast$input)}
+\label{canonicalize_8c_a38f1e0a577f0cf38c0a144020cde3f97}
+
+\item 
+\hypertarget{canonicalize_8c_a9acab093c38013de7bfcdb738447575e}{
+char $\ast$ {\bfseries straight\_\-port\_\-encode} (\hyperlink{structcodec}{codec} $\ast$c, char $\ast$input)}
+\label{canonicalize_8c_a9acab093c38013de7bfcdb738447575e}
+
+\item 
+\hypertarget{canonicalize_8c_af09351749813109f5b7a19293c328a02}{
+char $\ast$ {\bfseries \_\-codec\_\-decode} (\hyperlink{structcodec}{codec} $\ast$c, char $\ast$s)}
+\label{canonicalize_8c_af09351749813109f5b7a19293c328a02}
+
+\item 
+\hypertarget{canonicalize_8c_a668e9d562c414fe97ea3cc855eb208c8}{
+char $\ast$ {\bfseries \_\-codec\_\-encode} (\hyperlink{structcodec}{codec} $\ast$c, char $\ast$s)}
+\label{canonicalize_8c_a668e9d562c414fe97ea3cc855eb208c8}
+
+\item 
+char $\ast$ \hyperlink{canonicalize_8c_a5f24e36f844d85ce38bb26fb71d0e7ba}{esapi\_\-canonicalize} (const char $\ast$input, \hyperlink{structcodec}{codec} $\ast$codecs, int codec\_\-count, bool strict)
+\begin{DoxyCompactList}\small\item\em Fully decode the given character array with the given codecs. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A Canonicalization module implementation. \begin{Desc}
+\item[\hyperlink{todo__todo000004}{Todo}]This module is unfinished. When it is fixed, OS command shell encoding can be performed by \hyperlink{executor_8c_a3f7b0fed7fd557786a1659acb618b62e}{esapi\_\-execute()}.\end{Desc}
+
+
+\begin{Desc}
+\item[\hyperlink{todo__todo000005}{Todo}]If it is feasible, the Base64 encoding module could be refactored into a Base64 codec.\end{Desc}
+
+
+\begin{DoxySince}{Since}
+January 30, 2011 
+\end{DoxySince}
+
+
+Definition in file \hyperlink{canonicalize_8c_source}{canonicalize.c}.
+
+
+
+\subsection{Function Documentation}
+\hypertarget{canonicalize_8c_a5f24e36f844d85ce38bb26fb71d0e7ba}{
+\index{canonicalize.c@{canonicalize.c}!esapi\_\-canonicalize@{esapi\_\-canonicalize}}
+\index{esapi\_\-canonicalize@{esapi\_\-canonicalize}!canonicalize.c@{canonicalize.c}}
+\subsubsection[{esapi\_\-canonicalize}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ esapi\_\-canonicalize (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{, }
+\item[{{\bf codec} $\ast$}]{, }
+\item[{int}]{, }
+\item[{bool}]{}
+\end{DoxyParamCaption}
+)}}
+\label{canonicalize_8c_a5f24e36f844d85ce38bb26fb71d0e7ba}
+
+
+Fully decode the given character array with the given codecs. 
+
+This function will successfully decode strings that have been encoded with multiple codecs as well as multiple times with any one codec. 
+
+Definition at line 120 of file canonicalize.c.
+

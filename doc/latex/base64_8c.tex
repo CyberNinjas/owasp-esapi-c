@@ -1,0 +1,87 @@
+\hypertarget{base64_8c}{
+\section{base64.c File Reference}
+\label{base64_8c}\index{base64.c@{base64.c}}
+}
+
+
+A Base64 Encoding module implementation.  
+
+
+{\ttfamily \#include \char`\"{}base64.h\char`\"{}}\par
+{\ttfamily \#include $<$stdlib.h$>$}\par
+{\ttfamily \#include $<$limits.h$>$}\par
+\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{base64_8c_a6efb717563bf5814129fb1058d1dfdb3}{
+\#define {\bfseries B64}(\_\-)}
+\label{base64_8c_a6efb717563bf5814129fb1058d1dfdb3}
+
+\item 
+\hypertarget{base64_8c_a12c6c1b0c78f82cbe2ee3508b1c25f37}{
+\#define {\bfseries uchar\_\-in\_\-range}(c)~((c) $<$= 255)}
+\label{base64_8c_a12c6c1b0c78f82cbe2ee3508b1c25f37}
+
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{base64_8c_ab117258da772b7fd1216fe8977bdf9d3}{
+void \hyperlink{base64_8c_ab117258da772b7fd1216fe8977bdf9d3}{base64\_\-encode} (const char $\ast$in, size\_\-t inlen, char $\ast$out, size\_\-t outlen)}
+\label{base64_8c_ab117258da772b7fd1216fe8977bdf9d3}
+
+\begin{DoxyCompactList}\small\item\em Base64 encodes the given input character array to the given output buffer. \item\end{DoxyCompactList}\item 
+\hypertarget{base64_8c_a92defcaa0a8431412af6455b2af574fa}{
+size\_\-t {\bfseries base64\_\-encode\_\-alloc} (const char $\ast$in, size\_\-t inlen, char $\ast$$\ast$out)}
+\label{base64_8c_a92defcaa0a8431412af6455b2af574fa}
+
+\item 
+\hypertarget{base64_8c_a2201d7841d9cd66d51b4019c2ba6f11e}{
+bool \hyperlink{base64_8c_a2201d7841d9cd66d51b4019c2ba6f11e}{isbase64} (char ch)}
+\label{base64_8c_a2201d7841d9cd66d51b4019c2ba6f11e}
+
+\begin{DoxyCompactList}\small\item\em Determines if the given character is within the Base64 encoding character set. \item\end{DoxyCompactList}\item 
+\hypertarget{base64_8c_a57eea193bb0b15a310d03fb9e4f619ca}{
+bool \hyperlink{base64_8c_a57eea193bb0b15a310d03fb9e4f619ca}{base64\_\-decode} (const char $\ast$in, size\_\-t inlen, char $\ast$out, size\_\-t $\ast$outlen)}
+\label{base64_8c_a57eea193bb0b15a310d03fb9e4f619ca}
+
+\begin{DoxyCompactList}\small\item\em Base64 decodes the given input character array to the given output buffer. \item\end{DoxyCompactList}\item 
+\hypertarget{base64_8c_afd74181b0bc4548e6d655d78b19c0949}{
+bool {\bfseries base64\_\-decode\_\-alloc} (const char $\ast$in, size\_\-t inlen, char $\ast$$\ast$out, size\_\-t $\ast$outlen)}
+\label{base64_8c_afd74181b0bc4548e6d655d78b19c0949}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A Base64 Encoding module implementation. Written by Simon Josefsson. Partially adapted from GNU MailUtils (mailbox/filter\_\-trans.c, as of 2004-\/11-\/28). Improved by review from Paul Eggert, Bruno Haible, and Stepan Kasal.
+
+See also RFC 3548 $<$\href{http://www.ietf.org/rfc/rfc3548.txt}{\tt http://www.ietf.org/rfc/rfc3548.txt}$>$.
+
+Be careful with error checking. Here is how you would typically use these functions:
+
+
+\begin{DoxyCode}
+ bool ok = base64_decode_alloc (in, inlen, &out, &outlen);
+ if (!ok)
+   FAIL: input was not valid base64
+ if (out == NULL)
+   FAIL: memory allocation error
+ OK: data in OUT/OUTLEN
+
+ size_t outlen = base64_encode_alloc (in, inlen, &out);
+ if (out == NULL && outlen == 0 && inlen != 0)
+   FAIL: input too long
+ if (out == NULL)
+   FAIL: memory allocation error
+ OK: data in OUT/OUTLEN.
+\end{DoxyCode}
+
+
+\begin{DoxySince}{Since}
+January 30, 2011 
+\end{DoxySince}
+
+
+Definition in file \hyperlink{base64_8c_source}{base64.c}.
+

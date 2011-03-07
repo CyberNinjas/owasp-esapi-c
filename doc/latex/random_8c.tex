@@ -1,0 +1,129 @@
+\hypertarget{random_8c}{
+\section{chalkboard/random.c File Reference}
+\label{random_8c}\index{chalkboard/random.c@{chalkboard/random.c}}
+}
+\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{random_8c_a0240ac851181b84ac374872dc5434ee4}{N}~624
+\item 
+\#define \hyperlink{random_8c_a52037c938e3c1b126c6277da5ca689d0}{M}~397
+\item 
+\#define \hyperlink{random_8c_a955f504eccf76b4eb2489c0adab03121}{A}~0x9908b0dfUL
+\item 
+\#define \hyperlink{random_8c_affc9cbf86b78292bdb405361761c47f5}{U}~0x80000000UL
+\item 
+\#define \hyperlink{random_8c_aa73214aa5f2f94f63d90bb4e3d99fe53}{L}~0x7fffffffUL
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{random_8c_a6e9c1fcb474b161e8e0f5a561c021afe}{jsw\_\-seed} (unsigned long \hyperlink{access__ref_8c_aa550a47fb2967d97d34558af5d3cea90}{s})
+\item 
+unsigned long \hyperlink{random_8c_a72fbccc5e69a81a8ff0b299ea7537fc0}{jsw\_\-rand} (void)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static unsigned long \hyperlink{random_8c_a58e465ec6fe9e944829b40e7101defdf}{x} \mbox{[}N\mbox{]}
+\item 
+static int \hyperlink{random_8c_a142a1b51e133e50c0a72b175958ac412}{next}
+\end{DoxyCompactItemize}
+
+
+\subsection{Define Documentation}
+\hypertarget{random_8c_a955f504eccf76b4eb2489c0adab03121}{
+\index{random.c@{random.c}!A@{A}}
+\index{A@{A}!random.c@{random.c}}
+\subsubsection[{A}]{\setlength{\rightskip}{0pt plus 5cm}\#define A~0x9908b0dfUL}}
+\label{random_8c_a955f504eccf76b4eb2489c0adab03121}
+
+
+Definition at line 15 of file random.c.
+
+\hypertarget{random_8c_aa73214aa5f2f94f63d90bb4e3d99fe53}{
+\index{random.c@{random.c}!L@{L}}
+\index{L@{L}!random.c@{random.c}}
+\subsubsection[{L}]{\setlength{\rightskip}{0pt plus 5cm}\#define L~0x7fffffffUL}}
+\label{random_8c_aa73214aa5f2f94f63d90bb4e3d99fe53}
+
+
+Definition at line 17 of file random.c.
+
+\hypertarget{random_8c_a52037c938e3c1b126c6277da5ca689d0}{
+\index{random.c@{random.c}!M@{M}}
+\index{M@{M}!random.c@{random.c}}
+\subsubsection[{M}]{\setlength{\rightskip}{0pt plus 5cm}\#define M~397}}
+\label{random_8c_a52037c938e3c1b126c6277da5ca689d0}
+
+
+Definition at line 14 of file random.c.
+
+\hypertarget{random_8c_a0240ac851181b84ac374872dc5434ee4}{
+\index{random.c@{random.c}!N@{N}}
+\index{N@{N}!random.c@{random.c}}
+\subsubsection[{N}]{\setlength{\rightskip}{0pt plus 5cm}\#define N~624}}
+\label{random_8c_a0240ac851181b84ac374872dc5434ee4}
+
+
+Definition at line 13 of file random.c.
+
+\hypertarget{random_8c_affc9cbf86b78292bdb405361761c47f5}{
+\index{random.c@{random.c}!U@{U}}
+\index{U@{U}!random.c@{random.c}}
+\subsubsection[{U}]{\setlength{\rightskip}{0pt plus 5cm}\#define U~0x80000000UL}}
+\label{random_8c_affc9cbf86b78292bdb405361761c47f5}
+
+
+Definition at line 16 of file random.c.
+
+
+
+\subsection{Function Documentation}
+\hypertarget{random_8c_a72fbccc5e69a81a8ff0b299ea7537fc0}{
+\index{random.c@{random.c}!jsw\_\-rand@{jsw\_\-rand}}
+\index{jsw\_\-rand@{jsw\_\-rand}!random.c@{random.c}}
+\subsubsection[{jsw\_\-rand}]{\setlength{\rightskip}{0pt plus 5cm}unsigned long jsw\_\-rand (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}
+\label{random_8c_a72fbccc5e69a81a8ff0b299ea7537fc0}
+
+
+Definition at line 36 of file random.c.
+
+\hypertarget{random_8c_a6e9c1fcb474b161e8e0f5a561c021afe}{
+\index{random.c@{random.c}!jsw\_\-seed@{jsw\_\-seed}}
+\index{jsw\_\-seed@{jsw\_\-seed}!random.c@{random.c}}
+\subsubsection[{jsw\_\-seed}]{\setlength{\rightskip}{0pt plus 5cm}void jsw\_\-seed (
+\begin{DoxyParamCaption}
+\item[{unsigned long}]{s}
+\end{DoxyParamCaption}
+)}}
+\label{random_8c_a6e9c1fcb474b161e8e0f5a561c021afe}
+
+
+Definition at line 22 of file random.c.
+
+
+
+\subsection{Variable Documentation}
+\hypertarget{random_8c_a142a1b51e133e50c0a72b175958ac412}{
+\index{random.c@{random.c}!next@{next}}
+\index{next@{next}!random.c@{random.c}}
+\subsubsection[{next}]{\setlength{\rightskip}{0pt plus 5cm}int next\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}
+\label{random_8c_a142a1b51e133e50c0a72b175958ac412}
+
+
+Definition at line 20 of file random.c.
+
+\hypertarget{random_8c_a58e465ec6fe9e944829b40e7101defdf}{
+\index{random.c@{random.c}!x@{x}}
+\index{x@{x}!random.c@{random.c}}
+\subsubsection[{x}]{\setlength{\rightskip}{0pt plus 5cm}unsigned long {\bf x}\mbox{[}N\mbox{]}\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}
+\label{random_8c_a58e465ec6fe9e944829b40e7101defdf}
+
+
+Definition at line 19 of file random.c.
+

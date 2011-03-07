@@ -1,0 +1,229 @@
+\hypertarget{access__ref_8c}{
+\section{access\_\-ref.c File Reference}
+\label{access__ref_8c}\index{access\_\-ref.c@{access\_\-ref.c}}
+}
+
+
+An Access Reference Map module implementation.  
+
+
+{\ttfamily \#include $<$stdio.h$>$}\par
+{\ttfamily \#include $<$stdlib.h$>$}\par
+{\ttfamily \#include $<$string.h$>$}\par
+{\ttfamily \#include \char`\"{}access\_\-ref.h\char`\"{}}\par
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{access__ref_8c_a09a0c7099fbd6f21c0022600ad8b7ae7}{
+bool {\bfseries \_\-unique\_\-keys} (const char $\ast$k, const char $\ast$v)}
+\label{access__ref_8c_a09a0c7099fbd6f21c0022600ad8b7ae7}
+
+\item 
+char $\ast$ \hyperlink{access__ref_8c_a4d889ca0c707d3511ad3ab37e635e2ed}{esapi\_\-get\_\-indirect\_\-reference} (const char $\ast$direct)
+\begin{DoxyCompactList}\small\item\em Returns the indirect object reference for the given direct object reference. \item\end{DoxyCompactList}\item 
+char $\ast$ \hyperlink{access__ref_8c_ac26f148444cf19d2955cbfa533b65fbc}{esapi\_\-get\_\-direct\_\-reference} (const char $\ast$indirect)
+\begin{DoxyCompactList}\small\item\em Returns the direct object reference (original value) for the given indirect object reference. \item\end{DoxyCompactList}\item 
+bool \hyperlink{access__ref_8c_a580941b4c0d256df2c29addd8e600cbc}{esapi\_\-remove\_\-indirect\_\-reference} (const char $\ast$indirect)
+\begin{DoxyCompactList}\small\item\em Removes the indirect object reference from the map. \item\end{DoxyCompactList}\item 
+bool \hyperlink{access__ref_8c_a6b9c97d62946298b05badea3dfec1ce8}{esapi\_\-remove\_\-direct\_\-reference} (const char $\ast$direct)
+\begin{DoxyCompactList}\small\item\em Removes the direct object reference from the map. \item\end{DoxyCompactList}\item 
+bool \hyperlink{access__ref_8c_a71ca073c6f65845225035a100051bc0d}{esapi\_\-put\_\-reference} (const char $\ast$k, const char $\ast$v)
+\begin{DoxyCompactList}\small\item\em Adds an entry to the map. \item\end{DoxyCompactList}\item 
+char $\ast$ \hyperlink{access__ref_8c_a040da60c053ba72839be5a7824bd8d4b}{esapi\_\-get\_\-unique\_\-reference} ()
+\begin{DoxyCompactList}\small\item\em Return a unique token string suitable for use as an indirect reference. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{access__ref_8c_aa9002aaaac025497dd7f9546a46d7dd9}{
+\hyperlink{struct_map__t}{map\_\-t} $\ast$ \hyperlink{access__ref_8c_aa9002aaaac025497dd7f9546a46d7dd9}{v\_\-map} = NULL}
+\label{access__ref_8c_aa9002aaaac025497dd7f9546a46d7dd9}
+
+\begin{DoxyCompactList}\small\item\em Value-\/to-\/key map. \item\end{DoxyCompactList}\item 
+\hypertarget{access__ref_8c_a2f95b767fe7a7a166cc726b59799c0de}{
+\hyperlink{struct_map__t}{map\_\-t} $\ast$ \hyperlink{access__ref_8c_a2f95b767fe7a7a166cc726b59799c0de}{k\_\-map} = NULL}
+\label{access__ref_8c_a2f95b767fe7a7a166cc726b59799c0de}
+
+\begin{DoxyCompactList}\small\item\em Key-\/to-\/value map. \item\end{DoxyCompactList}\item 
+\hypertarget{access__ref_8c_aa550a47fb2967d97d34558af5d3cea90}{
+\hyperlink{struct_map__t}{map\_\-t} $\ast$ {\bfseries s}}
+\label{access__ref_8c_aa550a47fb2967d97d34558af5d3cea90}
+
+\item 
+\hypertarget{access__ref_8c_ad2e72bf0fcbf834f471b9e8f771947b9}{
+\hyperlink{struct_map__t}{map\_\-t} $\ast$ {\bfseries f}}
+\label{access__ref_8c_ad2e72bf0fcbf834f471b9e8f771947b9}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+An Access Reference Map module implementation. The reference implementation is based on 2 uthash hashmaps to support two-\/way lookups (direct-\/to-\/indirect and indirect-\/to-\/direct). The indirect reference generator produces random keys. A custom implementation might alternatively provide a generator for incrementing integer keys.
+
+\begin{Desc}
+\item[\hyperlink{todo__todo000001}{Todo}]To support more than one reference map per process, remove the global map\_\-t variables and change all functions to take a parameter that is an array of two map\_\-t handles.\end{Desc}
+
+
+\begin{Desc}
+\item[\hyperlink{todo__todo000002}{Todo}]The put function should be replaced by an add function that take only a value param (plus the map).\end{Desc}
+
+
+\begin{Desc}
+\item[\hyperlink{todo__todo000003}{Todo}]\hyperlink{crypto_8c_ac5f468de6f8d67ebb7c6cb85f74f9654}{esapi\_\-fill\_\-random\_\-token()} does not really need an ESAPI context parameter, but its signature asks for one.\end{Desc}
+
+
+\begin{DoxySince}{Since}
+January 30, 2011 
+\end{DoxySince}
+
+
+Definition in file \hyperlink{access__ref_8c_source}{access\_\-ref.c}.
+
+
+
+\subsection{Function Documentation}
+\hypertarget{access__ref_8c_ac26f148444cf19d2955cbfa533b65fbc}{
+\index{access\_\-ref.c@{access\_\-ref.c}!esapi\_\-get\_\-direct\_\-reference@{esapi\_\-get\_\-direct\_\-reference}}
+\index{esapi\_\-get\_\-direct\_\-reference@{esapi\_\-get\_\-direct\_\-reference}!access_ref.c@{access\_\-ref.c}}
+\subsubsection[{esapi\_\-get\_\-direct\_\-reference}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ esapi\_\-get\_\-direct\_\-reference (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{}
+\end{DoxyParamCaption}
+)}}
+\label{access__ref_8c_ac26f148444cf19d2955cbfa533b65fbc}
+
+
+Returns the direct object reference (original value) for the given indirect object reference. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em A} & character array containing an indirect object reference \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A character array containing a direct object reference 
+\end{DoxyReturn}
+
+
+Definition at line 64 of file access\_\-ref.c.
+
+\hypertarget{access__ref_8c_a4d889ca0c707d3511ad3ab37e635e2ed}{
+\index{access\_\-ref.c@{access\_\-ref.c}!esapi\_\-get\_\-indirect\_\-reference@{esapi\_\-get\_\-indirect\_\-reference}}
+\index{esapi\_\-get\_\-indirect\_\-reference@{esapi\_\-get\_\-indirect\_\-reference}!access_ref.c@{access\_\-ref.c}}
+\subsubsection[{esapi\_\-get\_\-indirect\_\-reference}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ esapi\_\-get\_\-indirect\_\-reference (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{}
+\end{DoxyParamCaption}
+)}}
+\label{access__ref_8c_a4d889ca0c707d3511ad3ab37e635e2ed}
+
+
+Returns the indirect object reference for the given direct object reference. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em A} & character array containing a direct object reference \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A character array containing an indirect object reference 
+\end{DoxyReturn}
+
+
+Definition at line 50 of file access\_\-ref.c.
+
+\hypertarget{access__ref_8c_a040da60c053ba72839be5a7824bd8d4b}{
+\index{access\_\-ref.c@{access\_\-ref.c}!esapi\_\-get\_\-unique\_\-reference@{esapi\_\-get\_\-unique\_\-reference}}
+\index{esapi\_\-get\_\-unique\_\-reference@{esapi\_\-get\_\-unique\_\-reference}!access_ref.c@{access\_\-ref.c}}
+\subsubsection[{esapi\_\-get\_\-unique\_\-reference}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ esapi\_\-get\_\-unique\_\-reference (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{access__ref_8c_a040da60c053ba72839be5a7824bd8d4b}
+
+
+Return a unique token string suitable for use as an indirect reference. 
+
+\begin{DoxyReturn}{Returns}
+A character array containing an indirect object reference 
+\end{DoxyReturn}
+
+
+Definition at line 131 of file access\_\-ref.c.
+
+
+
+References esapi\_\-fill\_\-random\_\-token(), and KEY\_\-LEN.
+
+\hypertarget{access__ref_8c_a71ca073c6f65845225035a100051bc0d}{
+\index{access\_\-ref.c@{access\_\-ref.c}!esapi\_\-put\_\-reference@{esapi\_\-put\_\-reference}}
+\index{esapi\_\-put\_\-reference@{esapi\_\-put\_\-reference}!access_ref.c@{access\_\-ref.c}}
+\subsubsection[{esapi\_\-put\_\-reference}]{\setlength{\rightskip}{0pt plus 5cm}bool esapi\_\-put\_\-reference (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{, }
+\item[{const char $\ast$}]{}
+\end{DoxyParamCaption}
+)}}
+\label{access__ref_8c_a71ca073c6f65845225035a100051bc0d}
+
+
+Adds an entry to the map. 
+
+The indirect reference should be obtained by calling \hyperlink{access__ref_8c_a040da60c053ba72839be5a7824bd8d4b}{esapi\_\-get\_\-unique\_\-reference()}. 
+\begin{DoxyParams}{Parameters}
+{\em A} & character array containing an indirect object reference \\
+\hline
+{\em A} & character array containing a direct object reference \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{access__ref_8c_a040da60c053ba72839be5a7824bd8d4b}{esapi\_\-get\_\-unique\_\-reference()} 
+\end{DoxySeeAlso}
+
+
+Definition at line 110 of file access\_\-ref.c.
+
+\hypertarget{access__ref_8c_a6b9c97d62946298b05badea3dfec1ce8}{
+\index{access\_\-ref.c@{access\_\-ref.c}!esapi\_\-remove\_\-direct\_\-reference@{esapi\_\-remove\_\-direct\_\-reference}}
+\index{esapi\_\-remove\_\-direct\_\-reference@{esapi\_\-remove\_\-direct\_\-reference}!access_ref.c@{access\_\-ref.c}}
+\subsubsection[{esapi\_\-remove\_\-direct\_\-reference}]{\setlength{\rightskip}{0pt plus 5cm}bool esapi\_\-remove\_\-direct\_\-reference (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{}
+\end{DoxyParamCaption}
+)}}
+\label{access__ref_8c_a6b9c97d62946298b05badea3dfec1ce8}
+
+
+Removes the direct object reference from the map. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em A} & character array containing a direct object reference \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 95 of file access\_\-ref.c.
+
+\hypertarget{access__ref_8c_a580941b4c0d256df2c29addd8e600cbc}{
+\index{access\_\-ref.c@{access\_\-ref.c}!esapi\_\-remove\_\-indirect\_\-reference@{esapi\_\-remove\_\-indirect\_\-reference}}
+\index{esapi\_\-remove\_\-indirect\_\-reference@{esapi\_\-remove\_\-indirect\_\-reference}!access_ref.c@{access\_\-ref.c}}
+\subsubsection[{esapi\_\-remove\_\-indirect\_\-reference}]{\setlength{\rightskip}{0pt plus 5cm}bool esapi\_\-remove\_\-indirect\_\-reference (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{}
+\end{DoxyParamCaption}
+)}}
+\label{access__ref_8c_a580941b4c0d256df2c29addd8e600cbc}
+
+
+Removes the indirect object reference from the map. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em A} & character array containing an indirect object reference \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 78 of file access\_\-ref.c.
+

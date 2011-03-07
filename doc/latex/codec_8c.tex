@@ -1,0 +1,118 @@
+\hypertarget{codec_8c}{
+\section{codec.c File Reference}
+\label{codec_8c}\index{codec.c@{codec.c}}
+}
+
+
+A Codec module implementation.  
+
+
+{\ttfamily \#include $<$stdio.h$>$}\par
+{\ttfamily \#include $<$stdlib.h$>$}\par
+{\ttfamily \#include $<$string.h$>$}\par
+{\ttfamily \#include $<$stdbool.h$>$}\par
+{\ttfamily \#include \char`\"{}codec.h\char`\"{}}\par
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{codec_8c_a4a334e2a70120ee0dda1973822446f24}{
+bool {\bfseries hasNext} (char $\ast$input, int index, char pushback)}
+\label{codec_8c_a4a334e2a70120ee0dda1973822446f24}
+
+\item 
+\hypertarget{codec_8c_ac39e3cedd745bd073edf2adea9b23700}{
+char {\bfseries next} (const char $\ast$input, int $\ast$index, char $\ast$pushback)}
+\label{codec_8c_ac39e3cedd745bd073edf2adea9b23700}
+
+\item 
+\hypertarget{codec_8c_a0ab1659e8d0d335953ce47fdc5c811d0}{
+char $\ast$ {\bfseries ctohex} (char c)}
+\label{codec_8c_a0ab1659e8d0d335953ce47fdc5c811d0}
+
+\item 
+char $\ast$ \hyperlink{codec_8c_a50dc3fdba7738703a939b6a430dec05d}{nonatohex} (char c)
+\begin{DoxyCompactList}\small\item\em Lookup the hex value of any character that is not alphanumeric. \item\end{DoxyCompactList}\item 
+void \hyperlink{codec_8c_ac7c8ed1fae334b2bdeb310f599b3addc}{codec\_\-init} ()
+\begin{DoxyCompactList}\small\item\em Initialize an array to mark which characters are to be encoded. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{codec_8c_ab4384a5e1acc972cb52002d483897db2}{
+\hyperlink{structcodec}{codec} {\bfseries codec\_\-unix} = \{ \char`\"{}Unix\char`\"{}, encode\_\-unix\_\-char, decode\_\-unix\_\-char \}}
+\label{codec_8c_ab4384a5e1acc972cb52002d483897db2}
+
+\item 
+\hypertarget{codec_8c_a837996a59eb0319c13fbcd5267bca89a}{
+\hyperlink{structcodec}{codec} $\ast$ \hyperlink{codec_8c_a837996a59eb0319c13fbcd5267bca89a}{pcodec\_\-unix} = \&codec\_\-unix}
+\label{codec_8c_a837996a59eb0319c13fbcd5267bca89a}
+
+\begin{DoxyCompactList}\small\item\em A pointer to the global UNIX command shell codec definition. \item\end{DoxyCompactList}\item 
+\hypertarget{codec_8c_a57a1d61d2b4adb778eee3d2fb31e8262}{
+\hyperlink{structcodec}{codec} {\bfseries codec\_\-windows} = \{ \char`\"{}Windows\char`\"{}, encode\_\-windows\_\-char, decode\_\-windows\_\-char \}}
+\label{codec_8c_a57a1d61d2b4adb778eee3d2fb31e8262}
+
+\item 
+\hypertarget{codec_8c_af59eba6fa0bf7b3ad60c0cb87eb4a034}{
+\hyperlink{structcodec}{codec} $\ast$ \hyperlink{codec_8c_af59eba6fa0bf7b3ad60c0cb87eb4a034}{pcodec\_\-windows} = \&codec\_\-windows}
+\label{codec_8c_af59eba6fa0bf7b3ad60c0cb87eb4a034}
+
+\begin{DoxyCompactList}\small\item\em A pointer to the global Windows command shell codec definition. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A Codec module implementation. \begin{DoxySince}{Since}
+January 30, 2011 
+\end{DoxySince}
+
+
+Definition in file \hyperlink{codec_8c_source}{codec.c}.
+
+
+
+\subsection{Function Documentation}
+\hypertarget{codec_8c_ac7c8ed1fae334b2bdeb310f599b3addc}{
+\index{codec.c@{codec.c}!codec\_\-init@{codec\_\-init}}
+\index{codec\_\-init@{codec\_\-init}!codec.c@{codec.c}}
+\subsubsection[{codec\_\-init}]{\setlength{\rightskip}{0pt plus 5cm}void codec\_\-init (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{codec_8c_ac7c8ed1fae334b2bdeb310f599b3addc}
+
+
+Initialize an array to mark which characters are to be encoded. 
+
+Store the hex string for that character to save time later. If the character shouldn't be encoded, then store null. 
+
+Definition at line 136 of file codec.c.
+
+\hypertarget{codec_8c_a50dc3fdba7738703a939b6a430dec05d}{
+\index{codec.c@{codec.c}!nonatohex@{nonatohex}}
+\index{nonatohex@{nonatohex}!codec.c@{codec.c}}
+\subsubsection[{nonatohex}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ nonatohex (
+\begin{DoxyParamCaption}
+\item[{char}]{c}
+\end{DoxyParamCaption}
+)}}
+\label{codec_8c_a50dc3fdba7738703a939b6a430dec05d}
+
+
+Lookup the hex value of any character that is not alphanumeric. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em c} & The character to lookup. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+, return null if alphanumeric or the character code in hex. 
+\end{DoxyReturn}
+
+
+Definition at line 127 of file codec.c.
+
+
+
+Referenced by encode\_\-windows\_\-char().
+

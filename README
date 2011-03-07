@@ -1,0 +1,38 @@
+This is the README file for the Enterprise Security API for C library.
+
+What is ESAPI?
+==========================
+
+The Enterprise Security API (ESAPI) is a free, open source library of
+security controls that make it easier for programmers to write lower-risk
+applications.
+
+The original ESAPI was written for Java web applications and served to 
+inspire many "ports". These ports are not exactly ports in a traditional
+sense, but more domain specific visions of what "the ESAPI of those 
+languages" should look like. ESAPI for C is one of those visions.
+
+It is a general API for helping programmers to build more secure business 
+applications. There are easy to use functions for proper auditing, simple
+wrappers for cryptographic functions, and much more.
+
+What is ESAPI for C not?
+==========================
+
+ESAPI for C is not a library for helping programmers avoid memory
+corruption mistakes. The domain of problems associated with memory 
+management have inspired a great many libraries and efforts didn't 
+deserve another unnecessary re-invention.
+
+It is also not a "web" API.
+
+What platforms are supported?
+==========================
+
+The following platforms have been confirmed to support ESAPI for C:
+
+* OSX, 32/64-bit
+* Linux, 32/64-bit
+
+Although untested, all the dependencies and source should run on other 
+POSIX operating systems and Windows.

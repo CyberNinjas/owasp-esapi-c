@@ -1,0 +1,218 @@
+\hypertarget{authenticator_8h}{
+\section{authenticator.h File Reference}
+\label{authenticator_8h}\index{authenticator.h@{authenticator.h}}
+}
+{\ttfamily \#include $<$stdio.h$>$}\par
+{\ttfamily \#include \char`\"{}user.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}esapi.h\char`\"{}}\par
+\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{authenticator_8h_a1ef7d3a1f0cb4a798ca53bb1de375c05}{\_\-AUTHENTICATOR\_\-H}
+\item 
+\#define \hyperlink{authenticator_8h_aeb6557183d22afb3bdcf9e57470fc5e4}{ES\_\-AUTH\_\-NO\_\-USER}~-\/1
+\item 
+\#define \hyperlink{authenticator_8h_a5a997cda0a007e296908f734c76c88ad}{ES\_\-AUTH\_\-WRONG\_\-PW}~-\/2
+\item 
+\#define \hyperlink{authenticator_8h_a8077d91dc81dc2e74b015cd9b4ddf28c}{ES\_\-AUTH\_\-EXPIRED}~-\/3
+\item 
+\#define \hyperlink{authenticator_8h_a823fa91b13a5ade12595139ea06866ca}{ES\_\-AUTH\_\-LOCKED}~-\/4
+\item 
+\#define \hyperlink{authenticator_8h_ab19c2c8531d5f4c236e8d813bf1dc327}{ES\_\-AUTH\_\-DISABLED}~-\/5
+\item 
+\#define \hyperlink{authenticator_8h_a040268b184dabb595dd1b2ac5e0ac80f}{ES\_\-PW\_\-TOO\_\-LONG}~-\/1
+\item 
+\#define \hyperlink{authenticator_8h_a1fae2c9ff090ac71cf017a957ba1e681}{ES\_\-PW\_\-TOO\_\-SHORT}~-\/2
+\item 
+\#define \hyperlink{authenticator_8h_a4164b94cde28357e9dd7b0117fa77850}{ES\_\-PW\_\-NOT\_\-ENOUGH\_\-CHAR\_\-CLS}~-\/3
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+char $\ast$ \hyperlink{authenticator_8h_aeb8c6e4aaeafc24632672b8a07e35190}{esapi\_\-hash\_\-password} (struct \hyperlink{structesapi__ctx}{esapi\_\-ctx} $\ast$, const char $\ast$)
+\item 
+int \hyperlink{authenticator_8h_a0dcd72d8c5500b65f667805a5ebd910c}{esapi\_\-login} (const char $\ast$, const char $\ast$)
+\item 
+int \hyperlink{authenticator_8h_ac03fde3e00c2c3f82dacbd93aeb8b1eb}{esapi\_\-verify\_\-password\_\-strength} (char $\ast$, int, int, int)
+\item 
+int \hyperlink{authenticator_8h_aa067f53812a002fc4670ec0a5d612b5f}{esapi\_\-add\_\-user} (\hyperlink{struct_user__t}{user} $\ast$)
+\item 
+int \hyperlink{authenticator_8h_a52c153afeed54d3e439dc2201c11d5a6}{esapi\_\-remove\_\-user} (\hyperlink{struct_user__t}{user} $\ast$)
+\end{DoxyCompactItemize}
+
+
+\subsection{Define Documentation}
+\hypertarget{authenticator_8h_a1ef7d3a1f0cb4a798ca53bb1de375c05}{
+\index{authenticator.h@{authenticator.h}!\_\-AUTHENTICATOR\_\-H@{\_\-AUTHENTICATOR\_\-H}}
+\index{\_\-AUTHENTICATOR\_\-H@{\_\-AUTHENTICATOR\_\-H}!authenticator.h@{authenticator.h}}
+\subsubsection[{\_\-AUTHENTICATOR\_\-H}]{\setlength{\rightskip}{0pt plus 5cm}\#define \_\-AUTHENTICATOR\_\-H}}
+\label{authenticator_8h_a1ef7d3a1f0cb4a798ca53bb1de375c05}
+
+
+Definition at line 6 of file authenticator.h.
+
+\hypertarget{authenticator_8h_ab19c2c8531d5f4c236e8d813bf1dc327}{
+\index{authenticator.h@{authenticator.h}!ES\_\-AUTH\_\-DISABLED@{ES\_\-AUTH\_\-DISABLED}}
+\index{ES\_\-AUTH\_\-DISABLED@{ES\_\-AUTH\_\-DISABLED}!authenticator.h@{authenticator.h}}
+\subsubsection[{ES\_\-AUTH\_\-DISABLED}]{\setlength{\rightskip}{0pt plus 5cm}\#define ES\_\-AUTH\_\-DISABLED~-\/5}}
+\label{authenticator_8h_ab19c2c8531d5f4c236e8d813bf1dc327}
+
+
+Definition at line 12 of file authenticator.h.
+
+\hypertarget{authenticator_8h_a8077d91dc81dc2e74b015cd9b4ddf28c}{
+\index{authenticator.h@{authenticator.h}!ES\_\-AUTH\_\-EXPIRED@{ES\_\-AUTH\_\-EXPIRED}}
+\index{ES\_\-AUTH\_\-EXPIRED@{ES\_\-AUTH\_\-EXPIRED}!authenticator.h@{authenticator.h}}
+\subsubsection[{ES\_\-AUTH\_\-EXPIRED}]{\setlength{\rightskip}{0pt plus 5cm}\#define ES\_\-AUTH\_\-EXPIRED~-\/3}}
+\label{authenticator_8h_a8077d91dc81dc2e74b015cd9b4ddf28c}
+
+
+Definition at line 10 of file authenticator.h.
+
+\hypertarget{authenticator_8h_a823fa91b13a5ade12595139ea06866ca}{
+\index{authenticator.h@{authenticator.h}!ES\_\-AUTH\_\-LOCKED@{ES\_\-AUTH\_\-LOCKED}}
+\index{ES\_\-AUTH\_\-LOCKED@{ES\_\-AUTH\_\-LOCKED}!authenticator.h@{authenticator.h}}
+\subsubsection[{ES\_\-AUTH\_\-LOCKED}]{\setlength{\rightskip}{0pt plus 5cm}\#define ES\_\-AUTH\_\-LOCKED~-\/4}}
+\label{authenticator_8h_a823fa91b13a5ade12595139ea06866ca}
+
+
+Definition at line 11 of file authenticator.h.
+
+\hypertarget{authenticator_8h_aeb6557183d22afb3bdcf9e57470fc5e4}{
+\index{authenticator.h@{authenticator.h}!ES\_\-AUTH\_\-NO\_\-USER@{ES\_\-AUTH\_\-NO\_\-USER}}
+\index{ES\_\-AUTH\_\-NO\_\-USER@{ES\_\-AUTH\_\-NO\_\-USER}!authenticator.h@{authenticator.h}}
+\subsubsection[{ES\_\-AUTH\_\-NO\_\-USER}]{\setlength{\rightskip}{0pt plus 5cm}\#define ES\_\-AUTH\_\-NO\_\-USER~-\/1}}
+\label{authenticator_8h_aeb6557183d22afb3bdcf9e57470fc5e4}
+
+
+Definition at line 8 of file authenticator.h.
+
+\hypertarget{authenticator_8h_a5a997cda0a007e296908f734c76c88ad}{
+\index{authenticator.h@{authenticator.h}!ES\_\-AUTH\_\-WRONG\_\-PW@{ES\_\-AUTH\_\-WRONG\_\-PW}}
+\index{ES\_\-AUTH\_\-WRONG\_\-PW@{ES\_\-AUTH\_\-WRONG\_\-PW}!authenticator.h@{authenticator.h}}
+\subsubsection[{ES\_\-AUTH\_\-WRONG\_\-PW}]{\setlength{\rightskip}{0pt plus 5cm}\#define ES\_\-AUTH\_\-WRONG\_\-PW~-\/2}}
+\label{authenticator_8h_a5a997cda0a007e296908f734c76c88ad}
+
+
+Definition at line 9 of file authenticator.h.
+
+\hypertarget{authenticator_8h_a4164b94cde28357e9dd7b0117fa77850}{
+\index{authenticator.h@{authenticator.h}!ES\_\-PW\_\-NOT\_\-ENOUGH\_\-CHAR\_\-CLS@{ES\_\-PW\_\-NOT\_\-ENOUGH\_\-CHAR\_\-CLS}}
+\index{ES\_\-PW\_\-NOT\_\-ENOUGH\_\-CHAR\_\-CLS@{ES\_\-PW\_\-NOT\_\-ENOUGH\_\-CHAR\_\-CLS}!authenticator.h@{authenticator.h}}
+\subsubsection[{ES\_\-PW\_\-NOT\_\-ENOUGH\_\-CHAR\_\-CLS}]{\setlength{\rightskip}{0pt plus 5cm}\#define ES\_\-PW\_\-NOT\_\-ENOUGH\_\-CHAR\_\-CLS~-\/3}}
+\label{authenticator_8h_a4164b94cde28357e9dd7b0117fa77850}
+
+
+Definition at line 16 of file authenticator.h.
+
+
+
+Referenced by esapi\_\-verify\_\-password\_\-strength().
+
+\hypertarget{authenticator_8h_a040268b184dabb595dd1b2ac5e0ac80f}{
+\index{authenticator.h@{authenticator.h}!ES\_\-PW\_\-TOO\_\-LONG@{ES\_\-PW\_\-TOO\_\-LONG}}
+\index{ES\_\-PW\_\-TOO\_\-LONG@{ES\_\-PW\_\-TOO\_\-LONG}!authenticator.h@{authenticator.h}}
+\subsubsection[{ES\_\-PW\_\-TOO\_\-LONG}]{\setlength{\rightskip}{0pt plus 5cm}\#define ES\_\-PW\_\-TOO\_\-LONG~-\/1}}
+\label{authenticator_8h_a040268b184dabb595dd1b2ac5e0ac80f}
+
+
+Definition at line 14 of file authenticator.h.
+
+
+
+Referenced by esapi\_\-verify\_\-password\_\-strength().
+
+\hypertarget{authenticator_8h_a1fae2c9ff090ac71cf017a957ba1e681}{
+\index{authenticator.h@{authenticator.h}!ES\_\-PW\_\-TOO\_\-SHORT@{ES\_\-PW\_\-TOO\_\-SHORT}}
+\index{ES\_\-PW\_\-TOO\_\-SHORT@{ES\_\-PW\_\-TOO\_\-SHORT}!authenticator.h@{authenticator.h}}
+\subsubsection[{ES\_\-PW\_\-TOO\_\-SHORT}]{\setlength{\rightskip}{0pt plus 5cm}\#define ES\_\-PW\_\-TOO\_\-SHORT~-\/2}}
+\label{authenticator_8h_a1fae2c9ff090ac71cf017a957ba1e681}
+
+
+Definition at line 15 of file authenticator.h.
+
+
+
+Referenced by esapi\_\-verify\_\-password\_\-strength().
+
+
+
+\subsection{Function Documentation}
+\hypertarget{authenticator_8h_aa067f53812a002fc4670ec0a5d612b5f}{
+\index{authenticator.h@{authenticator.h}!esapi\_\-add\_\-user@{esapi\_\-add\_\-user}}
+\index{esapi\_\-add\_\-user@{esapi\_\-add\_\-user}!authenticator.h@{authenticator.h}}
+\subsubsection[{esapi\_\-add\_\-user}]{\setlength{\rightskip}{0pt plus 5cm}int esapi\_\-add\_\-user (
+\begin{DoxyParamCaption}
+\item[{{\bf user} $\ast$}]{}
+\end{DoxyParamCaption}
+)}}
+\label{authenticator_8h_aa067f53812a002fc4670ec0a5d612b5f}
+
+
+Definition at line 106 of file authenticator.c.
+
+\hypertarget{authenticator_8h_aeb8c6e4aaeafc24632672b8a07e35190}{
+\index{authenticator.h@{authenticator.h}!esapi\_\-hash\_\-password@{esapi\_\-hash\_\-password}}
+\index{esapi\_\-hash\_\-password@{esapi\_\-hash\_\-password}!authenticator.h@{authenticator.h}}
+\subsubsection[{esapi\_\-hash\_\-password}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ esapi\_\-hash\_\-password (
+\begin{DoxyParamCaption}
+\item[{struct {\bf esapi\_\-ctx} $\ast$}]{, }
+\item[{const char $\ast$}]{}
+\end{DoxyParamCaption}
+)}}
+\label{authenticator_8h_aeb8c6e4aaeafc24632672b8a07e35190}
+
+
+Definition at line 13 of file authenticator.c.
+
+
+
+References base64\_\-encode\_\-alloc(), esapi\_\-ctx::hash\_\-algo, and esapi\_\-ctx::master\_\-salt.
+
+\hypertarget{authenticator_8h_a0dcd72d8c5500b65f667805a5ebd910c}{
+\index{authenticator.h@{authenticator.h}!esapi\_\-login@{esapi\_\-login}}
+\index{esapi\_\-login@{esapi\_\-login}!authenticator.h@{authenticator.h}}
+\subsubsection[{esapi\_\-login}]{\setlength{\rightskip}{0pt plus 5cm}int esapi\_\-login (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{, }
+\item[{const char $\ast$}]{}
+\end{DoxyParamCaption}
+)}}
+\label{authenticator_8h_a0dcd72d8c5500b65f667805a5ebd910c}
+
+
+Definition at line 57 of file authenticator.c.
+
+\hypertarget{authenticator_8h_a52c153afeed54d3e439dc2201c11d5a6}{
+\index{authenticator.h@{authenticator.h}!esapi\_\-remove\_\-user@{esapi\_\-remove\_\-user}}
+\index{esapi\_\-remove\_\-user@{esapi\_\-remove\_\-user}!authenticator.h@{authenticator.h}}
+\subsubsection[{esapi\_\-remove\_\-user}]{\setlength{\rightskip}{0pt plus 5cm}int esapi\_\-remove\_\-user (
+\begin{DoxyParamCaption}
+\item[{{\bf user} $\ast$}]{}
+\end{DoxyParamCaption}
+)}}
+\label{authenticator_8h_a52c153afeed54d3e439dc2201c11d5a6}
+
+
+Definition at line 114 of file authenticator.c.
+
+\hypertarget{authenticator_8h_ac03fde3e00c2c3f82dacbd93aeb8b1eb}{
+\index{authenticator.h@{authenticator.h}!esapi\_\-verify\_\-password\_\-strength@{esapi\_\-verify\_\-password\_\-strength}}
+\index{esapi\_\-verify\_\-password\_\-strength@{esapi\_\-verify\_\-password\_\-strength}!authenticator.h@{authenticator.h}}
+\subsubsection[{esapi\_\-verify\_\-password\_\-strength}]{\setlength{\rightskip}{0pt plus 5cm}int esapi\_\-verify\_\-password\_\-strength (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{, }
+\item[{int}]{, }
+\item[{int}]{, }
+\item[{int}]{}
+\end{DoxyParamCaption}
+)}}
+\label{authenticator_8h_ac03fde3e00c2c3f82dacbd93aeb8b1eb}
+
+
+Definition at line 68 of file authenticator.c.
+
+
+
+References ES\_\-PW\_\-NOT\_\-ENOUGH\_\-CHAR\_\-CLS, ES\_\-PW\_\-TOO\_\-LONG, and ES\_\-PW\_\-TOO\_\-SHORT.
+
