@@ -5,10 +5,28 @@
  * @since January 30, 2011
  */
 
+#include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
 #include "executor.h"
 #include "log.h"
+
+#if !defined(strdup)
+extern char *strdup (__const char *__s);
+#endif
+
+#if !defined(realpath)
+extern char *realpath(const char *path, char *resolved_path);
+#endif
+
+#if !defined(popen)
+extern FILE *popen(const char *command, const char *type);
+#endif
+
+#if !defined(pclose)
+extern int pclose(FILE *stream);
+#endif
 
 #define EXTRA_COMMANDS	7  // for "cd" and " && " in building command
 /**

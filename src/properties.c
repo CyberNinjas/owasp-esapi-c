@@ -14,6 +14,10 @@
 #include "log.h"
 #include "user.h"
 
+#if !defined(strdup)
+extern char *strdup (__const char *__s);
+#endif
+
 #define LF	0x0A
 #define CR	0x0D
 
@@ -104,7 +108,7 @@ char *set_property(map_t **maph, struct esapi_ctx *ctx, const char *key,
 
 char **keys(map_t *map) {
 
-	char **keys;
+	char **keys = NULL;
 	int keylen = -1;
 
 	map_t *entry, *tmp_entry;

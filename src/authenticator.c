@@ -24,6 +24,9 @@ char *esapi_hash_password(struct esapi_ctx *es_ctx, const char *real_pw) {
 	gcry_md_hd_t ctx;
 	int algo;
 
+    if(!es_ctx || !real_pw)
+		return NULL;
+
 	if (!es_ctx->hash_algo) {
 		algo = GCRY_MD_SHA256;
 	} else {
@@ -75,13 +78,16 @@ int esapi_verify_password_strength(char *pw, int min, int max, int char_set_cnt)
 	int upper = 0;
 	int lower = 0;
 	int special = 0;
-	char *p;
+	char *p = NULL;
 
-	if ((!pw && min > 0) || (pw && min != 0 && strlen(pw) < min)) {
+    if(!pw || min < 0 || max < 0 || char_set_cnt < 0)
+        return ES_PW_INVALID;
+
+	if ((!pw && min > 0) || (pw && min != 0 && strlen(pw) < (size_t)min)) {
 		return ES_PW_TOO_SHORT;
 	}
 
-	if (max > 0 && strlen(pw) > max) {
+	if (max > 0 && strlen(pw) > (size_t)max) {
 		return ES_PW_TOO_LONG;
 	}
 

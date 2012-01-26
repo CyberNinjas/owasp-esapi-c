@@ -20,11 +20,12 @@
 #include <gcrypt.h>
 #include <stdio.h>
 #include <stdbool.h>
+#include <time.h>
 
 #include "crypto.h"
 #include "base64.h"
 
-char esapi_alphabet[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+static const char esapi_alphabet[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 
 static int verbose;
 
@@ -39,6 +40,14 @@ char *esapi_encrypt(struct esapi_ctx *ctx, const char *s) {
 	gcry_error_t key_len = 0;
 	size_t in_len;
 	int ret_len = 0;
+
+    /* Validate before use */
+    if(!ctx)
+		return NULL;
+
+    /* Set to empty string if invalid */
+	if(!s)
+		s = "";
 
 	if ((err = gcry_cipher_open(&hd, ctx->sym_algo, ctx->sym_algo_mode, 0))
 			!= 0) {
@@ -60,7 +69,7 @@ char *esapi_encrypt(struct esapi_ctx *ctx, const char *s) {
 	}
 
 	if (ctx->sym_key[0] == '\0') {
-		for (int i = 0; i < key_len; i++) {
+		for (unsigned int i = 0; i < key_len; i++) {
 			ctx->sym_key[i] = i + (clock() & 0x7f);
 		}
 	}
@@ -354,8 +363,8 @@ gcry_sexp_t convert_to_asymmetric_key(void *buff, int key_len) {
 int esapi_verify_signature(struct esapi_ctx *ctx, void *msg, int m_len,
 		gcry_sexp_t *sig) {
 	gcry_error_t err;
-	gcry_sexp_t data; // have to turn msg + len into this object
-	gcry_sexp_t priv_key; // have to turn ctx->asym_priv_key into this
+	gcry_sexp_t data = NULL; // have to turn msg + len into this object
+	gcry_sexp_t priv_key = NULL; // have to turn ctx->asym_priv_key into this
 	err = gcry_pk_verify(*sig, data, priv_key);
 
 	return (err == 0) ? 0 : -1;

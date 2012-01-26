@@ -78,31 +78,36 @@ codec *pcodec_mysql = &codec_mysql;
  */
 
 bool hasNext(char *input, int index, char pushback) {
+    if(!input || index < 0)
+      return false;
 	if (pushback != -1)
 		return true;
 	if (input == NULL)
 		return false;
 	if (strlen(input) == 0)
 		return false;
-	if (index >= strlen(input))
+	if ((size_t)index >= strlen(input))
 		return false;
+
 	return true;
 }
 
 char next(const char *input, int *index, char *pushback) {
 //	printf("Getting next character to decode in %s at index: %d\n", input,
 //			*index);
+    if(!input || !index || !pushback)
+      return -1;
+    if(strlen(input) == 0 || *index < 0)
+      return -1;
+
 	if (*pushback != -1) {
 		char save = *pushback;
 		*pushback = -1;
 		return save;
-	}
-	if (input == NULL)
+    }
+	if ((size_t)*index >= strlen(input))
 		return -1;
-	if (strlen(input) == 0)
-		return -1;
-	if (*index >= strlen(input))
-		return -1;
+
 	char c = input[*index];
 	(*index)++;
 	return c;
@@ -111,10 +116,12 @@ char next(const char *input, int *index, char *pushback) {
 static const char *hex[256];
 
 char *ctohex(char c) {
-	char *s = (char *) malloc(6);
+    static const size_t BSIZE = 6;
 
-	sprintf(s, "%x", c);
+	char *s = (char *) malloc(BSIZE);
+    if(!s) return NULL;
 
+	snprintf(s, BSIZE, "%x", c);
 	return s;
 }
 

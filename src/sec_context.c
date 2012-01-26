@@ -9,9 +9,14 @@
 #include <stdio.h>
 #include <gcrypt.h>
 #include <string.h>
+#include <strings.h>
 #include "base64.h"
 #include "esapi.h"
 #include "log.h"
+
+#if !defined(strdup)
+extern char *strdup (__const char *__s);
+#endif
 
 #define LINE_LEN	1024
 #define PARSE_ERROR	0
