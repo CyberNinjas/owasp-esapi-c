@@ -83,5 +83,5 @@ local_strdup.o: local_strdup.c esapi.h
 	$(CC) $(CFLAGS) -I$(D_INC) local_strdup.c
 
 clean:
-	rm -f $(OBJECTS)
-	rm -rf $(OUT)
+	-rm -f $(OBJECTS) $(D_LIB)/libesapi\.* core *.core
+	-rm -rf $(OUT)

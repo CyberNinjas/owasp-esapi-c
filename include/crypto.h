@@ -92,8 +92,9 @@ extern gcry_sexp_t *esapi_sign(struct esapi_ctx *, void *, int);
  *		load_security_context() @endcode
  * @param buff	A character array to hold the resulting key
  * @param len	The requested length of the key
+ * @return 0 on success, or -1 on failure.
  */
-extern void esapi_fill_random_token(struct esapi_ctx *, char *, int);
+extern int esapi_fill_random_token(struct esapi_ctx *, char *, int);
 
 /**
  * Generate a random secret key using a cryptographic algorithm and entropy source
@@ -102,16 +103,18 @@ extern void esapi_fill_random_token(struct esapi_ctx *, char *, int);
  *		load_security_context() @endcode
  * @param buff	A character array to hold the resulting key
  * @param len	The requested length of the key
+ * @return 0 on success, or -1 on failure.
  */
-extern void esapi_fill_crypto_key(struct esapi_ctx *, char *, int);
+extern int esapi_fill_crypto_key(struct esapi_ctx *, char *, int);
 
 /**
  * Initializes the cryptographic engine.  This function must be called before
  * calling any of the other functions in this module.
  * @param ctx	A properly initialized ESAPI context structure returned by @code
  *		load_security_context() @endcode
+ * @return 0 on success, or -1 on failure.
  */
-extern void esapi_crypto_init(struct esapi_ctx *);
+extern int esapi_crypto_init(struct esapi_ctx *);
 
 /**
  * @internal
