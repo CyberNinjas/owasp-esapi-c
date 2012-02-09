@@ -46,7 +46,6 @@ int main(void) {
 	test_esapi_base64_encode();
 	test_esapi_base64_decode();
 
-	(void) fprintf(stdout, "%s: Pass <%i>, Fail<%i>\n", __FILE__, passed,
-			failed);
+	(void) fprintf(stdout, "%s: Pass <%i>, Fail<%i>\n", __FILE__, passed, failed);
 	return (EXIT_SUCCESS);
 }

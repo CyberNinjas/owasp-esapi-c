@@ -1,29 +1,18 @@
 /**
  * @file
- * Base64 Encoding module header
- * Encodes binary data using printable characters.
+ * Base64 Encoder/Decoder header.
+ * <P>
+ * <p>Encodes and decodes to and from Base64 notation.</p>
+ * <p>This is part of the libb64 project, and has been placed in the public domain.</p>
+ * <p>Homepage: <a href="http://sourceforge.net/projects/libb64">http://sourceforge.net/projects/libb64</a>.</p>
  *
- * @since January 30, 2011
- */
-
-/*
- base64.h -- Encode binary data using printable characters.
- Copyright (C) 2004, 2005, 2006 Free Software Foundation, Inc.
- Written by Simon Josefsson.
-
- This program is free software; you can redistribute it and/or modify
- it under the terms of the GNU General Public License as published by
- the Free Software Foundation; either version 2, or (at your option)
- any later version.
-
- This program is distributed in the hope that it will be useful,
- but WITHOUT ANY WARRANTY; without even the implied warranty of
- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- GNU General Public License for more details.
-
- You should have received a copy of the GNU General Public License
- along with this program; if not, write to the Free Software Foundation,
- Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+ * @code
+ *	char *input = "Hello";
+ *	char encoded[32];
+ *	base64_encode(input, strlen(input), encoded, sizeof(encoded));
+ * @endcode
+ *
+ * @since January 25, 2012
  */
 
 #ifndef BASE64_H
@@ -35,12 +24,12 @@
 /* Get bool. */
 # include <stdbool.h>
 
-/**
- * Calculates the length of the Base64 encoded value for the given data size (in characters).
- * This uses that the expression (n+(k-1))/k means the smallest
- * integer >= n/k, i.e., the ceiling of n/k.
- */
-# define BASE64_LENGTH(inlen) ((((inlen) + 2) / 3) * 4)
+/* Get malloc. */
+# include <stdlib.h>
+
+/* Get strchr. */
+# include <string.h>
+
 
 /**
  * Determines if the given character is within the Base64 encoding character set.
@@ -54,12 +43,62 @@ extern void base64_encode(const char *, size_t, char *, size_t);
 
 extern size_t base64_encode_alloc(const char *, size_t, char **);
 
+
 /**
  * Base64 decodes the given input character array to the given output buffer.
  */
 extern bool base64_decode(const char *, size_t, char *, size_t *);
 
-extern bool base64_decode_alloc(const char *, size_t, char **, size_t *);
+extern size_t base64_decode_alloc(const char *, size_t, char **, size_t *);
+
+
+/*
+cdecode.h - c header for a base64 decoding algorithm
+
+This is part of the libb64 project, and has been placed in the public domain.
+For details, see http://sourceforge.net/projects/libb64
+*/
+
+typedef enum
+{
+	step_a, step_b, step_c, step_d
+} base64_decodestep;
+
+typedef struct
+{
+	base64_decodestep step;
+	char plainchar;
+} base64_decodestate;
+
+void base64_init_decodestate(base64_decodestate* state_in);
+
+int base64_decode_value(char value_in);
+
+int base64_decode_block(const char* code_in, const int length_in, char* plaintext_out, base64_decodestate* state_in);
+
+size_t base64_decoded_size(size_t);
+
+typedef enum
+{
+	step_A, step_B, step_C
+} base64_encodestep;
+
+typedef struct
+{
+	base64_encodestep step;
+	char result;
+	int stepcount;
+} base64_encodestate;
+
+void base64_init_encodestate(base64_encodestate* state_in);
+
+char base64_encode_value(char value_in);
+
+int base64_encode_block(const char* plaintext_in, int length_in, char* code_out, base64_encodestate* state_in);
+
+size_t base64_encoded_size(size_t);
+
+int base64_encode_blockend(char* code_out, base64_encodestate* state_in);
 
 #endif /* BASE64_H */
 
