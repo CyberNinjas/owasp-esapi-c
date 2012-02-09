@@ -104,9 +104,5 @@ int is_valid(char *input, char *regex, int flags) {
 	}
 
 	/* Execute the regular expression against the input. */
-
-	free(new_pattern->pattern);
-	free(new_pattern);
-
 	return regexec(&r, input, 0, NULL, 0);
 }
