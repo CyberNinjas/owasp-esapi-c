@@ -223,9 +223,11 @@ int esapi_crypto_init(struct esapi_ctx *ctx) {
         return -1;
     } else {
 
-        // Request FIPS 140-2 mode
+        /* Request FIPS 140-2 mode. GCRPYT docs don't state whether secure memory is used, so we        */
+        /* explicitly set it. http://www.gnupg.org/documentation/manuals/gcrypt/Enabling-FIPS-mode.html */
         if (ctx->fips140) {
             gcry_control(GCRYCTL_FORCE_FIPS_MODE);
+            ctx->secure_mem = 1;
         }
 
         if (ctx->secure_mem) {
