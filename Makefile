@@ -8,9 +8,9 @@ CFLAGS  += -O0 -g3 -ggdb -DDEBUG=1
 # CFLAGS=-O2 -g -DNDEBUG=1
 
 # Common to all builds
-CFLAGS  += -std=c99 -Wall -Wextra -Wno-unused -Wformat=2 -Wformat-security -fstack-protector -pedantic -fPIC -c
+CFLAGS  += -std=c99 -Wall -Wextra -Wno-unused -Wformat=2 -Wformat-security -fstack-protector-all -pedantic -fPIC -c
 
-# Clang with Regehr (et al) Integer Overflow Checker (IOC, http://embed.cs.utah.edu/ioc/)
+# Clang with Regehr (et al) Integer Undefined Behavior Checker (IOC, http://embed.cs.utah.edu/ioc/)
 # CFLAGS  +=-fcatch-undefined-c99-behavior
 
 # Linker hardening

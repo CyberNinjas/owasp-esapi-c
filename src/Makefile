@@ -28,11 +28,11 @@ lib: $(STATICOUT) $(SHAREDOUT)
 
 $(STATICOUT): $(OBJECTS)
 	ar rcs $(STATICOUT) $(OBJECTS)
-	cp $(STATICOUT) $(D_LIB)
+	mv $(STATICOUT) $(D_LIB)
 
 $(SHAREDOUT): $(OBJECTS)
 	$(CC) -shared -o $(SHAREDOUT) $(OBJECTS) $(LIBRARIES)
-	cp $(SHAREDOUT) $(D_LIB)
+	mv $(SHAREDOUT) $(D_LIB)
 
 access_ref.o: access_ref.c access_ref.h uthash.h
 	$(CC) $(CFLAGS)	-I$(D_INC) access_ref.c
